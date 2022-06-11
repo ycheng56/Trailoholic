@@ -10,7 +10,7 @@ function Header({ login }) {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/trails">Trails</Link>
-      <Link to="/users/testuser/profile">testuser</Link>
+      <Link to="/users/1/profile">testuser</Link>
     </nav>
   ) : (
     <nav>

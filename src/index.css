@@ -15,3 +15,16 @@ code {
 nav a {
   padding-left: 20px;
 }
+
+.trailContainer {
+  background-color: aliceblue;
+  margin: 5px;
+  padding: 5px;
+}
+
+.nameIconContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
