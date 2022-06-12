@@ -1,0 +1,47 @@
+{
+  "trails": [
+    {
+      "id": 1,
+      "mode": "Cycling",
+      "start": "Stanley Park",
+      "destination": "West End"
+    },
+    {
+      "id": 2,
+      "mode": "Cycling",
+      "start": "Richmond",
+      "destination": "Marine Drive"
+    }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "username": "user001",
+      "name": "testuser",
+      "location": "Vancouver",
+      "description": "I like cycling",
+      "lists": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "user002",
+      "name": "cynthia",
+      "location": "Jupiter",
+      "description": "Hello, Jupiter",
+      "lists": [
+        {
+          "id": 1
+        }
+      ]
+    }
+  ]
+  
+}

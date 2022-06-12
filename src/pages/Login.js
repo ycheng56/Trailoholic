@@ -1,9 +1,9 @@
 import React from 'react';
+import Profile from '../components/Profile';
 
 function Login() {
   return (
-    // TODO
-    <h1>Login Page</h1>
+    <Profile/>
   );
 }
 
