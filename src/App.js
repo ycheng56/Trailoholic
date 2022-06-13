@@ -1,34 +1,48 @@
-import React, {useState} from "react";
+import React from "react";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Header from "./Header";
-import Trails from "./Trails";
-import TrailDetails from "./TrailDetails";
-import Login from "./Login";
-import Signup from "./Signup";
-import UserProfile from "./UserProfile";
-import UserLists from "./UserLists";
+import Trails from "./pages/Trails";
+import TrailDetails from "./pages/TrailDetails";
+import UserProfile from "./pages/UserProfile";
+import UserLists from "./pages/UserLists";
+import Home from "./pages/Home";
+import { useAuth0 } from "@auth0/auth0-react";
+import Banner from "./components/Banner";
+import Footer from "./components/Footer";
+import Loading from "./components/Loading";
+import Login from "./pages/Login"
 
+// TODO: Using .env to fetch domain&clientId unsuccessfully
+// const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 function App() {
-  const [login, setLogin] = useState(false);
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    // TODO
     <div className="App">
-      
-      <Header login={login} />
-
-      <Routes>
-        <Route path="/" element={<h1>This is landing page</h1>} />
-        <Route path="/trails" element={<Trails />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="trails/:trailId" element={<TrailDetails />} />
-        <Route path="/users/:userId/profile" element={<UserProfile />} />
-        <Route path="/users/:userId/lists" element={<UserLists />} />
-        <Route path="*" element={<p>Nothing Here</p>} />
-      </Routes>
-
+      <Banner />
+      <AppRouter />
+      <Footer />
     </div>
+  );
+}
+
+function AppRouter() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/trails" element={<Trails />} />
+      <Route path="trails/:trailId" element={<TrailDetails />} />
+      <Route path="/user/profile" element={<UserProfile />} />
+      <Route path="/user/lists" element={<UserLists />} />
+      <Route path="*" element={<p>Nothing Here</p>} />
+    </Routes>
   );
 }
 

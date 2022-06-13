@@ -16,6 +16,7 @@ nav a {
   padding-left: 20px;
 }
 
+<<<<<<< HEAD
 .trailContainer {
   background-color: aliceblue;
   margin: 5px;
@@ -28,3 +29,25 @@ nav a {
   align-items: center;
 }
 
+=======
+.spinner {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+
+>>>>>>> 7f09770d9375beb1a9a1e2f7ffdcf16d5813f397
