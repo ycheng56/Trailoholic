@@ -1,10 +1,8 @@
-import React from 'react';
-import Profile from '../components/Profile';
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Login() {
-  return (
-    <Profile/>
-  );
+  const { loginWithRedirect } = useAuth0();
+  loginWithRedirect();
 }
 
 export default Login;

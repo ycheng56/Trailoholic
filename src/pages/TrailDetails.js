@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Banner from '../components/Banner'
 import "./css/TrailDetails.css";
 import { useEffect, useState } from 'react'
 
@@ -27,7 +26,6 @@ function TrailDetails({trail}) {
 
   return (
     <div className="trailDetail">
-    <Banner/>
       <h1>Trail {trailId} Details Page</h1>
       <div className="details">
         <p>Starting: {trails.start}</p>

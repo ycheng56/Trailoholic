@@ -3,13 +3,14 @@ import "./css/Navbar.css";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import AuthenticationButton from './AuthenticationButton';
 
 export default function Banner() {
+  const { isAuthenticated, logout } = useAuth0();
   return (
     <div>
-      <Navbar className="navbar" bg="light" expand="lg" fixed="top">
+      <Navbar className="navbar" bg="light" expand="lg" sticky="top">
         <Container>
           <Navbar.Brand href="/">Trailoholic</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,22 +23,27 @@ export default function Banner() {
             <LinkContainer to="/">
               <Navbar.Brand></Navbar.Brand>
             </LinkContainer>
+                        
             <Nav>
-              <LoginButton />
-              <LogoutButton />
-              <LinkContainer to="/signup">
-                <Nav.Link>SignUp</Nav.Link>
-              </LinkContainer>
-              <NavDropdown title="My Account" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/users/:userId/profile">
-                  Profile
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/users/:userId/lists">
-                  My List
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Log Out</NavDropdown.Item>
-              </NavDropdown>
+              {isAuthenticated && (
+                <NavDropdown title="My Account" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/user/profile">
+                    Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/user/lists">
+                    My List
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={logout}>Log Out</NavDropdown.Item>
+                </NavDropdown>
+              )}
+
+              {!isAuthenticated && (
+                <div className="navbar-nav ml-auto">
+                <AuthenticationButton />
+              </div>
+              )}
+
             </Nav>
           </Navbar.Collapse>
         </Container>
