@@ -18,7 +18,6 @@ function UserLists() {
         }
         const data = await response.json();
         setUserLists(data[0].lists);
-        console.log(userLists);
       } catch (err) {
         console.log("catch ", err);
       }

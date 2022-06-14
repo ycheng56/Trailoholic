@@ -13,21 +13,10 @@
       "destination": "Marine Drive"
     }
   ],
-<<<<<<< HEAD
-
-  "users": [
-    {
-      "id": 1,
-      "username": "user001",
-      "name": "testuser",
-      "location": "Vancouver",
-      "description": "I like cycling",
-=======
   "users": [
     {
       "id": 1,
       "sub": "auth0|62a63da4304e6719f84cf00f",
->>>>>>> 7f09770d9375beb1a9a1e2f7ffdcf16d5813f397
       "lists": [
         {
           "id": 1
@@ -35,36 +24,18 @@
         {
           "id": 2
         }
-<<<<<<< HEAD
-      ]
-    },
-    {
-      "id": 2,
-      "username": "user002",
-      "name": "cynthia",
-      "location": "Jupiter",
-      "description": "Hello, Jupiter",
-=======
       ],
       "description": "I like hiking and cycling"
     },
     {
       "id": 2,
       "sub": "google-oauth2|110725516131726631011",
->>>>>>> 7f09770d9375beb1a9a1e2f7ffdcf16d5813f397
       "lists": [
         {
           "id": 1
         }
-<<<<<<< HEAD
-      ]
-    }
-  ]
-  
-=======
       ],
       "description": "Hello World"
     }
   ]
->>>>>>> 7f09770d9375beb1a9a1e2f7ffdcf16d5813f397
 }

@@ -25,6 +25,7 @@ function UserLists() {
         }
         const data = await response.json();
         setTrails(data[0].lists);
+        console.log(trails);
       } catch (err) {
         console.log("catch ", err);
       }
