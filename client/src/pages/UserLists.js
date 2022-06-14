@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import TrailCard from "../components/TrailCard";
+import TrailCardOfUser from "../components/TrailCardOfUser";
 
 function UserLists() {
   const { user } = useAuth0();
@@ -11,13 +11,13 @@ function UserLists() {
     async function fetchUserList() {
       try {
         const response = await fetch(
-          `http://localhost:5000/users?sub=${user.sub}`
+          `http://localhost:5000/users/${user.sub}`
         );
         if (!response.ok) {
           throw Error("Fetch failed");
         }
         const data = await response.json();
-        setUserLists(data[0].lists);
+        setUserLists(data.lists);
       } catch (err) {
         console.log("catch ", err);
       }
@@ -31,18 +31,17 @@ function UserLists() {
       for (const item of userLists) {
         try {
           const response = await fetch(
-            `http://localhost:5000/trails?id=${item.id}`
+            `http://localhost:5000/trails/${item}`
           );
           if (!response.ok) {
             throw Error("Fetch failed");
           }
           const data = await response.json();
-          trailsData.push(data[0]);
+          trailsData.push(data);
         } catch (err) {
           console.log("catch ", err);
         }
       }
-      console.log("trailsData", trailsData);
       setTrails(trailsData);
     }
     fetchTrails();
@@ -51,18 +50,18 @@ function UserLists() {
   async function deleteClicked(deletedId) {
     console.log("clicked", deletedId);
     try {
-      const updatedTrails = trails.filter((item) => item.id !== deletedId);
+      const updatedLists = userLists.filter((item) => item !== deletedId);
       const response = await fetch(
-        `http://localhost:5000/users?sub=${user.sub}`,
+        `http://localhost:5000/users/update/lists/${user.sub}`,
         {
-          method: "PATCH",
+          method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({
-            lists: updatedTrails,
+            lists: updatedLists,
           }),
         }
       );
-      setTrails(updatedTrails);
+      setUserLists(updatedLists);
     } catch (err) {
       console.log(err);
     }
@@ -74,8 +73,8 @@ function UserLists() {
         <h1>My List</h1>
         <div className="col-md text-center text-md-left">
           <div className="cards">
-            {trails.map((item) => (
-              <TrailCard key={item.id} trail={item} />
+            {trails.map((trail) => (
+              <TrailCardOfUser key={trail._id} trail={trail} onDelete={deleteClicked} />
             ))}
           </div>
         </div>

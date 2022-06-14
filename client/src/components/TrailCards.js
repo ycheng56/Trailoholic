@@ -8,12 +8,10 @@ function TrailCards(trail) {
     async function fetchTrails(){
       try{
         const response=await fetch("http://localhost:5000/trails")
-        console.log(response);
         if(!response.ok){
           throw Error("Fetch failed");
         }
         const data = await response.json();
-        console.log(data);
         setTrails(data);
       }catch(err){
         console.log("err",err);
@@ -27,7 +25,7 @@ function TrailCards(trail) {
       <div className="cards">
         {trails.map((item)=>
           <TrailCard
-            key={item.id}
+            key={item._id}
             trail={item}
           />
         )}

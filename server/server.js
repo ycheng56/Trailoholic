@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require("./routes/trails"));
+app.use(require("./routes/users"));
 // get driver connection
 const dbo = require("./db/connect");
  

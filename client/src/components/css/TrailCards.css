@@ -19,3 +19,8 @@
     width:85%;
     height: 100%;
 }
+
+.headerDeleteIcon {
+    display: flex;
+    flex-direction: row-reverse;
+}

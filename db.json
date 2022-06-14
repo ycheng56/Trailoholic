@@ -15,14 +15,13 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "auth0|62a63da4304e6719f84cf00f",
       "sub": "auth0|62a63da4304e6719f84cf00f",
       "lists": [
+        "0",
+        "1",
         {
-          "id": 1
-        },
-        {
-          "id": 2
+          "id": "1"
         }
       ],
       "description": "I like hiking and cycling"

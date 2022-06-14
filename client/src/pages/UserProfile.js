@@ -5,47 +5,42 @@ import { FaEdit } from "react-icons/fa";
 
 function UserProfile() {
   const { user } = useAuth0();
-  const [userMetaData, setUserMetaData] = useState([]);
-  const [description, setDescription] = useState(userMetaData.description);
+  const [description, setDescription] = useState("");
   
   // shwoForm state, show/hide components in this page
   const [showForm, setShowForm] = useState(false);
 
   const toggleShowForm = () => {
-    // setDescription(userMetaData.description);
     setShowForm(!showForm);
   };
 
-  // GET user profile data from db.
+  // GET user description data from db.
   useEffect(() => {
-    async function fetchUserMetaData() {
+    async function fetchUserDescription() {
       try {
         const response = await fetch(
-          `http://localhost:5000/users?sub=${user.sub}`
+          `http://localhost:5000/users/${user.sub}`
         );
         if (!response.ok) {
           throw Error("Fetch failed");
         }
         const data = await response.json();
-        setUserMetaData(data[0]);
+        setDescription(data.description);
       } catch (err) {
         console.log("catch ", err);
       }
     }
-    fetchUserMetaData();
+    fetchUserDescription();
   }, [user.sub]);
 
   // handle the submission of the form
-  // 1. when submitted, make a PATCH requrest to update the user data in the db.
-  // 2. update the user state
-  // 3. hide the editting form, show user profile
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {  
       const response = await fetch(
-        `http://localhost:5000/users/${userMetaData.id}`,
+        `http://localhost:5000/users/update/profile/description/${user.sub}`,
         {
-          method: "PATCH",
+          method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(
             {
@@ -55,7 +50,7 @@ function UserProfile() {
         }
       );
       if (!response.ok) {
-        throw Error("PATCH request failed");
+        throw Error("Request failed");
       }
       toggleShowForm();
     } catch (err) {
@@ -92,7 +87,7 @@ function UserProfile() {
             <FaEdit onClick={toggleShowForm} />
           </div>
 
-          {!showForm && <p className="lead text-muted">{description || userMetaData.description}</p>}
+          {!showForm && <p className="lead text-muted">{description}</p>}
 
           {showForm && (
             <form onSubmit={handleSubmit}>
@@ -102,7 +97,7 @@ function UserProfile() {
                   rows="5"
                   className="lead text-muted"
                   type="text"
-                  value={description || userMetaData.description}
+                  value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
                 <input  className="btn-secondary" type="submit" value="Save" />
