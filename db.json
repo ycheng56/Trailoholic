@@ -11,18 +11,21 @@
       "mode": "Cycling",
       "start": "Richmond",
       "destination": "Marine Drive"
+    },
+    {
+      "id": 3,
+      "mode": "Biking",
+      "start": "North Arm Bridge Bikeway",
+      "destination": "South Vancouver"
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "auth0|62a63da4304e6719f84cf00f",
       "sub": "auth0|62a63da4304e6719f84cf00f",
       "lists": [
         {
-          "id": 1
-        },
-        {
-          "id": 2
+          "id": "3"
         }
       ],
       "description": "I like hiking and cycling"
