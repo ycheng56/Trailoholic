@@ -1,0 +1,26 @@
+.trailCards{
+    padding-left: 2%;
+    padding-top:10%;
+}
+
+.trailCards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.trail-map{
+    padding-left: 10%;
+}
+
+.map-draft-pic{
+    width:85%;
+    height: 100%;
+}
+
+.headerDeleteIcon {
+    display: flex;
+    flex-direction: row-reverse;
+}
