@@ -11,6 +11,7 @@ import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import Login from "./pages/Login"
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 // TODO: Using .env to fetch domain&clientId unsuccessfully
 // const domain = process.env.REACT_APP_AUTH0_DOMAIN;
@@ -39,8 +40,8 @@ function AppRouter() {
       <Route path="/login" element={<Login />} />
       <Route path="/trails" element={<Trails />} />
       <Route path="trails/:trailId" element={<TrailDetails />} />
-      <Route path="/user/profile" element={<UserProfile />} />
-      <Route path="/user/lists" element={<UserLists />} />
+      <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
+      <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="*" element={<p>Nothing Here</p>} />
     </Routes>
   );
