@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import Loading from "../components/Loading";
+import { useAuth0 } from "@auth0/auth0-react";
 import { FaEdit } from "react-icons/fa";
 
 function UserProfile() {
@@ -110,6 +109,4 @@ function UserProfile() {
   );
 }
 
-export default withAuthenticationRequired(UserProfile, {
-  onRedirecting: () => <Loading />,
-});
+export default UserProfile;
