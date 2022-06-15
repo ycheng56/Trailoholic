@@ -83,7 +83,7 @@ function UserProfile() {
           </p>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <h3>About Me</h3>
-            <FaEdit onClick={toggleShowForm} />
+            {!showForm && <FaEdit onClick={toggleShowForm} /> }
           </div>
 
           {!showForm && <p className="lead text-muted">{description}</p>}
