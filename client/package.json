@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@auth0/auth0-react": "^1.10.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
