@@ -18,7 +18,7 @@ function UserProfile() {
     async function fetchUserDescription() {
       try {
         const response = await fetch(
-          `http://localhost:5000/users/${user.sub}`
+          `/api/users/${user.sub}`
         );
         if (!response.ok) {
           throw Error("Fetch failed");
@@ -37,7 +37,7 @@ function UserProfile() {
     e.preventDefault();
     try {  
       const response = await fetch(
-        `http://localhost:5000/users/update/profile/description/${user.sub}`,
+        `/api/users/update/profile/description/${user.sub}`,
         {
           method: "POST",
           headers: { "Content-type": "application/json" },

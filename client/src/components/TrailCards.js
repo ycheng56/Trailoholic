@@ -7,7 +7,7 @@ function TrailCards(trail) {
   useEffect( ()=>{
     async function fetchTrails(){
       try{
-        const response=await fetch("http://localhost:5000/trails")
+        const response=await fetch("/api/trails")
         if(!response.ok){
           throw Error("Fetch failed");
         }

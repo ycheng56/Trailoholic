@@ -8,7 +8,7 @@ export default function Home() {
         <img alt="home-page" src="https://content.r9cdn.net/rimg/dimg/44/3a/24ecb3e4-city-9388-164fb1533df.jpg?crop=true&width=1366&height=768&xhint=2080&yhint=1728" ></img>
 
         <p>This is the home page</p>
-        <a href="/Trails">Explore all routes</a>
+        <Link to="trails">Explore all routes</Link>
     </div>
           
   )

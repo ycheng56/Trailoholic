@@ -11,7 +11,7 @@ function UserLists() {
     async function fetchUserList() {
       try {
         const response = await fetch(
-          `http://localhost:5000/users/${user.sub}`
+          `/api/users/${user.sub}`
         );
         if (!response.ok) {
           throw Error("Fetch failed");
@@ -31,7 +31,7 @@ function UserLists() {
       for (const item of userLists) {
         try {
           const response = await fetch(
-            `http://localhost:5000/trails/${item}`
+            `/api/trails/${item}`
           );
           if (!response.ok) {
             throw Error("Fetch failed");
@@ -52,7 +52,7 @@ function UserLists() {
     try {
       const updatedLists = userLists.filter((item) => item !== deletedId);
       const response = await fetch(
-        `http://localhost:5000/users/update/lists/${user.sub}`,
+        `/api/users/update/lists/${user.sub}`,
         {
           method: "POST",
           headers: { "Content-type": "application/json" },

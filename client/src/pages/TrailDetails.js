@@ -13,7 +13,7 @@ function TrailDetails() {
   useEffect( ()=>{
     async function fetchTrails(){
       try{
-        const response=await fetch(`http://localhost:5000/trails/${trailId}`);
+        const response=await fetch(`/api/trails/${trailId}`);
         if(!response.ok){
           throw Error("Fetch failed");
         }
@@ -30,7 +30,7 @@ function TrailDetails() {
     async function fetchUserList() {
       try {
         const response = await fetch(
-          `http://localhost:5000/users/${user.sub}`
+          `/api/users/${user.sub}`
         );
         if (!response.ok) {
           throw Error("Fetch failed");
@@ -57,7 +57,7 @@ function TrailDetails() {
       userLists.map((item) => (updatedMyLists.push(item)));
       console.log(updatedMyLists);
       const response = await fetch(
-        `http://localhost:5000/users/update/lists/${user.sub}`,
+        `/api/users/update/lists/${user.sub}`,
         {
           method: "POST",
           headers: { "Content-type": "application/json" },

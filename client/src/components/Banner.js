@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import AuthenticationButton from './AuthenticationButton';
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   const { isAuthenticated, logout } = useAuth0();
@@ -16,8 +17,8 @@ export default function Banner() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/trails">Explore</Nav.Link>
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/trails">Explore</Nav.Link>
             </Nav>
 
             <LinkContainer to="/">
@@ -27,14 +28,14 @@ export default function Banner() {
             <Nav>
               {isAuthenticated && (
                 <NavDropdown title="My Account" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/user/profile">
+                  <NavDropdown.Item as={Link} to="/user/profile">
                     Profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/user/lists">
+                  <NavDropdown.Item as={Link} to="/user/lists">
                     My List
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={logout}>Log Out</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} onClick={logout}>Log Out</NavDropdown.Item>
                 </NavDropdown>
               )}
 
