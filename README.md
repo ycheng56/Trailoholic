@@ -4,42 +4,10 @@
 - Cynthia(Yue) Cheng
 - Skylar(Zhuohang) Li
 
-## To Start the Server
-### Open a terminal, in the project directory, you can run:
-
-Change the directory to server folder:
-### `cd server`
-
-Install the dependencies:
-### `npm install`
-
-Run the srver:
-### `node server.js`
-
-
-Open [http://localhost:5000](http://localhost:5000) to view the server in your browser.
-
-
-
-## To Run the React App (Client)
-### Open another terminal, in the project directory, you can run:
-
-
-Change the directory to client folder
-### `cd client`
-
-Install the dependencies:
-### `npm install`
-
-Run the react app:
-### `npm start`
-
-Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
-
-
-
 
 ## Navigate Trailoholic
+please visit [https://trailoholic-app.herokuapp.com/](https://trailoholic-app.herokuapp.com/)
+
 
 ### Home
 - Home page is under construction
@@ -49,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the app in your brow
 
 
 ### Explore
-- Browse the the trails infomation
+- Browse the the trails infomation (so far, fake data)
 - click "view trail details" button to see the details of the trail
 
 
@@ -66,3 +34,40 @@ Open [http://localhost:3000](http://localhost:3000) to view the app in your brow
 - User can edit delete trail from the collection
 
 
+
+# Run Trailoholic Locally
+Clone this repository to local, and pull from the remote **iteration1**
+
+## Start the Server
+### Open a terminal, in the project directory, you can run:
+
+Change the directory to server folder:
+### `cd server`
+
+Install the dependencies:
+### `npm install`
+
+Run the srver:
+### `node server.js`
+
+
+Open [http://localhost:5000](http://localhost:5000) to view the server in your browser.
+
+some routes you might use:
+- http://localhost:5000/api/users
+- http://localhost:5000/api/trails
+
+
+## To Run the Client
+### Open another terminal, in the project directory, you can run:
+
+Change the directory to client folder
+### `cd client`
+
+Install the dependencies:
+### `npm install`
+
+Run the react app:
+### `npm start`
+
+Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
