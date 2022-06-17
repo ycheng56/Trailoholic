@@ -82,4 +82,18 @@ trailRoutes.route("/trails/:id").delete((req, response) => {
   });
 });
 
+
+// get a single trail by trail start
+// TODO: 
+// userRoutes.route("/trails/search").get(function (req, res) {
+//   let db_connect = dbo.getDb();
+//   let myquery = { start: req.body.start};
+//   db_connect
+//       .collection(collectionName)
+//       .find(myquery, function (err, result) {
+//         if (err) throw err;
+//         res.json(result);
+//       });
+//  });
+
 module.exports = trailRoutes;
