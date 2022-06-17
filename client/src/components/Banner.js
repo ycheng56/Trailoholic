@@ -34,16 +34,15 @@ export default function Banner() {
                   <NavDropdown.Item as={Link} to="/user/lists">
                     My List
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item as={Link} onClick={logout}>Log Out</NavDropdown.Item>
+                  {/* <NavDropdown.Divider /> */}
+                  {/* <NavDropdown.Item  onClick={logout}>Log Out</NavDropdown.Item> */}
                 </NavDropdown>
               )}
 
-              {!isAuthenticated && (
-                <div className="navbar-nav ml-auto">
+              <div className="navbar-nav ml-auto">
                 <AuthenticationButton />
               </div>
-              )}
+
 
             </Nav>
           </Navbar.Collapse>
