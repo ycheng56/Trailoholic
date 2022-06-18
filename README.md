@@ -1,8 +1,5 @@
 # Trailoholic
 
-## Progress
-itertion2 
-
 ## Team members:
 - Cynthia(Yue) Cheng
 - Skylar(Zhuohang) Li
