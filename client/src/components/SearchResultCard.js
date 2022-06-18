@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
+import { Link } from "react-router-dom";
 import "./css/Search.css";
 
 export default function SearchResultCard({ trail }) {
@@ -44,7 +45,9 @@ export default function SearchResultCard({ trail }) {
           </CardContent>
           <CardActions sx={{ display: "flex", flexDirection: "column" }}>
             <Button size="small">🤍</Button>
-            <Button size="small">Learn More</Button>
+            <Button size="small"><Link to={`/trails/${trail._id}`}>
+              <p>View Trail Details</p>
+            </Link></Button>
           </CardActions>
         </Card>
       </div>

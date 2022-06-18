@@ -4,14 +4,14 @@
     padding:0.5rem 1rem;
     border:none;
     background: white;
-    color:rgb(65, 98, 168);
+    color:rgb(65, 168, 118);
     border:2px solid rgb(65, 36, 53);
     border-radius: 1rem;
     font-weight: bold;
     cursor: pointer;
 }
 
-.filter-container button.active{
-    background:rgb(65, 98,168);
+ button:hover{
+    background:rgb(65, 168, 118);
     color:white;
 }
