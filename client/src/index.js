@@ -5,7 +5,11 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
+
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

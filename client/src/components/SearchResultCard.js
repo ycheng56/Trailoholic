@@ -12,13 +12,13 @@ import "./css/Search.css";
 export default function SearchResultCard({ trail }) {
   return (
     <div>
-      <div className="searchTitle">
+      {/* <div className="searchTitle">
         <h3 className="pt-5">Best trails in {trail.start}</h3>
         <p >Looking for the best hiking or cycling trails in {trail.start}? Trailoholic has 
         lots of trails in {trail.start} area. Enjoy your time hiking, biking or exploring 
         other outdoor activities.
         </p>
-      </div>
+      </div> */}
 
       <div className="searchResultCard">
         <Card sx={{ maxWidth: 1000, display: "flex", textAlign: "justify" }}>
