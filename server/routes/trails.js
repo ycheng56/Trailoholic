@@ -83,17 +83,32 @@ trailRoutes.route("/trails/:id").delete((req, response) => {
 });
 
 
-// get a single trail by trail start
-// TODO: 
-// userRoutes.route("/trails/search").get(function (req, res) {
-//   let db_connect = dbo.getDb();
-//   let myquery = { start: req.body.start};
-//   db_connect
-//       .collection(collectionName)
-//       .find(myquery, function (err, result) {
-//         if (err) throw err;
-//         res.json(result);
-//       });
-//  });
+// search a trail
+trailRoutes.route("/search/trails").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let query = req.query;
+  db_connect
+    .collection(collectionName)
+    .find(query)
+    .toArray(function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      res.json(result);
+    });
+});
+
+// get trails by mode
+trailRoutes.route("/trails/search/mode/:mode").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let query = { mode: req.params.mode };
+  db_connect
+    .collection(collectionName)
+    .find(query)
+    .toArray(function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      res.json(result);
+    });
+});
 
 module.exports = trailRoutes;

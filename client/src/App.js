@@ -12,10 +12,7 @@ import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import Login from "./pages/Login"
 import ProtectedRoute from "./auth/ProtectedRoute";
-
-// TODO: Using .env to fetch domain&clientId unsuccessfully
-// const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+import TrialsMap from "./pages/TrailsMap"
 
 function App() {
   const { isLoading } = useAuth0();
@@ -43,6 +40,7 @@ function AppRouter() {
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="*" element={<p>Nothing Here</p>} />
+      <Route path="/trailsmap" element={<TrialsMap />} />
     </Routes>
   );
 }

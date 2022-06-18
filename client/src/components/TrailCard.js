@@ -12,7 +12,7 @@ export default function TrailCard({ trail }) {
           <Card.Title>{trail.start}</Card.Title>
           <Card.Text>
             <Link to={`/trails/${trail._id}`}>
-              <p>View Trail Details</p>
+              View Trail Details
             </Link>
           </Card.Text>
           <div>

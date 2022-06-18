@@ -13,6 +13,7 @@ function TrailCards(trail) {
         }
         const data = await response.json();
         setTrails(data);
+        console.log(data);
       }catch(err){
         console.log("err",err);
       }
