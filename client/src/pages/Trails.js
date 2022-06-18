@@ -5,17 +5,14 @@ import SearchTrails from '../components/SearchTrails'
 import TrailCards from '../components/TrailCards'
 import AllFilter from '../components/FilterComponents/AllFilter'
 import "./css/Trails.css"
+import Filter from '../components/Filter'
 
 export default function Trails() {
   return (
     <div>
         <p>Explore All the Trails</p>
-        <SearchTrails/>
-
-        <div className="filter-button"><AllFilter/></div>
-        <div className="filter-button"><HikingFilter/></div>
-        <div className="filter-button"><BikingFilter/></div>
-
+        {/* <SearchTrails/> */}
+        {/* <Filter/> */}
         <TrailCards />
     </div>
   )
