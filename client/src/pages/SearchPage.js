@@ -27,33 +27,22 @@ export default function SearchPage() {
       }
     }
     fetchTrails();
-  }, [trails]);
+  }, [searchCriteria]);
 
   return (
     <div>
-      <TrailCard />
-      <div>Search Result for {searchCriteria}</div>
-      <div className="trailCards">
-        <div className="cards">
-          {trails.map((item) => (
-            <TrailCard key={item._id} trail={item} />
-          ))}
-        </div>
 
-        <div className="trail-map">
-          <img
-            src={process.env.PUBLIC_URL + "/images/draft_map1.png"}
-            alt="map-draft-pic"
-            className="map-draft-pic"
-          />
-          ;
-        </div>
-      </div>
       {/* <div className="details">
         <p>Starting: {trails.start}</p>
         <p>Destination: {trails.destination}</p>
         <p>Trip Type: {trails.mode}</p>
       </div> */}
+      <div>
+        {trails.map((item) => (
+            <TrailCard key={item._id} trail={item} />
+          ))}
+      </div>
+
     </div>
   );
 }
