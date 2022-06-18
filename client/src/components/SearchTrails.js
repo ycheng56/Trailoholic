@@ -15,6 +15,13 @@ export default function SearchTrails() {
       navigate("/trails/search");
     }
   };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setSearchCriteria(e.target.value);
+    }
+  };
+
   return (
     <div>
       <Form
@@ -28,6 +35,7 @@ export default function SearchTrails() {
           size="sm"
           value={searchCriteria}
           onChange={(e) => setSearchCriteria(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <Button
           aria-label="searchButton"
