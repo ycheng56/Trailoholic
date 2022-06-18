@@ -13,6 +13,8 @@ import Loading from "./components/Loading";
 import Login from "./pages/Login"
 import ProtectedRoute from "./auth/ProtectedRoute";
 import TrialsMap from "./pages/TrailsMap"
+import SearchPage from "./pages/SearchPage";
+
 
 function App() {
   const { isLoading } = useAuth0();
@@ -39,6 +41,8 @@ function AppRouter() {
       <Route path="trails/:trailId" element={<TrailDetails />} />
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
+      <Route path="/trails/search" element={<SearchPage/>}/>
+      <Route path="/trails/search/:searchCriteria" element={<SearchPage/>}/>
       <Route path="*" element={<p>Nothing Here</p>} />
       <Route path="/trailsmap" element={<TrialsMap />} />
     </Routes>
