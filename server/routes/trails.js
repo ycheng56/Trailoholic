@@ -82,12 +82,12 @@ trailRoutes.route("/trails/:id").delete((req, response) => {
   });
 });
 
+
 // get a single trail by trail start
-// TODO:
-// userRoutes.route("/trails/search/:searchCriteria").get(function (req, res) {
-//   let db_connect = dbo.getDb("TrailoholicDatabse");
-//   // let myquery = { start: req.body.start};
-//   let myquery = {start:req.params.searchCriteria};
+// TODO: 
+// userRoutes.route("/trails/search").get(function (req, res) {
+//   let db_connect = dbo.getDb();
+//   let myquery = { start: req.body.start};
 //   db_connect
 //       .collection(collectionName)
 //       .find(myquery, function (err, result) {
@@ -95,17 +95,5 @@ trailRoutes.route("/trails/:id").delete((req, response) => {
 //         res.json(result);
 //       });
 //  });
-trailRoutes.route("/search/trails").get(function (req, res) {
-  let db_connect = dbo.getDb();
-  let query = req.query;
-  db_connect
-    .collection(collectionName)
-    .find(query)
-    .toArray(function (err, result) {
-      if (err) throw err;
-      console.log(result);
-      res.json(result);
-    });
-});
 
 module.exports = trailRoutes;
