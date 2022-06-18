@@ -3,17 +3,14 @@ import "./css/Map.css";
 import TrailCard from "../components/TrailCard";
 import Map from "../mapbox/Map";
 import NewTrailCards from "../components/NewTrailCards";
+import Filter from "../components/Filter";
+import SearchTrails from "../components/SearchTrails";
 
 function TrailsMap() {
-  // const [logEntries, setLogEntries] = useState([]);
-  const [showPopup, setShowPopup] = useState({});
-  const [viewport, setViewport] = useState({
-    latitude: 49.19,
-    longitude: -123.17,
-    zoom: 10,
-  });
-
   const [trails, setTrails] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [activeType, setActiveType] = useState("");
+
   useEffect(() => {
     async function fetchTrails() {
       try {
@@ -23,6 +20,7 @@ function TrailsMap() {
         }
         const data = await response.json();
         setTrails(data);
+        setFiltered(data);
       } catch (err) {
         console.log("err", err);
       }
@@ -32,12 +30,22 @@ function TrailsMap() {
 
   return (
     <>
+      <div className="search-area">
+        <SearchTrails />
+        <Filter
+          trails={trails}
+          setFiltered={setFiltered}
+          activeType={activeType}
+          setActiveType={setActiveType}
+        />
+      </div>
+
       <div className="trailsCardSideBar">
-        <NewTrailCards trails={trails}/>
+        <NewTrailCards trails={filtered} />
       </div>
 
       <div className="map-container">
-        <Map trails={trails} />
+        <Map trails={filtered} />
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 // import "./pages/css/Map.css";
 import MapGL, { Marker, Popup } from "react-map-gl";
+import SearchResultCard from "../components/SearchResultCard";
 
 
 function Map({ trails }) {
@@ -37,7 +38,7 @@ function Map({ trails }) {
       onDblClick={showMarkerPopup}
     >
       {trails.map((entry) => (
-        <React.Fragment key={entry._id}>
+        <React.Fragment className="popupWindow" key={entry._id}>
           <Marker
             onClick={() => showMarkerPopup(entry._id)}
             latitude={entry.latitude}
@@ -46,7 +47,7 @@ function Map({ trails }) {
           ></Marker>
 
           {showPopup[entry._id] ? (
-            <Popup
+            <Popup className="popupResult"
               latitude={entry.latitude}
               longitude={entry.longitude}
               closeButton={true}
@@ -54,8 +55,9 @@ function Map({ trails }) {
               dynamicPosition={true}
               onClose={() => setShowPopup({})}
               anchor="top"
+              maxWidth="100%"
             >
-              {entry.start}
+              <SearchResultCard  trail={entry}/>
             </Popup>
           ) : (
             <></>

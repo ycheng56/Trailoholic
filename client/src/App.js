@@ -37,14 +37,13 @@ function AppRouter() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/trails" element={<Trails />} />
+      <Route path="/trails" element={<TrialsMap />} />
       <Route path="trails/:trailId" element={<TrailDetails />} />
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="/trails/search" element={<SearchPage/>}/>
       <Route path="/trails/search/:searchCriteria" element={<SearchPage/>}/>
       <Route path="*" element={<p>Nothing Here</p>} />
-      <Route path="/trailsmap" element={<TrialsMap />} />
     </Routes>
   );
 }
