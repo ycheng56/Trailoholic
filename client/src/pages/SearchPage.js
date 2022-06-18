@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TrailCard from "../components/TrailCard";
+import SearchResultCard from "../components/SearchResultCard";
 
 export default function SearchPage() {
   const { searchCriteria } = useParams();
@@ -11,7 +12,7 @@ export default function SearchPage() {
     async function fetchTrails() {
       try {
         const response = await fetch(
-          `/api/search/trails?mode=${searchCriteria}`
+          `/api/search/trails?start=${searchCriteria}`
         );
         //   console.log(searchCriteria);
         //   console.log(response)
@@ -31,18 +32,15 @@ export default function SearchPage() {
 
   return (
     <div>
-
-      {/* <div className="details">
-        <p>Starting: {trails.start}</p>
-        <p>Destination: {trails.destination}</p>
-        <p>Trip Type: {trails.mode}</p>
-      </div> */}
-      <div>
+      {/* <div>
         {trails.map((item) => (
             <TrailCard key={item._id} trail={item} />
           ))}
-      </div>
-
+      </div> */}
+      {trails.map((item)=>(
+        <SearchResultCard  key={item._id} trail={item}/>
+      ))}
+      
     </div>
   );
 }
