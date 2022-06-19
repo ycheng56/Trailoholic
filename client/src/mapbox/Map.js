@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 // import "./pages/css/Map.css";
 import MapGL, { Marker, Popup } from "react-map-gl";
 import SearchResultCard from "../components/SearchResultCard";
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 function Map({ trails }) {
   // const [logEntries, setLogEntries] = useState([]);
