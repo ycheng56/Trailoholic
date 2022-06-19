@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 // import "./pages/css/Map.css";
 import MapGL, { Marker, Popup } from "react-map-gl";
 import SearchResultCard from "../components/SearchResultCard";
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 function Map({ trails }) {
   // const [logEntries, setLogEntries] = useState([]);
@@ -12,6 +12,7 @@ function Map({ trails }) {
     longitude: -123.17,
     zoom: 10,
   });
+  
 
   // const getEntries = async () => {
   //   const logEntries = await listLogEntries();
@@ -22,6 +23,10 @@ function Map({ trails }) {
   // useEffect(() => {
   //   getEntries();
   // }, []);
+  function print() {
+    console.log(trails);
+  }
+  
 
   const showMarkerPopup = (id) => {
     setShowPopup({
