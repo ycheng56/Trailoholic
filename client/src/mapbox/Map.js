@@ -12,6 +12,7 @@ function Map({ trails }) {
     longitude: -123.17,
     zoom: 10,
   });
+  
 
   // const getEntries = async () => {
   //   const logEntries = await listLogEntries();
@@ -22,6 +23,10 @@ function Map({ trails }) {
   // useEffect(() => {
   //   getEntries();
   // }, []);
+  function print() {
+    console.log(trails);
+  }
+  
 
   const showMarkerPopup = (id) => {
     setShowPopup({
