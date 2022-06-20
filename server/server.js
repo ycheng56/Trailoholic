@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", require("./routes/trails"));
 app.use("/api", require("./routes/users"));
+app.use("/api", require("./routes/test"));
 // get driver connection
 const dbo = require("./db/connect");
 
