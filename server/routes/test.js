@@ -11,7 +11,7 @@ const dbo = require("../db/connect");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-const collectionName = "trailcollections";
+const collectionName = "testcollections";
 
 // This section will help you get a list of all the records.
 trailRoutes.route("/trails").get(function (req, res) {
@@ -26,7 +26,7 @@ trailRoutes.route("/trails").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-trailRoutes.route("/trails/:id").get(function (req, res) {
+trailRoutes.route("/test/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   db_connect
@@ -38,7 +38,7 @@ trailRoutes.route("/trails/:id").get(function (req, res) {
 });
 
 // // This section will help you create a new record.
-// trailRoutes.route("/trails/add").post(function (req, response) {
+// trailRoutes.route("/test/add").post(function (req, response) {
 //   let db_connect = dbo.getDb();
 //   let myobj = {
 //     start: req.body.start,
@@ -51,7 +51,8 @@ trailRoutes.route("/trails/:id").get(function (req, res) {
 //   });
 // });
 
-trailRoutes.route("/trails/add").post(function (req, response) {
+// This section will help you create a new record.
+trailRoutes.route("/test/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     mode: req.body.mode,
@@ -70,7 +71,7 @@ trailRoutes.route("/trails/add").post(function (req, response) {
 });
 
 // This section will help you update a record by id.
-trailRoutes.route("/trails/update/:id").post(function (req, response) {
+trailRoutes.route("/test/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   console.log(req.body);
@@ -90,7 +91,7 @@ trailRoutes.route("/trails/update/:id").post(function (req, response) {
 });
 
 // This section will help you delete a record
-trailRoutes.route("/trails/:id").delete((req, response) => {
+trailRoutes.route("/test/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   db_connect.collection(collectionName).deleteOne(myquery, function (err, obj) {
@@ -101,7 +102,7 @@ trailRoutes.route("/trails/:id").delete((req, response) => {
 });
 
 // search a trail
-trailRoutes.route("/search/trails").get(function (req, res) {
+trailRoutes.route("/search/test").get(function (req, res) {
   let db_connect = dbo.getDb();
   let query = req.query;
   db_connect
@@ -115,7 +116,7 @@ trailRoutes.route("/search/trails").get(function (req, res) {
 });
 
 // get trails by mode
-trailRoutes.route("/trails/search/mode/:mode").get(function (req, res) {
+trailRoutes.route("/test/search/mode/:mode").get(function (req, res) {
   let db_connect = dbo.getDb();
   let query = { mode: req.params.mode };
   db_connect

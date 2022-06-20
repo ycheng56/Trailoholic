@@ -14,6 +14,8 @@ import Login from "./pages/Login"
 import ProtectedRoute from "./auth/ProtectedRoute";
 import TrialsMap from "./pages/TrailsMap"
 import SearchPage from "./pages/SearchPage";
+import AddTrail from "./pages/AddTrail";
+import AddTrail2 from "./pages/AddTrail2";
 
 
 function App() {
@@ -44,6 +46,8 @@ function AppRouter() {
       <Route path="/trails/search" element={<SearchPage/>}/>
       <Route path="/trails/search/:searchCriteria" element={<SearchPage/>}/>
       <Route path="*" element={<p>Nothing Here</p>} />
+      <Route path="/addtrail" element={<AddTrail />} />
+      <Route path="/addtrail2" element={<AddTrail2 />} />
     </Routes>
   );
 }

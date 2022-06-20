@@ -1,0 +1,20 @@
+.map-container {
+  height: 80vh;
+}
+
+.trailsCardSideBar{
+    background-color: #fff;
+    /* position: absolute; */
+    z-index:1;
+    overflow: scroll;
+    height: 100%;
+}
+
+.map {
+  height:80vh;
+}
+
+.mapboxgl-map {
+  height:100vh;
+}
+
