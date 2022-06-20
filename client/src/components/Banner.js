@@ -19,6 +19,7 @@ export default function Banner() {
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/trails">Explore</Nav.Link>
+              <Nav.Link as={Link} to="/addtrail">Add Trail (Beta)</Nav.Link>
             </Nav>
 
             <LinkContainer to="/">

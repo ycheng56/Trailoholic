@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./css/Map.css";
-import TrailCard from "../components/TrailCard";
+import "../mapbox/Map.css"
 import Map from "../mapbox/Map";
 import NewTrailCards from "../components/NewTrailCards";
 import Filter from "../components/Filter";
