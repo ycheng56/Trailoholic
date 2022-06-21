@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import TrailCardOfUser from "../components/TrailCardOfUser";
+import "./css/UserLists.css";
 
 function UserLists() {
   const { user } = useAuth0();
@@ -66,12 +67,17 @@ function UserLists() {
       console.log(err);
     }
   }
+  function getRandomNumber(){
+    return Math.floor(Math.random()*5+1);
+  }
 
   return (
     <div>
       <div className="row align-items-center profile-header">
-        <h1>My List</h1>
-        <div className="col-md text-center text-md-left">
+      {/* <div className="profile-header"> */}
+        <h1>My Favorite Trails</h1>
+        <div className="list-cards col-md text-center text-md-left">
+        {/* <div className="list-cards"> */}
           <div className="cards">
             {trails.map((trail) => (
               <TrailCardOfUser key={trail._id} trail={trail} onDelete={deleteClicked} />

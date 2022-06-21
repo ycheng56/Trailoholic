@@ -12,7 +12,7 @@ export default function Home() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={process.env.PUBLIC_URL + "/images/trail_1.jpg"}
+            src={process.env.PUBLIC_URL + "/images/home_bg2.jpg"}
             alt="Home slide"
           />
           <Carousel.Caption>
@@ -24,7 +24,7 @@ export default function Home() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={process.env.PUBLIC_URL + "/images/home_bg.jpg"}
+            src={process.env.PUBLIC_URL + "/images/home_bg1.jpg"}
             alt="Second slide"
           />
 
@@ -38,7 +38,7 @@ export default function Home() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={process.env.PUBLIC_URL + "/images/trail_2.jpg"}
+            src={process.env.PUBLIC_URL + "/images/home_bg3.jpg"}
             alt="Third slide"
           />
 
