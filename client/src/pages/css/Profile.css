@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
+.profile-avatar{
+    margin-left: 7rem;
+}
+h3{
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 2rem;
+    font-size: medium !important;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+    font-size: medium !important;
+}
+
+hr{
+    margin: auto !important;
+    width: 50%;
+    margin-bottom: 3rem;
+}

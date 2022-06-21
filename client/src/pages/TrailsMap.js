@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../mapbox/Map.css"
+// import "../mapbox/Map.css";
 import Map from "../mapbox/Map";
 import NewTrailCards from "../components/NewTrailCards";
 import Filter from "../components/Filter";
 import SearchTrails from "../components/SearchTrails";
+import "./css/TrailMap.css";
 
 function TrailsMap() {
   const [trails, setTrails] = useState([]);
@@ -28,25 +29,28 @@ function TrailsMap() {
   }, []);
 
   return (
-    <>
-      <div className="search-area">
-        <SearchTrails />
-        <Filter
-          trails={trails}
-          setFiltered={setFiltered}
-          activeType={activeType}
-          setActiveType={setActiveType}
-        />
-      </div>
-
-      <div className="trailsCardSideBar">
-        <NewTrailCards trails={filtered} />
+    <div className="trailWrapper">
+      <div className="trailInnerWrapper">
+        <div className="search-area">
+          <div className="serach-box">
+            <SearchTrails />
+          </div>
+          <Filter
+            trails={trails}
+            setFiltered={setFiltered}
+            activeType={activeType}
+            setActiveType={setActiveType}
+          />
+        </div>
+        <div className="trailsCardSideBar">
+          <NewTrailCards trails={filtered} />
+        </div>
       </div>
 
       <div className="map-container">
         <Map trails={filtered} />
       </div>
-    </>
+    </div>
   );
 }
 

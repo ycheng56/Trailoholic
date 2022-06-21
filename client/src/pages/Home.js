@@ -3,6 +3,7 @@ import "./css/home.css";
 import { Link } from "react-router-dom";
 import SearchTrails from "../components/SearchTrails";
 import { Carousel } from "react-bootstrap";
+import Greeting from "../components/Greeting";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
             alt="Home slide"
           />
           <Carousel.Caption>
+          <Greeting/>
             <SearchTrails />
             <p>There are no shortcuts to any place worth going.</p>
           </Carousel.Caption>

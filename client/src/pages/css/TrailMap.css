@@ -1,0 +1,36 @@
+.trailWrapper{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-gap: 1rem;
+    grid-template-rows: 100%
+}
+/* .search-area{
+    text-align: left;
+    width: 150%;
+} */
+
+.serach-box{
+    width: 100%;
+}
+.trailInnerWrapper{
+    grid-row: 1/1;
+}
+
+.trailsCardSideBar{
+    background-color: #fff;
+    z-index:1;
+    overflow: scroll;
+    height: 100%;
+}
+.map-container {
+    height: 80vh;
+    grid-row: 1/2;
+  }
+.map {
+    height:80vh;
+  }
+  
+.mapboxgl-map {
+    height:100vh;
+}
+  
