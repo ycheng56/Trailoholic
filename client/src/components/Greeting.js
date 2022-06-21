@@ -10,7 +10,7 @@ export default function Greeting() {
     let greeting="";
     const today = new Date();
     let time = today.getHours();
-    if(time >= 0 && time <=11){
+    if(time >= 4 && time <=11){
       greeting="Good Morning";
     }
     else if(time >11 && time <= 18){
