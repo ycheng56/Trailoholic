@@ -12,7 +12,6 @@ function TrailDetails() {
   const [userLists, setUserLists] = useState([]);
   const [trailsPoints, setTrailsPoints] = useState([]);
 
-
   useEffect(() => {
     async function fetchTrails() {
       try {
@@ -75,6 +74,33 @@ function TrailDetails() {
     }
   }
 
+  async function removeFromList() {
+    const deletedId = trailId;
+
+    try {
+      const updatedLists = userLists.filter((item) => item !== deletedId);
+      console.log(updatedLists);
+      const response = await fetch(`/api/users/update/lists/${user.sub}`, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          lists: updatedLists,
+        }),
+      });
+
+      setUserLists(updatedLists);
+      console.log(updatedLists);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  if (userLists.includes(trailId)) {
+    console.log("true");
+  } else {
+    console.log("false");
+  }
+
   return (
     <div className="trailDetail">
       <h1>Trail {trailId} Details Page</h1>
@@ -83,7 +109,12 @@ function TrailDetails() {
         <p>Destination: {trails.destination}</p>
         <p>Trip Type: {trails.mode}</p>
       </div>
-      <button onClick={addToList}>Add to my lists</button>
+      {/* <button onClick={addToList}>Add to my lists</button> */}
+      {userLists.includes(trailId) ? (
+        <button onClick={removeFromList}>Remove From My Lists</button>
+      ) : (
+        <button onClick={addToList}>Add to my lists</button>
+      )}
       <div className="map-container">
         <Map trails={trailsPoints} />
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+import "./css/Navbar.css";
 export default function Footer() {
   return (
     <footer className="bg-light p-3 text-center">
