@@ -8,6 +8,7 @@
     z-index:1;
     overflow: scroll;
     height: 100%;
+    padding: 5%;
 }
 
 .map {
@@ -17,4 +18,18 @@
 .mapboxgl-map {
   height:100vh;
 }
+
+.instruction-panel li,p  {
+  text-align: left;
+}
+
+.trailsCardSideBar button {
+  margin: 5%;
+}
+
+.instruction {
+  border: 1px gainsboro dotted;
+  padding: 2%;
+}
+
 
