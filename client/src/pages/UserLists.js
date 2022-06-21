@@ -67,17 +67,12 @@ function UserLists() {
       console.log(err);
     }
   }
-  function getRandomNumber(){
-    return Math.floor(Math.random()*5+1);
-  }
 
   return (
     <div>
       <div className="row align-items-center profile-header">
-      {/* <div className="profile-header"> */}
         <h1>My Favorite Trails</h1>
         <div className="list-cards col-md text-center text-md-left">
-        {/* <div className="list-cards"> */}
           <div className="cards">
             {trails.map((trail) => (
               <TrailCardOfUser key={trail._id} trail={trail} onDelete={deleteClicked} />

@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "./css/TrailDetails.css";
 import { useEffect, useState } from "react";
 import Map from "../mapbox/Map";
+import { Card } from "react-bootstrap";
 
 function TrailDetails() {
   const { user, isAuthenticated } = useAuth0();
@@ -103,6 +104,9 @@ function TrailDetails() {
 
   return (
     <div className="trailDetail">
+    <div className="detailImg">
+      <img alt="trail detail picture" src={process.env.PUBLIC_URL + "/images/trail_1.jpg"}></img>
+    </div>
       <h1>Trail {trailId} Details Page</h1>
       <div className="details">
         <p>Starting: {trails.start}</p>
