@@ -7,7 +7,7 @@ import SearchTrails from "./SearchTrails";
 function TrailCards(trail) {
   const [trails, setTrails] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [activeType, setActiveType]=useState("");
+  const [activeType, setActiveType] = useState("");
 
   useEffect(() => {
     async function fetchTrails() {
@@ -28,24 +28,32 @@ function TrailCards(trail) {
 
   return (
     <div>
-      <div className="search-area">
+      {/* <div className="search-area">
         <SearchTrails />
-        <Filter trails={trails} setFiltered={setFiltered} activeType={activeType} setActiveType={setActiveType}/>
-      </div>
-      <div className="trailCards">
-        <div className="cards">
-          {filtered.map((item) => (
-            <TrailCard key={item._id} trail={item} />
-          ))}
+        <Filter
+          trails={trails}
+          setFiltered={setFiltered}
+          activeType={activeType}
+          setActiveType={setActiveType}
+        />
+      </div> */}
+      <div className="trailList">
+        <div className="trailCards">
+          <div className="cards">
+            {filtered.map((item) => (
+              <TrailCard key={item._id} trail={item} />
+            ))}
+          </div>
         </div>
-
-        <div className="trail-map">
-          <img
-            src={process.env.PUBLIC_URL + "/images/draft_map1.png"}
-            alt="map-draft-pic"
-            className="map-draft-pic"
-          />
-          ;
+        <div className="trailMap">
+          <div className="trail-map">
+            <img
+              src={process.env.PUBLIC_URL + "/images/draft_map1.png"}
+              alt="map-draft-pic"
+              className="map-draft-pic"
+            />
+            ;
+          </div>
         </div>
       </div>
     </div>

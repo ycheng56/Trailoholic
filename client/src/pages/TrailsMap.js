@@ -30,25 +30,28 @@ function TrailsMap() {
 
   return (
     <div className="trailWrapper">
-      <div className="trailInnerWrapper">
-        <div className="search-area">
-          <div className="serach-box">
-            <SearchTrails />
-          </div>
-          <Filter
-            trails={trails}
-            setFiltered={setFiltered}
-            activeType={activeType}
-            setActiveType={setActiveType}
-          />
+      <div className="search-area">
+        <div className="serach-box children">
+          <SearchTrails />
         </div>
+        <div className="filter-area children">
+        <Filter
+          trails={trails}
+          setFiltered={setFiltered}
+          activeType={activeType}
+          setActiveType={setActiveType}
+        />
+        </div>
+
+      </div>
+      <div className="trailList">
         <div className="trailsCardSideBar">
           <NewTrailCards trails={filtered} />
         </div>
-      </div>
 
-      <div className="map-container">
-        <Map trails={filtered} />
+        <div className="map-container">
+          <Map trails={filtered} />
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import "./css/Trails.css"
 export default function Trails() {
   return (
     <div>
-        <p>Explore All the Trails</p>
         <TrailCards />
     </div>
   )

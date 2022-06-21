@@ -1,19 +1,19 @@
-.trailWrapper{
+
+.search-area{
+    margin: 1rem;
+    padding: 1rem 1rem;
+}
+
+.chilren{
+    width: 100%;
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;  
+}
+
+.trailList{
     display: grid;
     grid-template-columns: 25% 75%;
-    grid-gap: 1rem;
-    grid-template-rows: 100%
-}
-/* .search-area{
-    text-align: left;
-    width: 150%;
-} */
-
-.serach-box{
-    width: 100%;
-}
-.trailInnerWrapper{
-    grid-row: 1/1;
 }
 
 .trailsCardSideBar{
@@ -24,7 +24,6 @@
 }
 .map-container {
     height: 80vh;
-    grid-row: 1/2;
   }
 .map {
     height:80vh;
