@@ -16,7 +16,7 @@ import TrialsMap from "./pages/TrailsMap"
 import SearchPage from "./pages/SearchPage";
 import AddTrail from "./pages/AddTrail";
 import AddTrail2 from "./pages/AddTrail2";
-
+import NewTrailDetails from "./pages/NewTrailDetails";
 
 function App() {
   const { isLoading } = useAuth0();
@@ -40,7 +40,8 @@ function AppRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/trails" element={<TrialsMap />} />
-      <Route path="trails/:trailId" element={<TrailDetails />} />
+      {/* <Route path="trails/:trailId" element={<TrailDetails />} /> */}
+      <Route path="trails/:trailId" element={<NewTrailDetails />} />
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="/trails/search" element={<SearchPage/>}/>

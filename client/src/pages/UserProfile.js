@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaEdit } from "react-icons/fa";
+import "./css/Profile.css"
 
 function UserProfile() {
   const { user } = useAuth0();
@@ -59,8 +60,9 @@ function UserProfile() {
 
   return (
     <div>
+    
       <div className="row align-items-center profile-header">
-        <div className="col-md-2 mb-3">
+        <div className="profile-avatar col-md-2 mb-3">
           <img
             src={user?.picture}
             alt="Profile"
@@ -68,21 +70,23 @@ function UserProfile() {
           />
           <h1>{user?.nickname}</h1>
         </div>
-        <div className="col-md text-center text-md-left">
-          <h3>Email</h3>
+        
+        <div className="userProfileDetail col-md text-center text-md-left">
+          <h2>Email</h2>
           <p className="lead text-muted">{user?.email}</p>
-
-          <h3>Location</h3>
+          <hr/>
+          <h2>Location</h2>
           <p className="lead text-muted">
             {user?.["https://localhost:5000/country"]}
           </p>
-
-          <h3>Time Zone</h3>
+          <hr/>
+          <h2>Time Zone</h2>
           <p className="lead text-muted">
             {user?.["https://localhost:5000/timezone"]}
           </p>
+          <hr/>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <h3>About Me</h3>
+            <h2>About Me</h2>
             {!showForm && <FaEdit onClick={toggleShowForm} /> }
           </div>
 

@@ -5,7 +5,6 @@ import SearchResultCard from "../components/SearchResultCard";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function Map({ trails }) {
-  // const [logEntries, setLogEntries] = useState([]);
   const [showPopup, setShowPopup] = useState({});
   const [viewport, setViewport] = useState({
     latitude: 49.19,
@@ -14,15 +13,6 @@ function Map({ trails }) {
   });
   
 
-  // const getEntries = async () => {
-  //   const logEntries = await listLogEntries();
-  //   setLogEntries(logEntries);
-  //   console.log(logEntries);
-  // };
-
-  // useEffect(() => {
-  //   getEntries();
-  // }, []);
   function print() {
     console.log(trails);
   }
@@ -45,10 +35,12 @@ function Map({ trails }) {
       {trails.map((entry) => (
         <React.Fragment className="popupWindow" key={entry._id}>
           <Marker
+            role="application"
             onClick={() => showMarkerPopup(entry._id)}
             latitude={entry.latitude}
             longitude={entry.longitude}
             color="red"
+            aria-label="Map marker"
           ></Marker>
 
           {showPopup[entry._id] ? (

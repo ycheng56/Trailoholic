@@ -223,7 +223,7 @@ function MapControlSearch() {
     e.preventDefault();
     const newtrail = {
       mode: trailType,
-      difficuly: trailDifficulty,
+      difficulty: trailDifficulty,
       start: startGeo,
       destination: destinationGeo,
       route: routeGeojson,
@@ -272,10 +272,10 @@ function MapControlSearch() {
 
                   <FloatingLabel
                     controlId="floatingSelect"
-                    label="Select trail difficuly"
+                    label="Select trail difficulty"
                   >
                     <Form.Select
-                      aria-label="Select trail difficuly"
+                      aria-label="Select trail difficulty"
                       onChange={(e) => setTrailDifficulty(e.target.value)}
                     >
                       <option value="Easy">Easy</option>
@@ -353,7 +353,7 @@ function MapControlSearch() {
                   aria-expanded={open}
                   className="collapse-control"
                 ></FaAngleDown>
-              )}ddl
+              )}
             </div>
           </div>
         </Col>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import TrailCardOfUser from "../components/TrailCardOfUser";
+import "./css/UserLists.css";
 
 function UserLists() {
   const { user } = useAuth0();
@@ -31,7 +32,7 @@ function UserLists() {
       for (const item of userLists) {
         try {
           const response = await fetch(
-            `/api/trails/${item}`
+            `/api/test/${item}`
           );
           if (!response.ok) {
             throw Error("Fetch failed");
@@ -70,11 +71,11 @@ function UserLists() {
   return (
     <div>
       <div className="row align-items-center profile-header">
-        <h1>My List</h1>
-        <div className="col-md text-center text-md-left">
+        <h1>My Favorite Trails</h1>
+        <div className="list-cards col-md text-center text-md-left">
           <div className="cards">
             {trails.map((trail) => (
-              <TrailCardOfUser key={trail._id} trail={trail} onDelete={deleteClicked} />
+              <TrailCardOfUser key={trail?._id} trail={trail} onDelete={deleteClicked} />
             ))}
           </div>
         </div>
