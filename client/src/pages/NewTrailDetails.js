@@ -13,6 +13,9 @@ export default function NewTrailDetails() {
   const [trails, setTrails] = useState([]);
   const [userLists, setUserLists] = useState([]);
   const [trailsPoints, setTrailsPoints] = useState([]);
+  const [instruction, setInstruction] = useState([]);
+  const [Lng, setLng] = useState(0);
+  const [Lat, setLat] = useState(0);
 
   useEffect(() => {
     async function fetchTrails() {
@@ -25,12 +28,16 @@ export default function NewTrailDetails() {
         console.log(data);
         setTrails(data);
         setTrailsPoints([data]);
+        setInstruction(data.instruction);
+        setLng(data.start.center[0]);
+        setLat(data.start.center[1]);
       } catch (err) {
         console.log("err", err);
       }
     }
     fetchTrails();
   }, [trailId]);
+
 
   useEffect(() => {
     async function fetchUserList() {
@@ -97,6 +104,8 @@ export default function NewTrailDetails() {
       console.log(err);
     }
   }
+  console.log(trails);
+  // console.log("trails:",trails?.start["text_en"]);
   return (
     <div className="trailDetail">
       <div className="detailImg">
@@ -106,29 +115,28 @@ export default function NewTrailDetails() {
         ></img>
       </div>
       <div className="trailDescription">
-        <h1>{trails.start["text_en"]} to {trails.destination["text_en"]}</h1>
+        <h1>{trails.start?.["text_en"]} to {trails.destination?.["text_en"]}</h1>
 
         <div className="Details">
           <button>{trails.mode}</button>
-          <button>{trails.difficuly}</button>
-          <p>Start:{trails.start["text_en"]}</p>
-          <p>Destination:{trails.destination["text_en"]}</p>
+          <button>{trails.difficulty}</button>
+          <p>Start:{trails.start?.["text_en"]}</p>
+          <p>Destination:{trails.destination?.["text_en"]}</p>
           <p>Distance:{trails.distance} km</p>
-          <p>Duration:{trails.duration} Hours</p>
+          <p>Duration:{trails.duration} Minutes</p>
         </div>
       </div>
 
-      {/* <p>Instruction for the trail:{trails.instruction.map((item)=>(<li>{item}</li>))}</p> */}
-      {/* <p>Instruction for the trail:{trails.instruction}</p> */}
+      <p>Instruction for the trail:{instruction.map((item,index)=>(<li key={index}>{item}</li>))}</p>
 
       {userLists.includes(trailId) ? (
         <button onClick={removeFromList}>Remove From My Lists</button>
       ) : (
         <button onClick={addToList}>Add to my lists</button>
       )}
-      {/* <div className="map-container">
-        <MapSinglePoint trails={trailsPoints} />
-      </div> */}
+      <div className="map-container">
+        <MapSinglePoint trails={trails} Lng={Lng} Lat={Lat} />
+      </div>
     </div>
   );
 }

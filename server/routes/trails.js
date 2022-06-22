@@ -55,7 +55,7 @@ trailRoutes.route("/trails/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     mode: req.body.mode,
-    difficuly: req.body.difficuly,
+    difficulty: req.body.difficulty,
     start: req.body.start,
     destination: req.body.destination,
     route: req.body.route,

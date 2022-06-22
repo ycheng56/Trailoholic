@@ -18,7 +18,7 @@ export default function TrailCard({ trail }) {
           </Card.Text>
           <div>
             <p>mode:{trail.mode}</p>
-            <p>duration:{trail.duration} hours</p>
+            <p>duration:{trail.duration} minutes</p>
           </div>
         </Card.Body>
       </Card>

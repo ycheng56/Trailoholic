@@ -208,7 +208,7 @@ function MapControlSearch() {
     e.preventDefault();
     const newtrail = {
       mode: trailType,
-      difficuly: trailDifficulty,
+      difficulty: trailDifficulty,
       start: startGeo,
       destination: destinationGeo,
       route: routeGeojson,
@@ -247,17 +247,17 @@ function MapControlSearch() {
                   aria-label="trail type"
                   onChange={(e) => setTrailType(e.target.value)}
                 >
-                  <option value="Cycling">Cycling</option>
-                  <option value="Hiking">Hiking</option>
+                  <option value="cycling">Cycling</option>
+                  <option value="walking">Hiking</option>
                 </Form.Select>
               </FloatingLabel>
 
               <FloatingLabel
                 controlId="floatingSelect"
-                label="Select trail difficuly"
+                label="Select trail difficulty"
               >
                 <Form.Select
-                  aria-label="trail difficuly"
+                  aria-label="trail difficulty"
                   onChange={(e) => setTrailDifficulty(e.target.value)}
                 >
                   <option value="Easy">Easy</option>

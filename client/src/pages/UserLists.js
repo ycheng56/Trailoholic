@@ -32,7 +32,7 @@ function UserLists() {
       for (const item of userLists) {
         try {
           const response = await fetch(
-            `/api/tests/${item}`
+            `/api/test/${item}`
           );
           if (!response.ok) {
             throw Error("Fetch failed");
@@ -75,7 +75,7 @@ function UserLists() {
         <div className="list-cards col-md text-center text-md-left">
           <div className="cards">
             {trails.map((trail) => (
-              <TrailCardOfUser key={trail._id} trail={trail} onDelete={deleteClicked} />
+              <TrailCardOfUser key={trail?._id} trail={trail} onDelete={deleteClicked} />
             ))}
           </div>
         </div>
