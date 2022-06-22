@@ -1,4 +1,10 @@
-import React, { useEffect, useCallback, useState, useRef } from "react";
+import React, {
+  useEffect,
+  useCallback,
+  useState,
+  useRef,
+  Fragment,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Row,
@@ -7,6 +13,7 @@ import {
   Button,
   FloatingLabel,
   FormText,
+  Collapse
 } from "react-bootstrap";
 import MapGL, {
   Marker,
@@ -32,6 +39,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Map.css";
+import { FaAngleDown } from "react-icons/fa";
 
 function MapControlSearch() {
   let navigate = useNavigate();
@@ -60,6 +68,21 @@ function MapControlSearch() {
   const [buttonText, setButtonText] = useState("Find Trail");
   const [showResult, setShowResult] = useState(false);
   const [showAlternateResult, setShowAlternateResult] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+      if(window.innerWidth>=678) {
+        setOpen(true);
+      }
+    };
+    window.addEventListener("resize", changeWidth);
+    return () => window.addEventListener("resize", changeWidth);
+  });
+
 
   async function onUpdate() {
     if (!startGeo) {
@@ -112,6 +135,7 @@ function MapControlSearch() {
       if (
         window.confirm(`No recommended route found. Still save this trail?`)
       ) {
+        setShowResult(false);
         setShowAlternateResult(true);
       } else {
         // Do nothing!
@@ -223,7 +247,7 @@ function MapControlSearch() {
         throw Error("Request failed");
       }
       console.log("submitted");
-      navigate("/addtrail");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -236,89 +260,116 @@ function MapControlSearch() {
     });
   }, [startGeo, destinationGeo]);
 
+  const [open, setOpen] = useState(true);
+
   return (
-    <>
-      <Row>
-        <Col xs={12} md={4} lg={3}>
+    <Fragment>
+      <Row className="map-block">
+        <Col className="map-block sidebar-container" xs={12} md={4} lg={3}>
           <div className="trailsCardSideBar">
-            <Form onSubmit={handleSubmit}>
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Select trail type"
-              >
-                <Form.Select
-                  aria-label="trail type"
-                  onChange={(e) => setTrailType(e.target.value)}
-                >
-                  <option value="cycling">Cycling</option>
-                  <option value="walking">Hiking</option>
-                </Form.Select>
-              </FloatingLabel>
+          <Collapse in={open}>
+              <div className="collapse-content" id="example-collapse-text">
+                <Form onSubmit={handleSubmit}>
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Select trail type"
+                  >
+                    <Form.Select
+                      aria-label="Select trail type"
+                      onChange={(e) => setTrailType(e.target.value)}
+                    >
+                      <option value="cycling">Cycling</option>
+                      <option value="walking">Hiking</option>
+                    </Form.Select>
+                  </FloatingLabel>
 
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Select trail difficuly"
-              >
-                <Form.Select
-                  aria-label="trail difficuly"
-                  onChange={(e) => setTrailDifficulty(e.target.value)}
-                >
-                  <option value="Easy">Easy</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Hard">Hard</option>
-                </Form.Select>
-              </FloatingLabel>
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Select trail difficuly"
+                  >
+                    <Form.Select
+                      aria-label="Select trail difficuly"
+                      onChange={(e) => setTrailDifficulty(e.target.value)}
+                    >
+                      <option value="Easy">Easy</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Hard">Hard</option>
+                    </Form.Select>
+                  </FloatingLabel>
 
-              <Button onClick={FindMatchedTrail} variant="primary">
-                {buttonText}
-              </Button>
+                  <Button
+                    className="inner-button"
+                    onClick={FindMatchedTrail}
+                    variant="primary"
+                  >
+                    {buttonText}
+                  </Button>
 
-              <TextPanel
-                showResult={showResult}
-                trailType={trailType}
-                trailDifficulty={trailDifficulty}
-                distance={distance}
-                duration={duration}
-                instruction={instruction}
-              />
-
-              {showResult && (
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              )}
-            </Form>
-
-            {showAlternateResult && (
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formDistance">
-                  <FormText>Estimate Length (Optional)</FormText>
-                  <Form.Control
-                    type="number"
-                    min="0"
-                    placeholder="km"
-                    onChange={(e) => setdistance(e.target.value)}
+                  <TextPanel
+                    showResult={showResult}
+                    trailType={trailType}
+                    trailDifficulty={trailDifficulty}
+                    distance={distance}
+                    duration={duration}
+                    instruction={instruction}
                   />
-                </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formDuration">
-                  <FormText>Estimate Time (Optional)</FormText>
-                  <Form.Control
-                    type="number"
-                    min="0"
-                    placeholder="minutes"
-                    onChange={(e) => setduration(e.target.value)}
-                  />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Form>
-            )}
+                  {showResult && (
+                    <Button
+                      className="inner-button"
+                      variant="primary"
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
+                  )}
+                </Form>
+
+                {!showResult && showAlternateResult && (
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formDistance">
+                      <FormText>Estimate Length (Optional)</FormText>
+                      <Form.Control
+                        type="number"
+                        min="0"
+                        placeholder="km"
+                        onChange={(e) => setdistance(e.target.value)}
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formDuration">
+                      <FormText>Estimate Time (Optional)</FormText>
+                      <Form.Control
+                        type="number"
+                        min="0"
+                        placeholder="minutes"
+                        onChange={(e) => setduration(e.target.value)}
+                      />
+                    </Form.Group>
+                    <Button
+                      className="inner-button"
+                      variant="primary"
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
+                  </Form>
+                )}
+              </div>
+            </Collapse>
+
+            <div className="cDiv">
+              {(screenWidth < 768) && <FaAngleDown
+                onClick={() => setOpen(!open)}
+                aria-controls="example-collapse-text"
+                aria-expanded={open}
+                className="cbutton"
+              ></FaAngleDown>}
+        </div>
           </div>
         </Col>
 
-        <Col className="map" xs={12} md={8} lg={9}>
+        <Col className="map-block map" xs={12} md={8} lg={9}>
           <MapGL
             ref={map}
             initialViewState={viewport}
@@ -381,7 +432,7 @@ function MapControlSearch() {
           </MapGL>
         </Col>
       </Row>
-    </>
+    </Fragment>
   );
 }
 
