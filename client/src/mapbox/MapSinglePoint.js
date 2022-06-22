@@ -4,7 +4,7 @@ import MapGL, { Marker, Popup } from "react-map-gl";
 import SearchResultCard from "../components/SearchResultCard";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-function Map({ trails }) {
+function MapSinglePoint({ trails }) {
   // const [logEntries, setLogEntries] = useState([]);
   const [showPopup, setShowPopup] = useState({});
   const [viewport, setViewport] = useState({
@@ -26,7 +26,6 @@ function Map({ trails }) {
   function print() {
     console.log(trails);
   }
-  
 
   const showMarkerPopup = (id) => {
     setShowPopup({
@@ -42,21 +41,21 @@ function Map({ trails }) {
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
       onDblClick={showMarkerPopup}
     >
-      {trails.map((entry) => (
-        <React.Fragment className="popupWindow" key={entry._id}>
+      {/* {trails.map((trails) => ( */}
+        <React.Fragment className="popupWindow" key={trails._id}>
           <Marker
             role="application"
-            onClick={() => showMarkerPopup(entry._id)}
-            latitude={entry.latitude}
-            longitude={entry.longitude}
+            onClick={() => showMarkerPopup(trails._id)}
+            latitude={trails.start["center"][0]}
+            longitude={trails.start["center"][1]}
             color="red"
             aria-label="Map marker"
           ></Marker>
 
-          {showPopup[entry._id] ? (
+          {showPopup[trails._id] ? (
             <Popup className="popupResult"
-              latitude={entry.latitude}
-              longitude={entry.longitude}
+              latitude={trails.start["center"][0]}
+              longitude={trails.start["center"][1]}
               closeButton={true}
               closeOnClick={false}
               dynamicPosition={true}
@@ -64,15 +63,16 @@ function Map({ trails }) {
               anchor="top"
               maxWidth="100%"
             >
-              <SearchResultCard  trail={entry}/>
+              <SearchResultCard  trail={trails}/>
             </Popup>
           ) : (
             <></>
           )}
         </React.Fragment>
-      ))}
+      {/* ))
+      } */}
     </MapGL>
   );
 }
 
-export default Map;
+export default MapSinglePoint;

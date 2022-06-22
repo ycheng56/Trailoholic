@@ -32,7 +32,7 @@ function UserLists() {
       for (const item of userLists) {
         try {
           const response = await fetch(
-            `/api/trails/${item}`
+            `/api/tests/${item}`
           );
           if (!response.ok) {
             throw Error("Fetch failed");

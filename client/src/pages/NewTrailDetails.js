@@ -5,8 +5,9 @@ import "./css/TrailDetails.css";
 import { useEffect, useState } from "react";
 import Map from "../mapbox/Map";
 import { Card } from "react-bootstrap";
+import MapSinglePoint from "../mapbox/MapSinglePoint";
 
-function TrailDetails() {
+export default function NewTrailDetails() {
   const { user, isAuthenticated } = useAuth0();
   const { trailId } = useParams();
   const [trails, setTrails] = useState([]);
@@ -16,11 +17,12 @@ function TrailDetails() {
   useEffect(() => {
     async function fetchTrails() {
       try {
-        const response = await fetch(`/api/tests/${trailId}`);
+        const response = await fetch(`/api/test/${trailId}`);
         if (!response.ok) {
           throw Error("Fetch failed");
         }
         const data = await response.json();
+        console.log(data);
         setTrails(data);
         setTrailsPoints([data]);
       } catch (err) {
@@ -95,35 +97,38 @@ function TrailDetails() {
       console.log(err);
     }
   }
-
-  if (userLists.includes(trailId)) {
-    console.log("true");
-  } else {
-    console.log("false");
-  }
-
   return (
     <div className="trailDetail">
-    <div className="detailImg">
-      <img alt="trail detail picture" src={process.env.PUBLIC_URL + "/images/trail_1.jpg"}></img>
-    </div>
-      <h1>Trail {trailId} Details Page</h1>
-      <div className="details">
-        <p>Starting: {trails.start}</p>
-        <p>Destination: {trails.destination}</p>
-        <p>Trip Type: {trails.mode}</p>
+      <div className="detailImg">
+        <img
+          alt="trail detail picture"
+          src={process.env.PUBLIC_URL + "/images/trail_1.jpg"}
+        ></img>
       </div>
-      {/* <button onClick={addToList}>Add to my lists</button> */}
+      <div className="trailDescription">
+        <h1>{trails.start["text_en"]} to {trails.destination["text_en"]}</h1>
+
+        <div className="Details">
+          <button>{trails.mode}</button>
+          <button>{trails.difficuly}</button>
+          <p>Start:{trails.start["text_en"]}</p>
+          <p>Destination:{trails.destination["text_en"]}</p>
+          <p>Distance:{trails.distance} km</p>
+          <p>Duration:{trails.duration} Hours</p>
+        </div>
+      </div>
+
+      {/* <p>Instruction for the trail:{trails.instruction.map((item)=>(<li>{item}</li>))}</p> */}
+      {/* <p>Instruction for the trail:{trails.instruction}</p> */}
+
       {userLists.includes(trailId) ? (
         <button onClick={removeFromList}>Remove From My Lists</button>
       ) : (
         <button onClick={addToList}>Add to my lists</button>
       )}
-      <div className="map-container">
-        <Map trails={trailsPoints} />
-      </div>
+      {/* <div className="map-container">
+        <MapSinglePoint trails={trailsPoints} />
+      </div> */}
     </div>
   );
 }
-
-export default TrailDetails;

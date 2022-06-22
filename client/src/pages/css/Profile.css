@@ -2,7 +2,7 @@
 .profile-avatar{
     margin-left: 7rem;
 }
-h3{
+h2{
     font-family: 'Montserrat', sans-serif;
     padding-top: 2rem;
     font-size: medium !important;
@@ -17,4 +17,8 @@ hr{
     margin: auto !important;
     width: 50%;
     margin-bottom: 3rem;
+}
+
+.profile-avatar img{
+    width: 40% !important;
 }

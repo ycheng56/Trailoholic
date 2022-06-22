@@ -19,6 +19,7 @@ export default function TrailCardOfUser({ trail, onDelete }) {
         <Row>
           <Col>
             <Card.Img
+              alt="user's list img"
               variant="left"
               src={process.env.PUBLIC_URL + picUri}
             />

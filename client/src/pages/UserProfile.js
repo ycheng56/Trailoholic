@@ -72,21 +72,21 @@ function UserProfile() {
         </div>
         
         <div className="userProfileDetail col-md text-center text-md-left">
-          <h3>Email</h3>
+          <h2>Email</h2>
           <p className="lead text-muted">{user?.email}</p>
           <hr/>
-          <h3>Location</h3>
+          <h2>Location</h2>
           <p className="lead text-muted">
             {user?.["https://localhost:5000/country"]}
           </p>
           <hr/>
-          <h3>Time Zone</h3>
+          <h2>Time Zone</h2>
           <p className="lead text-muted">
             {user?.["https://localhost:5000/timezone"]}
           </p>
           <hr/>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <h3>About Me</h3>
+            <h2>About Me</h2>
             {!showForm && <FaEdit onClick={toggleShowForm} /> }
           </div>
 

@@ -14,7 +14,8 @@ function TrailsMap() {
   useEffect(() => {
     async function fetchTrails() {
       try {
-        const response = await fetch("/api/trails");
+        const response = await fetch("/api/test");
+        
         if (!response.ok) {
           throw Error("Fetch failed");
         }
@@ -49,9 +50,9 @@ function TrailsMap() {
           <NewTrailCards trails={filtered} />
         </div>
 
-        <div className="map-container">
+        {/* <div className="map-container">
           <Map trails={filtered} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

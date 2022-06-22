@@ -14,7 +14,7 @@ const ObjectId = require("mongodb").ObjectId;
 const collectionName = "testcollections";
 
 // This section will help you get a list of all the records.
-trailRoutes.route("/trails").get(function (req, res) {
+trailRoutes.route("/test").get(function (req, res) {
   let db_connect = dbo.getDb("TrailoholicDatabse");
   db_connect
     .collection(collectionName)
