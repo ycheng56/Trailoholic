@@ -158,3 +158,13 @@ export const geocoderSetting = {
   language: "en",
   autocomplete: true,
 };
+
+export const featureType = {
+    id: "id",
+    type: "Feature",
+    properties: {},
+    geometry: {
+      coordinates: [],
+      type: "LineString",
+    },
+  };

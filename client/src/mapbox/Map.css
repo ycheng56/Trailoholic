@@ -1,10 +1,13 @@
+.map-block {
+  padding: 3px;
+}
+
 .map-container {
   height: 80vh;
 }
 
 .trailsCardSideBar{
     background-color: #fff;
-    /* position: absolute; */
     z-index:1;
     overflow: auto;
     height: 100%;
@@ -13,16 +16,9 @@
     overflow:auto;
 }
 
-.map {
-  height:80vh;
-}
-
-.mapboxgl-map {
-  height:100vh;
-}
-
-.instruction-panel li,p  {
-  text-align: left;
+.collapse-content{
+  padding-top: 2%;
+  margin: 0;
 }
 
 .trailsCardSideBar .inner-button {
@@ -32,36 +28,28 @@
 .instruction {
   border: 1px gainsboro dotted;
   padding: 2%;
-  /* height: 20vh; */
-  /* overflow: auto; */
 }
 
-.collapse-container {
-  display: flex;
+.instruction-panel li,p  {
+  text-align: left;
 }
 
+.map {
+  height:80vh;
+}
 
-
-.cDiv {
-  /* background-color: red; */
+.collapse-control-panel {
   margin: 0;
   padding: 0;
 }
 
-.cbutton {
+.collapse-control {
     position: relative;
     bottom: 0px;
 }
 
-.collapse-content{
-  padding-top: 2%;
-  margin: 0;
 
-}
 
-.map-block {
-  padding: 3px;
 
-}
 
 

@@ -13,7 +13,7 @@ import {
   Button,
   FloatingLabel,
   FormText,
-  Collapse
+  Collapse,
 } from "react-bootstrap";
 import MapGL, {
   Marker,
@@ -43,39 +43,36 @@ import { FaAngleDown } from "react-icons/fa";
 
 function MapControlSearch() {
   let navigate = useNavigate();
+
+  // components show/hide setting
+  const [showResult, setShowResult] = useState(false);
+  const [showAlternateResult, setShowAlternateResult] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [open, setOpen] = useState(true);
+  const [visable, setVisable] = useState(true);
+
+  // map data
   const map = useRef(null);
   const [viewport, setViewport] = useState(initViewport);
-
-  //   const featuretype = {
-  //     id: "id",
-  //     type: "Feature",
-  //     properties: {},
-  //     geometry: {
-  //       coordinates: [],
-  //       type: "LineString",
-  //     },
-  //   };
-
   const [features, setFeatures] = useState([]);
+  const [startMarker, setStartMarker] = useState(null);
+  const [startGeo, setStartGeo] = useState(null);
+  const [destinationMarker, setDestinationMarker] = useState(null);
+  const [destinationGeo, setDestinationGeo] = useState(null);
   const [routeGeojson, setRouteGeojson] = useState(geojson);
 
+  // trail data
   const [trailType, setTrailType] = useState("cycling");
   const [trailDifficulty, setTrailDifficulty] = useState("Easy");
   const [instruction, setinstruction] = useState([]);
   const [duration, setduration] = useState(0);
   const [distance, setdistance] = useState(0.0);
 
-  const [buttonText, setButtonText] = useState("Find Trail");
-  const [showResult, setShowResult] = useState(false);
-  const [showAlternateResult, setShowAlternateResult] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-
-
+  //resize screen
   useEffect(() => {
     const changeWidth = () => {
       setScreenWidth(window.innerWidth);
-      if(window.innerWidth>=678) {
+      if (window.innerWidth >= 678) {
         setOpen(true);
       }
     };
@@ -83,6 +80,55 @@ function MapControlSearch() {
     return () => window.addEventListener("resize", changeWidth);
   });
 
+  // prevent search result block the search input
+  const onResults = useCallback(() => {
+    setVisable(false);
+  }, []);
+
+  // add marker to starting point
+  const onStartResult = useCallback((e) => {
+    const { result } = e;
+    const location =
+      result &&
+      (result.center ||
+        (result.geometry?.type === "Point" && result.geometry.coordinates));
+    if (location) {
+      setStartMarker(location);
+      setStartGeo(result);
+    } else {
+      setStartMarker(null);
+    }
+    setVisable(true);
+  }, []);
+
+  // add marker to destination
+  const onDestinationResult = useCallback((e) => {
+    const { result } = e;
+    const location =
+      result &&
+      (result.center ||
+        (result.geometry?.type === "Point" && result.geometry.coordinates));
+    if (location) {
+      setDestinationMarker(location);
+      setDestinationGeo(result);
+    } else {
+      setDestinationMarker(null);
+    }
+  }, []);
+
+  // add start and destination data to features
+  useEffect(() => {
+    setFeatures(() => {
+      const newFeatures = [startGeo, destinationGeo];
+      return newFeatures;
+    });
+  }, [startGeo, destinationGeo]);
+
+
+  // find match trail
+  async function FindMatchedTrail() {
+    await onUpdate();
+  }
 
   async function onUpdate() {
     if (!startGeo) {
@@ -94,26 +140,19 @@ function MapControlSearch() {
       alert("Please enter a valid destination.");
       return;
     }
-    setButtonText("Finding...");
     updateRoute(trailType);
-    setButtonText("Find Trail");
   }
-
-  console.log("features", features);
-  // console.log("routes", setRouteGeojson);
 
   // Use the coordinates you input to make the Map Matching API request
   async function updateRoute(mode) {
     // Set the profile
     const profile = mode; // cycling, walking, driving
-
     // Get the coordinates
     const coordstart = await features[0].geometry.coordinates;
     const coorddest = await features[1].geometry.coordinates;
     const coords = [coordstart, coorddest];
     // Format the coordinates
     const newCoords = coords.join(";");
-
     // Set the radius for each coordinate pair to 25 meters
     const radius = coords.map(() => 25);
     getMatch(newCoords, radius, profile);
@@ -143,11 +182,11 @@ function MapControlSearch() {
       return;
     }
     // Get the coordinates from the response
-    const coords = response.matchings[0].geometry;
+    const coords = response.matchings[0];
 
     // add route to map and get instructions
-    addRoute(response.matchings[0]);
-    getInstructions(response.matchings[0]);
+    addRoute(coords);
+    getInstructions(coords);
     setShowResult(true);
   }
 
@@ -177,50 +216,6 @@ function MapControlSearch() {
     setdistance(dis);
     const dur = Math.floor(data.duration / 60);
     setduration(dur);
-  }
-
-  const [startMarker, setStartMarker] = useState(null);
-  const [startGeo, setStartGeo] = useState(null);
-  const onStartResult = useCallback((e) => {
-    const { result } = e;
-    const location =
-      result &&
-      (result.center ||
-        (result.geometry?.type === "Point" && result.geometry.coordinates));
-    if (location) {
-      setStartMarker(location);
-      setStartGeo(result);
-    } else {
-      setStartMarker(null);
-    }
-    setVisable(true);
-  }, []);
-
-  const [destinationMarker, setDestinationMarker] = useState(null);
-  const [destinationGeo, setDestinationGeo] = useState(null);
-  const onDestinationResult = useCallback((e) => {
-    const { result } = e;
-    const location =
-      result &&
-      (result.center ||
-        (result.geometry?.type === "Point" && result.geometry.coordinates));
-    if (location) {
-      setDestinationMarker(location);
-      setDestinationGeo(result);
-    } else {
-      setDestinationMarker(null);
-    }
-  }, []);
-
-  // prevent search result block the search input
-  const [visable, setVisable] = useState(true);
-  const onResults = useCallback(() => {
-    setVisable(false);
-  }, []);
-
-  //
-  async function FindMatchedTrail() {
-    await onUpdate();
   }
 
   // handle the submission of the form
@@ -253,21 +248,13 @@ function MapControlSearch() {
     }
   };
 
-  useEffect(() => {
-    setFeatures(() => {
-      const newFeatures = [startGeo, destinationGeo];
-      return newFeatures;
-    });
-  }, [startGeo, destinationGeo]);
-
-  const [open, setOpen] = useState(true);
 
   return (
     <Fragment>
       <Row className="map-block">
-        <Col className="map-block sidebar-container" xs={12} md={4} lg={3}>
+        <Col className="map-block" xs={12} md={4} lg={3}>
           <div className="trailsCardSideBar">
-          <Collapse in={open}>
+            <Collapse in={open}>
               <div className="collapse-content" id="example-collapse-text">
                 <Form onSubmit={handleSubmit}>
                   <FloatingLabel
@@ -302,7 +289,7 @@ function MapControlSearch() {
                     onClick={FindMatchedTrail}
                     variant="primary"
                   >
-                    {buttonText}
+                    Find Trail
                   </Button>
 
                   <TextPanel
@@ -358,14 +345,16 @@ function MapControlSearch() {
               </div>
             </Collapse>
 
-            <div className="cDiv">
-              {(screenWidth < 768) && <FaAngleDown
-                onClick={() => setOpen(!open)}
-                aria-controls="example-collapse-text"
-                aria-expanded={open}
-                className="cbutton"
-              ></FaAngleDown>}
-        </div>
+            <div className="collapse-control-panel">
+              {screenWidth < 768 && (
+                <FaAngleDown
+                  onClick={() => setOpen(!open)}
+                  aria-controls="example-collapse-text"
+                  aria-expanded={open}
+                  className="collapse-control"
+                ></FaAngleDown>
+              )}ddl
+            </div>
           </div>
         </Col>
 
