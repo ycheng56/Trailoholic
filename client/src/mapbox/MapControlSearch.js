@@ -1,6 +1,20 @@
-import React, { useEffect, useCallback, useState, useRef } from "react";
+import React, {
+  useEffect,
+  useCallback,
+  useState,
+  useRef,
+  Fragment,
+} from "react";
 import { useNavigate } from "react-router-dom";
-import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Form,
+  Button,
+  FloatingLabel,
+  FormText,
+  Collapse
+} from "react-bootstrap";
 import MapGL, {
   Marker,
   NavigationControl,
@@ -12,6 +26,7 @@ import MapGL, {
 } from "react-map-gl";
 import DrawControl from "./DrawControl";
 import GeocoderControl from "./GeocoderControl";
+import TextPanel from "./TextPanel";
 import {
   drawStyleDisable,
   layerStyle,
@@ -24,6 +39,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Map.css";
+import { FaAngleDown } from "react-icons/fa";
 
 function MapControlSearch() {
   let navigate = useNavigate();
@@ -41,48 +57,50 @@ function MapControlSearch() {
   //   };
 
   const [features, setFeatures] = useState([]);
-  const [lineGeojson, setLineGeojson] = useState(geojson);
   const [routeGeojson, setRouteGeojson] = useState(geojson);
 
-  const [trailType, setTrailType] = useState("Cycling");
+  const [trailType, setTrailType] = useState("cycling");
   const [trailDifficulty, setTrailDifficulty] = useState("Easy");
   const [instruction, setinstruction] = useState([]);
   const [duration, setduration] = useState(0);
   const [distance, setdistance] = useState(0.0);
 
+  const [buttonText, setButtonText] = useState("Find Trail");
+  const [showResult, setShowResult] = useState(false);
+  const [showAlternateResult, setShowAlternateResult] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+      if(window.innerWidth>=678) {
+        setOpen(true);
+      }
+    };
+    window.addEventListener("resize", changeWidth);
+    return () => window.addEventListener("resize", changeWidth);
+  });
+
+
   async function onUpdate() {
-    if (!destinationGeo || !startGeo) return;
+    if (!startGeo) {
+      alert("Please enter a valid starting point.");
+      return;
+    }
 
-
-    setFeatures(() => {
-      const newFeatures = [startGeo, destinationGeo];
-      return newFeatures;
-    });
-
-    setLineGeojson(() => {
-      const coord = [
-        startGeo.geometry.coordinates,
-        destinationGeo.geometry.coordinates,
-      ];
-      return {
-        type: "FeatureCollection",
-        lineMetrics: true,
-        features: [
-          {
-            id: "id",
-            type: "Feature",
-            properties: {},
-            geometry: {
-              coordinates: coord,
-              type: "LineString",
-            },
-          },
-        ],
-      };
-    });
-    
-    updateRoute("cycling");
+    if (!destinationGeo) {
+      alert("Please enter a valid destination.");
+      return;
+    }
+    setButtonText("Finding...");
+    updateRoute(trailType);
+    setButtonText("Find Trail");
   }
+
+  console.log("features", features);
+  // console.log("routes", setRouteGeojson);
 
   // Use the coordinates you input to make the Map Matching API request
   async function updateRoute(mode) {
@@ -96,7 +114,7 @@ function MapControlSearch() {
     // Format the coordinates
     const newCoords = coords.join(";");
 
-    // Set the radius for each coordinate pair to 10 meters
+    // Set the radius for each coordinate pair to 25 meters
     const radius = coords.map(() => 25);
     getMatch(newCoords, radius, profile);
   }
@@ -105,7 +123,7 @@ function MapControlSearch() {
   async function getMatch(coordinates, radius, profile) {
     // Separate the radiuses with semicolons
     const radiuses = radius.join(";");
-    console.log("coordinates",coordinates);
+    console.log("coordinates", coordinates);
     // Create the query
     const query = await fetch(
       `https://api.mapbox.com/matching/v5/mapbox/${profile}/${coordinates}?geometries=geojson&radiuses=${radiuses}&steps=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`,
@@ -114,18 +132,23 @@ function MapControlSearch() {
     const response = await query.json();
     // Handle errors
     if (response.code !== "Ok") {
-      alert(
-        `${response.code} - ${response.message}.\n\n Cannot find any matched route.`
-      );
+      if (
+        window.confirm(`No recommended route found. Still save this trail?`)
+      ) {
+        setShowResult(false);
+        setShowAlternateResult(true);
+      } else {
+        // Do nothing!
+      }
       return;
     }
-
     // Get the coordinates from the response
     const coords = response.matchings[0].geometry;
 
     // add route to map and get instructions
     addRoute(response.matchings[0]);
     getInstructions(response.matchings[0]);
+    setShowResult(true);
   }
 
   function addRoute(coords) {
@@ -196,11 +219,8 @@ function MapControlSearch() {
   }, []);
 
   //
-  function FindMatchedTrail() {
-    console.log("start", startGeo);
-    console.log("dest", destinationGeo);
-    onUpdate();
-    console.log("linegeojson", lineGeojson);
+  async function FindMatchedTrail() {
+    await onUpdate();
   }
 
   // handle the submission of the form
@@ -218,7 +238,7 @@ function MapControlSearch() {
     };
 
     try {
-      const response = await fetch("/api/trails/add", {
+      const response = await fetch("/api/test/add", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(newtrail),
@@ -227,70 +247,129 @@ function MapControlSearch() {
         throw Error("Request failed");
       }
       console.log("submitted");
-      navigate("/addtrail");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
   };
 
+  useEffect(() => {
+    setFeatures(() => {
+      const newFeatures = [startGeo, destinationGeo];
+      return newFeatures;
+    });
+  }, [startGeo, destinationGeo]);
+
+  const [open, setOpen] = useState(true);
+
   return (
-    <>
-      <Row>
-        <Col xs={12} md={4} lg={3}>
+    <Fragment>
+      <Row className="map-block">
+        <Col className="map-block sidebar-container" xs={12} md={4} lg={3}>
           <div className="trailsCardSideBar">
-            <Form onSubmit={handleSubmit}>
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Select trail type"
-              >
-                <Form.Select
-                  aria-label="trail type"
-                  onChange={(e) => setTrailType(e.target.value)}
-                >
-                  <option value="Cycling">Cycling</option>
-                  <option value="Hiking">Hiking</option>
-                </Form.Select>
-              </FloatingLabel>
+          <Collapse in={open}>
+              <div className="collapse-content" id="example-collapse-text">
+                <Form onSubmit={handleSubmit}>
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Select trail type"
+                  >
+                    <Form.Select
+                      aria-label="Select trail type"
+                      onChange={(e) => setTrailType(e.target.value)}
+                    >
+                      <option value="cycling">Cycling</option>
+                      <option value="walking">Hiking</option>
+                    </Form.Select>
+                  </FloatingLabel>
 
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Select trail difficuly"
-              >
-                <Form.Select
-                  aria-label="trail difficuly"
-                  onChange={(e) => setTrailDifficulty(e.target.value)}
-                >
-                  <option value="Easy">Easy</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Hard">Hard</option>
-                </Form.Select>
-              </FloatingLabel>
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Select trail difficuly"
+                  >
+                    <Form.Select
+                      aria-label="Select trail difficuly"
+                      onChange={(e) => setTrailDifficulty(e.target.value)}
+                    >
+                      <option value="Easy">Easy</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Hard">Hard</option>
+                    </Form.Select>
+                  </FloatingLabel>
 
-              <Button onClick={FindMatchedTrail} variant="primary">
-                Find Trail
-              </Button>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
+                  <Button
+                    className="inner-button"
+                    onClick={FindMatchedTrail}
+                    variant="primary"
+                  >
+                    {buttonText}
+                  </Button>
 
-            <div className="board">
-              <h1>Trail Details</h1>
-              <h2>{trailType}</h2>
-              <h2>{trailDifficulty}</h2>
-              <div>Distance:{distance} km</div>
-              <div>Duration:{duration} min</div>
-              <div>
-                {instruction.length === 0 && <p>Waiting for calculating</p>}
-                {instruction.map((item) => (
-                  <li>{item}</li>
-                ))}
+                  <TextPanel
+                    showResult={showResult}
+                    trailType={trailType}
+                    trailDifficulty={trailDifficulty}
+                    distance={distance}
+                    duration={duration}
+                    instruction={instruction}
+                  />
+
+                  {showResult && (
+                    <Button
+                      className="inner-button"
+                      variant="primary"
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
+                  )}
+                </Form>
+
+                {!showResult && showAlternateResult && (
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formDistance">
+                      <FormText>Estimate Length (Optional)</FormText>
+                      <Form.Control
+                        type="number"
+                        min="0"
+                        placeholder="km"
+                        onChange={(e) => setdistance(e.target.value)}
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formDuration">
+                      <FormText>Estimate Time (Optional)</FormText>
+                      <Form.Control
+                        type="number"
+                        min="0"
+                        placeholder="minutes"
+                        onChange={(e) => setduration(e.target.value)}
+                      />
+                    </Form.Group>
+                    <Button
+                      className="inner-button"
+                      variant="primary"
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
+                  </Form>
+                )}
               </div>
-            </div>
+            </Collapse>
+
+            <div className="cDiv">
+              {(screenWidth < 768) && <FaAngleDown
+                onClick={() => setOpen(!open)}
+                aria-controls="example-collapse-text"
+                aria-expanded={open}
+                className="cbutton"
+              ></FaAngleDown>}
+        </div>
           </div>
         </Col>
 
-        <Col className="map" xs={12} md={8} lg={9}>
+        <Col className="map-block map" xs={12} md={8} lg={9}>
           <MapGL
             ref={map}
             initialViewState={viewport}
@@ -308,9 +387,6 @@ function MapControlSearch() {
               onCreate={onUpdate}
               onUpdate={onUpdate}
             />
-            <Source id="line-source" type="geojson" data={lineGeojson}>
-              <Layer {...layerStyle} />
-            </Source>
 
             <Source id="route-source" type="geojson" data={routeGeojson}>
               <Layer {...layerStyleRoute} />
@@ -356,7 +432,7 @@ function MapControlSearch() {
           </MapGL>
         </Col>
       </Row>
-    </>
+    </Fragment>
   );
 }
 
