@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
 
 .navbar{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding: 1rem 0 1rem 0 !important;
     font-size:large;
 }

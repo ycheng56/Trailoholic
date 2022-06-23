@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import "../mapbox/Map.css";
 import Map from "../mapbox/Map";
-import NewTrailCards from "../components/NewTrailCards";
+import TrailCards from "../components/TrailCards";
 import Filter from "../components/Filter";
 import SearchTrails from "../components/SearchTrails";
 import "./css/TrailMap.css";
@@ -14,7 +14,7 @@ function TrailsMap() {
   useEffect(() => {
     async function fetchTrails() {
       try {
-        const response = await fetch("/api/test");
+        const response = await fetch("/api/trails");
         
         if (!response.ok) {
           throw Error("Fetch failed");
@@ -47,7 +47,7 @@ function TrailsMap() {
       </div>
       <div className="trailList">
         <div className="trailsCardSideBar">
-          <NewTrailCards trails={filtered} />
+          <TrailCards trails={filtered} />
         </div>
 
         <div className="map-container">
