@@ -233,7 +233,7 @@ function MapControlSearch() {
     };
 
     try {
-      const response = await fetch("/api/test/add", {
+      const response = await fetch("/api/trails/add", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(newtrail),

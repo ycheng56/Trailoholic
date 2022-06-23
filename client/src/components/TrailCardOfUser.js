@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import "./css/TrailCards.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes,FaBiking,FaWalking } from "react-icons/fa";
 import { Row, Col } from "react-bootstrap";
 
 export default function TrailCardOfUser({ trail, onDelete }) {
@@ -12,17 +12,22 @@ export default function TrailCardOfUser({ trail, onDelete }) {
   const picUri = "/images/trail_" + getRandomNumber() + ".jpg";
   return (
     <>
-      <Card border="success" style={{ width: "60%" }}>
+      <Card border="success" style={{ width: "80%" }}>
         <Card.Header className="headerDeleteIcon">
           <FaTimes onClick={() => onDelete(trail._id)} />
         </Card.Header>
         <Row>
           <Col>
-            <Card.Img
+            {/* <Card.Img
               alt="user's list img"
               variant="left"
               src={process.env.PUBLIC_URL + picUri}
-            />
+            /> */}
+            {trail?.mode==="cycling"?
+             <FaBiking style={{ fontSize: "8rem" }}></FaBiking>
+             :
+             <FaWalking style={{ fontSize: "8rem" }}></FaWalking>
+            }
           </Col>
           <Col>
             <Card.Body>

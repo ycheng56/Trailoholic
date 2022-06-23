@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Trails from "./pages/Trails";
 import TrailDetails from "./pages/TrailDetails";
 import UserProfile from "./pages/UserProfile";
 import UserLists from "./pages/UserLists";
@@ -16,7 +15,6 @@ import TrialsMap from "./pages/TrailsMap"
 import SearchPage from "./pages/SearchPage";
 import AddTrail from "./pages/AddTrail";
 import AddTrail2 from "./pages/AddTrail2";
-import NewTrailDetails from "./pages/NewTrailDetails";
 
 function App() {
   const { isLoading } = useAuth0();
@@ -40,8 +38,7 @@ function AppRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/trails" element={<TrialsMap />} />
-      {/* <Route path="trails/:trailId" element={<TrailDetails />} /> */}
-      <Route path="trails/:trailId" element={<NewTrailDetails />} />
+      <Route path="trails/:trailId" element={<TrailDetails />} />
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="/trails/search" element={<SearchPage/>}/>

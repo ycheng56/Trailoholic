@@ -30,7 +30,11 @@
   padding: 2%;
 }
 
-.instruction-panel li,p  {
+.instruction-panel li  {
+  text-align: left;
+}
+
+.instruction-panel p  {
   text-align: left;
 }
 

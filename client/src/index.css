@@ -1,6 +1,6 @@
-html {
+/* html {
   height: 100%;
-}
+} */
 
 body {
   margin: 0;
@@ -9,11 +9,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-  height: 100vh;
+  /* scroll-behavior: smooth; */
+  /* height: 100%;
   min-height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
 }
 
 code {
@@ -21,10 +21,6 @@ code {
     monospace;
 }
 
-#root {
-  position: relative;
-  min-height: 100vh;
-}
 
 nav a {
   padding-left: 20px;
@@ -59,7 +55,6 @@ footer{
   width: 100%;
   position: relative;
   bottom: 0;
-  bottom: 0;
 }
 
 .Home {
@@ -70,5 +65,5 @@ footer{
 
 .map-container {
   height: 400px;
-  }
+}
 
