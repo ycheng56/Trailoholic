@@ -87,6 +87,7 @@ trail duration, trail distance and detailed instruction of trail from starting t
 ### Add Trail
 - User can add the custom trails into database. 
 - User can select the trail type and difficulty, enter the starting and destination place and then click "Find Trail". 
+![AddTrailPage1](/client/public/images/AddTrail_1.png)
 While entering the position, the location will be shown on the map to user. If this trail has been stored in database,
 the trail detail will be shown. If not, the pop up window will say "No recommended route found. Still save this trail?".
 If the user clicks "OK", a new trail will be added to the trail database(User can also input the estimated duration and distance).
