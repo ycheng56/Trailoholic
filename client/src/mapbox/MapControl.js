@@ -214,9 +214,9 @@ function MapControl() {
 
               <FloatingLabel
                 controlId="floatingSelect"
-                label="Select trail difficuly"
+                label="Select trail difficulty"
               >
-                <Form.Select aria-label="trail difficuly">
+                <Form.Select aria-label="trail difficulty">
                   <option value="Easy">Easy</option>
                   <option value="Medium">Medium</option>
                   <option value="Hard">Hard</option>

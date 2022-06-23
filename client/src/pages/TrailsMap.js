@@ -50,9 +50,9 @@ function TrailsMap() {
           <NewTrailCards trails={filtered} />
         </div>
 
-        {/* <div className="map-container">
+        <div className="map-container">
           <Map trails={filtered} />
-        </div> */}
+        </div>
       </div>
     </div>
   );
