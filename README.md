@@ -7,7 +7,7 @@
 ## Update & Progress
 ### itertion1
 **Division of work**
-In the first iteration, we set up the frame of our application. We use fake data in json file to develop CRUD operations.
+In the first iteration, we set up the frame of our application. We use dummy data in json file to develop CRUD operations.
 ### Cynthia(Yue) cheng
 Routes, links and basic CRUD operations on both server and client side.
 
@@ -16,24 +16,24 @@ Overall structure of our web application. Add components and pages.
 
 ### itertion2 
 **Division of work**
-In the second iteration, we finish developing our web app with MongoDB database and using Mapbox API. We develop CRUD modules that contail the main
-function of our application.
+In the second iteration, we finish connecting the server to MongoDB Database, and visualizing the geographic data using the Mapbox API.
+
 
 ### Cynthia(Yue) cheng
-Use Mapbox API and develope addTrail function. Connect application with database.
+Use Mapbox API and develop addTrail function. Connect application with database.
 #### June17 - June 18
-1. Add map on Explore page to show all the locations corresponding to different filter.
+1. Add map on Explore page to show all the locations of trails.
 2. Add map on trail details to show corresponding location on map.
-3. Start AddTrail function, when user input a place name, the location will show on the map.
+3. Work on adding new trail features. Utilizing the Mapbox Geocoder API, design search inputs that enable users to search place on the map.
 
 
 #### June19
-1. Add submit function in AddTrail function.
-2. When user input a starting and ending postion, the map will show the best route according to Mapbox API.
+Add features: when user input the starting point and destination, calling the Mapbox Matching API to find best matched route for this trail.
+
 
 #### June20
-1. Finish AddTrail function. When user enter a starting and ending postion, the map will add the trail
-details into database.
+Design a form to submit the new trail infomation to database. 
+
 
 #### June21
 1. Add responsive design to AddTrail page.
@@ -74,7 +74,7 @@ please visit [https://trailoholic-app.herokuapp.com/](https://trailoholic-app.he
 
 ### Explore
 - Browse the the trails infomation, all the trails data stored in MongoDB database are shown on the map.
-- Click the marked trail position on the map, the information of the trail will pop up.
+- Click the market on the map, the information of the trail will pop up.
 - Click "view trail details" button to see the details of the trail
 
 
