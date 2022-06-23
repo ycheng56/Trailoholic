@@ -43,6 +43,10 @@ Design a form to submit the new trail infomation to database.
 1. Fix map bugs and edit home style.
 2. Deploy on Heroku.
 
+#### June23
+1. Add search page. Search trails near input place.
+2. Add search api and function.
+
 ### Skylar(Zhuohang) Li
 Finish Search, Filter function and decorate all pages.
 #### June 17 - June 18

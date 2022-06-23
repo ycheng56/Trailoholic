@@ -52,6 +52,16 @@
     bottom: 0px;
 }
 
+#search {
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+#search * {
+  margin: auto;
+}
+
 
 
 
