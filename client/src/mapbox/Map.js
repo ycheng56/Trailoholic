@@ -12,9 +12,6 @@ function Map({ trails }) {
     zoom: 10,
   });
 
-
-  console.log("trails", JSON.stringify(trails));
-
   const showMarkerPopup = (id) => {
     setShowPopup({
       [id]: true,

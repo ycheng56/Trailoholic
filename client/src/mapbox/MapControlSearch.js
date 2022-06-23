@@ -162,7 +162,6 @@ function MapControlSearch() {
   async function getMatch(coordinates, radius, profile) {
     // Separate the radiuses with semicolons
     const radiuses = radius.join(";");
-    console.log("coordinates", coordinates);
     // Create the query
     const query = await fetch(
       `https://api.mapbox.com/matching/v5/mapbox/${profile}/${coordinates}?geometries=geojson&radiuses=${radiuses}&steps=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`,
@@ -241,8 +240,9 @@ function MapControlSearch() {
       if (!response.ok) {
         throw Error("Request failed");
       }
-      console.log("submitted");
-      navigate("/");
+      const data = await response.json();
+      alert("Successfully Submitted!");
+      navigate(`/trails/${data.insertedId}`);
     } catch (err) {
       console.log(err);
     }

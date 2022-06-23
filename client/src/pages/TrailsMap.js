@@ -11,7 +11,6 @@ function TrailsMap() {
   const [filtered, setFiltered] = useState([]);
   const [activeType, setActiveType] = useState("");
 
-  console.log(filtered);
   useEffect(() => {
     async function fetchTrails() {
       try {

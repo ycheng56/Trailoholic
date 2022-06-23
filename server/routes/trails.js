@@ -51,22 +51,26 @@ trailRoutes.route("/trails/:id").get(function (req, res) {
 //   });
 // });
 
-trailRoutes.route("/trails/add").post(function (req, response) {
-  let db_connect = dbo.getDb();
-  let myobj = {
-    mode: req.body.mode,
-    difficulty: req.body.difficulty,
-    start: req.body.start,
-    destination: req.body.destination,
-    route: req.body.route,
-    duration: req.body.duration,
-    distance: req.body.distance,
-    instruction: req.body.instruction,
-  };
-  db_connect.collection(collectionName).insertOne(myobj, function (err, res) {
-    if (err) throw err;
-    response.json(res);
-  });
+trailRoutes.route("/trails/add").post( async function (req, res) {
+  try {
+    let db_connect = dbo.getDb();
+    let myobj = {
+      mode: req.body.mode,
+      difficulty: req.body.difficulty,
+      start: req.body.start,
+      destination: req.body.destination,
+      route: req.body.route,
+      duration: req.body.duration,
+      distance: req.body.distance,
+      instruction: req.body.instruction,
+    };
+    const data = await db_connect.collection(collectionName).insertOne(myobj);
+    res.json(data);
+  } catch (err) {
+    console.log(err);   
+  }
+
+
 });
 
 // This section will help you update a record by id.

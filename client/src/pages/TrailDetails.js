@@ -3,8 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./css/TrailDetails.css";
 import { useEffect, useState } from "react";
-import Map from "../mapbox/Map";
-import { Card } from "react-bootstrap";
 import MapSinglePoint from "../mapbox/MapSinglePoint";
 
 export default function TrailDetails() {
@@ -12,7 +10,6 @@ export default function TrailDetails() {
   const { trailId } = useParams();
   const [trails, setTrails] = useState([]);
   const [userLists, setUserLists] = useState([]);
-  const [trailsPoints, setTrailsPoints] = useState([]);
   const [instruction, setInstruction] = useState([]);
   const [Lng, setLng] = useState(0);
   const [Lat, setLat] = useState(0);
@@ -25,9 +22,7 @@ export default function TrailDetails() {
           throw Error("Fetch failed");
         }
         const data = await response.json();
-        console.log(data);
         setTrails(data);
-        setTrailsPoints([data]);
         setInstruction(data.instruction);
         setLng(data.start.center[0]);
         setLat(data.start.center[1]);
@@ -66,7 +61,6 @@ export default function TrailDetails() {
       const updatedMyLists = [];
       updatedMyLists.push(newTrail);
       userLists.map((item) => updatedMyLists.push(item));
-      console.log(updatedMyLists);
       const response = await fetch(`/api/users/update/lists/${user.sub}`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -89,7 +83,6 @@ export default function TrailDetails() {
 
     try {
       const updatedLists = userLists.filter((item) => item !== deletedId);
-      console.log(updatedLists);
       const response = await fetch(`/api/users/update/lists/${user.sub}`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -99,7 +92,6 @@ export default function TrailDetails() {
       });
 
       setUserLists(updatedLists);
-      console.log(updatedLists);
     } catch (err) {
       console.log(err);
     }
