@@ -9,10 +9,10 @@ export default function SearchTrails() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchCriteria.trim()) {
-      navigate(`/trails/search/${searchCriteria}`);
+      navigate(`/test/search/${searchCriteria}`);
       setSearchCriteria("");
     } else {
-      navigate("/trails/search");
+      navigate("/test/search");
     }
   };
 

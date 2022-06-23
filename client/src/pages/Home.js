@@ -15,8 +15,8 @@ export default function Home() {
             src={process.env.PUBLIC_URL + "/images/home_bg2.jpg"}
             alt="Home slide"
           />
-          <Carousel.Caption className="carousel-caption">
-            <Greeting />
+          <Carousel.Caption>
+          {/* <Greeting/> */}
             <SearchTrails />
             <p>There are no shortcuts to any place worth going.</p>
           </Carousel.Caption>

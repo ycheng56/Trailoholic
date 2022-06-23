@@ -12,7 +12,7 @@ export default function SearchPage() {
     async function fetchTrails() {
       try {
         const response = await fetch(
-          `/api/search/trails?start=${searchCriteria}`
+          `/api/search/trais?mode=${searchCriteria}`
         );
         //   console.log(searchCriteria);
         //   console.log(response)
