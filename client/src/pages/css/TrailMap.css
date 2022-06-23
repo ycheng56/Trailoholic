@@ -1,0 +1,35 @@
+
+.search-area{
+    margin: 1rem;
+    padding: 1rem 1rem;
+}
+
+.chilren{
+    width: 100%;
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;  
+}
+
+.trailList{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.trailsCardSideBar{
+    background-color: #fff;
+    z-index:1;
+    overflow: scroll;
+    height: 80%;
+}
+.map-container {
+    height: 80vh;
+  }
+.map {
+    height:80vh;
+  }
+  
+.mapboxgl-map {
+    height:100vh;
+}
+  

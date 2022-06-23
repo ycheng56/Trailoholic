@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Trails from "./pages/Trails";
 import TrailDetails from "./pages/TrailDetails";
 import UserProfile from "./pages/UserProfile";
 import UserLists from "./pages/UserLists";
@@ -16,7 +15,6 @@ import TrialsMap from "./pages/TrailsMap"
 import SearchPage from "./pages/SearchPage";
 import AddTrail from "./pages/AddTrail";
 import AddTrail2 from "./pages/AddTrail2";
-
 
 function App() {
   const { isLoading } = useAuth0();

@@ -1,6 +1,28 @@
-img{
-    width:40%;
-    height:40%
+.landing-page {
+    position:relative;
+    min-height: 80vh;
+}
+/* 
+.landing-page-carousel {
+    min-height: 100%;
+    min-width: 100%;
+} */
+
+/* .carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+} */
+
+.carousel-caption {
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+}
+
+.landing-page img{
+    width:100%;
 }
 
 .search-box{

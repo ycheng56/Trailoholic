@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
+
 .navbar{
+    font-family: 'Roboto', sans-serif;
     padding: 1rem 0 1rem 0 !important;
-    font-size:small;
+    font-size:large;
 }
 
+footer{
+    /* position: fixed; */
+    bottom: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+button{
+    font-family: 'Roboto', sans-serif;
+}

@@ -5,28 +5,12 @@ import SearchResultCard from "../components/SearchResultCard";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function Map({ trails }) {
-  // const [logEntries, setLogEntries] = useState([]);
   const [showPopup, setShowPopup] = useState({});
   const [viewport, setViewport] = useState({
     latitude: 49.19,
     longitude: -123.17,
     zoom: 10,
   });
-  
-
-  // const getEntries = async () => {
-  //   const logEntries = await listLogEntries();
-  //   setLogEntries(logEntries);
-  //   console.log(logEntries);
-  // };
-
-  // useEffect(() => {
-  //   getEntries();
-  // }, []);
-  function print() {
-    console.log(trails);
-  }
-  
 
   const showMarkerPopup = (id) => {
     setShowPopup({
@@ -43,18 +27,20 @@ function Map({ trails }) {
       onDblClick={showMarkerPopup}
     >
       {trails.map((entry) => (
-        <React.Fragment className="popupWindow" key={entry._id}>
+        <React.Fragment key={entry._id}>
           <Marker
+            role="application"
             onClick={() => showMarkerPopup(entry._id)}
-            latitude={entry.latitude}
-            longitude={entry.longitude}
+            longitude={entry.start.center[0]}
+            latitude={entry.start.center[1]}
             color="red"
+            aria-label="Map marker"
           ></Marker>
 
           {showPopup[entry._id] ? (
             <Popup className="popupResult"
-              latitude={entry.latitude}
-              longitude={entry.longitude}
+            longitude={entry.start.center[0]}
+            latitude={entry.start.center[1]}
               closeButton={true}
               closeOnClick={false}
               dynamicPosition={true}

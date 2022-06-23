@@ -1,3 +1,22 @@
+.detailImg{
+    overflow: hidden;
+    width: 100%;
+    height: 50%;
+}
+
+.detailImg img {
+    width: 600px;
+    height: 200px;
+  }
 .trailDetail{
     text-align: center;
+}
+
+.trailDetail button{
+    margin-bottom: 4rem;
+}
+
+.trailDetail.map-container{
+    width: 60%;
+    margin: auto;
 }

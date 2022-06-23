@@ -32,15 +32,14 @@ export default function SearchResultCard({ trail }) {
           </Box>
           <CardContent sx={{ display: "flex", flexDirection: "column" }}>
             <Typography gutterBottom variant="h5" component="div">
-              {trail.start}
+              {trail.start.text_en}
             </Typography>
             <Typography>
-              Start:{trail.start} Destination:{trail.destination}
+              Start:{trail.start.text_en} Destination:{trail.destination.text_en}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Get to know this 11.9-km out-and-back trail near Richmond, British
-              Columbia. Generally considered an easy route, it takes an average
-              of 2 h 10 min to complete.
+              Get to know this {trail.distance} km out-and-back trail. Generally considered an easy route, it takes an average
+              of {trail.duration} min to complete.
             </Typography>
           </CardContent>
           <CardActions sx={{ display: "flex", flexDirection: "column" }}>

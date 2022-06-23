@@ -16,8 +16,8 @@ export default function Filter({trails,setFiltered,activeType,setActiveType}) {
   return (
     <div className="filter-container">
         <button onClick={()=>setActiveType("")}>All Trails</button>
-        <button onClick={()=>setActiveType("Hiking")}>Hiking</button>
-        <button onClick={()=>setActiveType("Cycling")}>Biking</button>
+        <button onClick={()=>setActiveType("walking")}>Hiking</button>
+        <button onClick={()=>setActiveType("cycling")}>Cycling</button>
     </div>
   )
 }
