@@ -16,7 +16,7 @@ export default function Home() {
             alt="Home slide"
           />
           <Carousel.Caption>
-          <Greeting/>
+          {/* <Greeting/> */}
             <SearchTrails />
             <p>There are no shortcuts to any place worth going.</p>
           </Carousel.Caption>

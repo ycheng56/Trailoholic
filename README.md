@@ -5,7 +5,16 @@
 - Skylar(Zhuohang) Li
 
 ## Update & Progress
-itertion2 
+### itertion1
+**Division of work**
+In the first iteration, we set up the frame of our application. We use fake data in json file to develop CRUD operations.
+### Cynthia(Yue) cheng
+Routes, links and basic CRUD operations on both server and client side.
+
+### Zhuohang(Skylar) Li
+Overall structure of our web application. Add components and pages.
+
+### itertion2 
 **Division of work**
 In the second iteration, we finish developing our web app with MongoDB database and using Mapbox API. We develop CRUD modules that contail the main
 function of our application.
