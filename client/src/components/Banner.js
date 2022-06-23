@@ -20,6 +20,7 @@ export default function Banner() {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/trails">Explore</Nav.Link>
               <Nav.Link as={Link} to="/addtrail">Add Trail</Nav.Link>
+              <Nav.Link as={Link} to="/search">Search</Nav.Link>
             </Nav>
 
             <LinkContainer to="/">

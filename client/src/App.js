@@ -15,6 +15,7 @@ import TrialsMap from "./pages/TrailsMap"
 import SearchPage from "./pages/SearchPage";
 import AddTrail from "./pages/AddTrail";
 import AddTrail2 from "./pages/AddTrail2";
+import GeoSearch from "./mapbox/GeoSearch"
 
 function App() {
   const { isLoading } = useAuth0();
@@ -46,6 +47,7 @@ function AppRouter() {
       <Route path="*" element={<p>Nothing Here</p>} />
       <Route path="/addtrail" element={<AddTrail />} />
       <Route path="/addtrail2" element={<AddTrail2 />} />
+      <Route path="/search" element={<GeoSearch />} />
     </Routes>
   );
 }

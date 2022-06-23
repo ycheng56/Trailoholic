@@ -77,7 +77,6 @@ trailRoutes.route("/trails/add").post( async function (req, res) {
 trailRoutes.route("/trails/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
-  console.log(req.body);
   let newvalues = {
     $set: {
       start: req.body.start,
@@ -108,12 +107,23 @@ trailRoutes.route("/trails/:id").delete((req, response) => {
 trailRoutes.route("/search/trails").get(function (req, res) {
   let db_connect = dbo.getDb();
   let query = req.query;
+  db_connect.collection(collectionName).createIndex( { "start.geometry": "2dsphere" } );
   db_connect
     .collection(collectionName)
-    .find(query)
+    .aggregate([
+      {
+        $geoNear: {
+           near: { type:"Point", coordinates: [Number(query.lng), Number(query.lat)] },
+           distanceField: "dist.calculated",
+           maxDistance: 10000,
+           includeLocs: "dist.location",
+           spherical: true,
+           key: 'start.geometry'
+        }
+      }
+   ])
     .toArray(function (err, result) {
       if (err) throw err;
-      console.log(result);
       res.json(result);
     });
 });
@@ -127,7 +137,6 @@ trailRoutes.route("/trails/search/mode/:mode").get(function (req, res) {
     .find(query)
     .toArray(function (err, result) {
       if (err) throw err;
-      console.log(result);
       res.json(result);
     });
 });
