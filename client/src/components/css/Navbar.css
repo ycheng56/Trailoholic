@@ -12,6 +12,24 @@ footer{
     font-family: 'Roboto', sans-serif;
 }
 
+
 button{
     font-family: 'Roboto', sans-serif;
+}
+
+.navbar .banner-logo{
+    width: 8%;
+}
+
+footer .banner-logo{
+    width: 35%;
+}
+
+.footer-wrapper{
+    padding-right: 20% !important;
+    padding-top: 5% !important;
+}
+
+.footer-row{
+    padding-bottom: 5%;
 }

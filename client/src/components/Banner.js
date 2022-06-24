@@ -14,6 +14,7 @@ export default function Banner() {
       <Navbar className="navbar" bg="light" expand="lg" sticky="top">
         <Container>
           <Navbar.Brand href="/">Trailoholic</Navbar.Brand>
+          <img to="/" src={process.env.PUBLIC_URL + "/images/logo_1.png"} alt="logo" className="banner-logo"></img>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

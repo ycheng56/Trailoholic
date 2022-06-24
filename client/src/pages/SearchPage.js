@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TrailCard from "../components/TrailCard";
 import SearchResultCard from "../components/SearchResultCard";
+import { Pagination } from "@mui/material";
 
 export default function SearchPage() {
   const { searchCriteria } = useParams();
@@ -40,7 +41,7 @@ export default function SearchPage() {
       {trails.map((item)=>(
         <SearchResultCard  key={item._id} trail={item}/>
       ))}
-      
+      <Pagination count={10} />
     </div>
   );
 }
