@@ -122,7 +122,6 @@ export default function TrailDetails() {
         {/* <div className="button-left"><h1>{trails.start?.["text_en"]}</h1></div> */}
       </div>
 
-      
       <div className="detail-navbar">
         <a href="#detail-type">TRAIL DETAIL</a>
         <a href="#detail-instruction">INSTRUCTION</a>
@@ -166,14 +165,16 @@ export default function TrailDetails() {
             </li>
           ))}
         </p>
-        <p>Do you like it? Add this trail to my list:</p>
-        {userLists.includes(trailId) ? (
-          <button onClick={removeFromList} className="addToListBtn">
-            Remove From My Lists
-          </button>
-        ) : (
-          <button onClick={addToList}>Add to my lists</button>
-        )}
+        <div className="addlist">
+          <p>Do you like it? Add this trail to my list:</p>
+          {userLists.includes(trailId) ? (
+            <button onClick={removeFromList} className="addToListBtn">
+              Remove From My Lists
+            </button>
+          ) : (
+            <button onClick={addToList}>Add to my lists❤</button>
+          )}
+        </div>
       </div>
 
       <hr />
