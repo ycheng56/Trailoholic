@@ -16,6 +16,9 @@ import {
   Button,
 } from "@mui/material";
 import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
+import { FaArrowCircleRight } from "react-icons/fa";
+import Slider from "react-slick";
+import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
 
 export default function Home() {
   return (
@@ -65,35 +68,50 @@ export default function Home() {
         </Carousel.Item>
       </Carousel>
 
-      <div className="localFavorite">
-        <h1>Local Favorites near Vancouver City</h1>
-        <div className="wrapper">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-        </div>
-      </div>
+      <main className="main-container">
+        <div className="section-container localFavorite">
+          <div className="section-header-container">
+            <div className="section-header-content">
+              <h1>Local Favorites near Vancouver</h1>
+              <a className="section-header-link">
+                <strong>view all</strong>
+                <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
+              </a>
+            </div>
+          </div>
 
-      <div className="favoriteHiking">
-        <h1>Best Hiking Trails</h1>
-        <div className="wrapper">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
+          <ResponsiveSlider></ResponsiveSlider>
         </div>
-      </div>
 
-      <div className="favoriteBiking">
-        <h1>Best Biking Trails</h1>
-        <div className="wrapper">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
+
+        <div className="section-container favoriteHiking">
+          <div className="section-header-container">
+            <div className="section-header-content">
+            <h1>Best Hiking Trails</h1>
+              <a className="section-header-link">
+                <strong>view all</strong>
+                <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
+              </a>
+            </div>
+          </div>
+
+          <ResponsiveSlider></ResponsiveSlider>
         </div>
-      </div>
+
+        <div className="section-container favoriteBiking">
+          <div className="section-header-container">
+            <div className="section-header-content">
+            <h1>Best Biking Trails</h1>
+              <a className="section-header-link">
+                <strong>view all</strong>
+                <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
+              </a>
+            </div>
+          </div>
+
+          <ResponsiveSlider></ResponsiveSlider>
+        </div>
+      </main>
     </div>
   );
 }

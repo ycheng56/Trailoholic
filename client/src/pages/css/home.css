@@ -30,8 +30,57 @@
 }
 
 .wrapper{
+    margin: 1rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(20rem,16rem));
+    grid-template-columns: repeat(auto-fit,minmax(18rem,16rem));
     gap:2rem;
     justify-content: center;
+}
+
+.section-container {
+    margin: 3rem auto;
+}
+
+.section-header-container {
+    font-family: "Merriweather", sans-serif;
+    display: block;
+    padding-bottom: 20px;
+    border-bottom: 1px #dcdbdb solid;
+}
+
+.section-header-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.section-header-content h1 {
+    margin-bottom: 0;
+}
+
+.section-header-link{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color:#02838d;
+    display: flex;
+    align-items: center;
+}
+
+.section-header-link:hover {
+    color:#cd0060;
+}
+
+.section-header-icon {
+    margin-left: 1rem;
+}
+.main-container {
+    max-width: 1312px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1024px){
+    .main-container {
+        width: calc(100% - 32px);
+    }
 }
