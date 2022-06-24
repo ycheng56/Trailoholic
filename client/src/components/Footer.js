@@ -6,7 +6,9 @@ export default function Footer() {
     <footer className="bg-light p-3 text-center">
       <Container>
         <Row>
-          <Col>Logo</Col>
+          <Col>
+          <img src={process.env.PUBLIC_URL + "/images/logo_3.png"} alt="logo" className="banner-logo"></img>
+          </Col>
         </Row>
         <Row>
           <Col>Copyright 2022 Trailaholic Brands, Inc.</Col>
