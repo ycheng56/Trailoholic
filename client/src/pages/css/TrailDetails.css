@@ -20,3 +20,45 @@
     width: 60%;
     margin: auto;
 }
+
+/* ------------new ------------- */
+.detail-wrapper{
+    text-align: justify;
+    padding: 2rem 3rem;
+}
+.detail-wrapper h1{
+    size:120%;
+}
+.detail-img img{
+    width: 60%;
+    height: 200px;
+}
+.detail-navbar{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,16rem));
+    gap:2rem;
+    justify-content: center;
+}
+.detail-type-wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,16rem));
+    gap:2rem;
+    justify-content: center;
+}
+
+.detail-instruction p{
+    line-height: 2.5rem;
+}
+
+.map-container{
+    width: 80%;
+    margin: auto;
+}
+
+
+.detail-nearby-card{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,16rem));
+    gap:2rem;
+    justify-content: center;
+}
