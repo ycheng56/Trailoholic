@@ -19,11 +19,20 @@ import PopularHikingTrail from "../components/TrailCollectionComponents/PopularH
 import { FaArrowCircleRight } from "react-icons/fa";
 import Slider from "react-slick";
 import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
+import Search from "../mapbox/Search"
 
 export default function Home() {
   return (
     <div className="landing-page">
-      <Carousel fade className="landing-page-carousel">
+      <div id="home">
+        <div class="landing-text">
+          {/* <h1>Welcome to trailoholic</h1> */}
+          <Greeting />
+          <Search></Search>
+        </div>
+      </div>
+
+      {/* <Carousel fade className="landing-page-carousel">
         <Carousel.Item className="carousel-item">
           <img
             className="d-block w-100 min-vh-90"
@@ -31,7 +40,6 @@ export default function Home() {
             alt="Home slide"
           />
           <Carousel.Caption>
-            {/* <Greeting/> */}
             <SearchTrails />
             <p>There are no shortcuts to any place worth going.</p>
           </Carousel.Caption>
@@ -66,7 +74,7 @@ export default function Home() {
             <p>The best views come after the hardest climb</p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
 
       <main className="main-container">
         <div className="section-container localFavorite">
@@ -83,11 +91,10 @@ export default function Home() {
           <ResponsiveSlider></ResponsiveSlider>
         </div>
 
-
         <div className="section-container favoriteHiking">
           <div className="section-header-container">
             <div className="section-header-content">
-            <h1>Best Hiking Trails</h1>
+              <h1>Best Hiking Trails</h1>
               <a className="section-header-link">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
@@ -101,7 +108,7 @@ export default function Home() {
         <div className="section-container favoriteBiking">
           <div className="section-header-container">
             <div className="section-header-content">
-            <h1>Best Biking Trails</h1>
+              <h1>Best Biking Trails</h1>
               <a className="section-header-link">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>

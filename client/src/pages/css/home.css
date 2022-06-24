@@ -80,6 +80,27 @@
     margin-right: auto;
 }
 
+#home {
+	background: url('../images/home_bg4.jpeg') no-repeat center center fixed;
+	display: table;
+	height: 60vh;
+	position: relative;
+	width: 100%;
+	background-size: cover;
+}
+
+.landing-text {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	color:#FFF;
+}
+.landing-text h1 {
+	font-size: 3em;
+	font-weight: 700;
+}
+
+
 @media (max-width: 1024px){
     .main-container {
         width: calc(100% - 80px);
@@ -102,6 +123,11 @@
     }
     .section-header-icon {
         display: none;
+    }
+
+    .landing-text h1 {
+        font-size: 2em;
+        font-weight: 700;
     }
 }
 

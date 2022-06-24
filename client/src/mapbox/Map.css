@@ -52,18 +52,23 @@
     bottom: 0px;
 }
 
-#search {
+.search-wrapper {
   display: block;
-  justify-content: center;
+}
+.search-form {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
-#search * {
-  margin: auto;
+#search .mapboxgl-ctrl-geocoder {
+  width: 50vw;
 }
 
 
-
-
+/* .search-form .inner-button {
+  height: 100%;
+} */
 
 

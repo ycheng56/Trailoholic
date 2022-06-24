@@ -22,9 +22,7 @@ export default function Greeting() {
   }
 
   return (
-    <div
-    style={{paddingBottom:"10rem"} }
-    >
+    <div>
       <h1>{getDate()} {user?.nickname}!</h1>
     </div>
   );
