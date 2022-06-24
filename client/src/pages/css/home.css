@@ -55,11 +55,12 @@
     align-items: center;
 }
 .section-header-content h1 {
+    font-size: 1.5em;
     margin-bottom: 0;
 }
 
 .section-header-link{
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-decoration: none;
     color:#02838d;
     display: flex;
@@ -71,7 +72,7 @@
 }
 
 .section-header-icon {
-    margin-left: 1rem;
+    margin-left: 0.5em;
 }
 .main-container {
     max-width: 1312px;
@@ -79,8 +80,29 @@
     margin-right: auto;
 }
 
-@media (min-width: 1024px){
+@media (max-width: 1024px){
     .main-container {
-        width: calc(100% - 32px);
+        width: calc(100% - 80px);
     }
 }
+
+@media (max-width: 768px){
+    .main-container {
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 480px){
+    .main-container {
+        width: calc(100% - 60px);
+    }
+
+    .section-header-container {
+        font: 0.7em sans-serif;
+    }
+    .section-header-icon {
+        display: none;
+    }
+}
+
+
