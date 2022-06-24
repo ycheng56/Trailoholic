@@ -4,6 +4,18 @@ import { Link } from "react-router-dom";
 import SearchTrails from "../components/SearchTrails";
 import { Carousel } from "react-bootstrap";
 import Greeting from "../components/Greeting";
+import { Box, Rating } from "@mui/material";
+import {
+  Grid,
+  Card,
+  Typography,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  CardActions,
+  Button,
+} from "@mui/material";
+import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
 
 export default function Home() {
   return (
@@ -16,7 +28,7 @@ export default function Home() {
             alt="Home slide"
           />
           <Carousel.Caption>
-          {/* <Greeting/> */}
+            {/* <Greeting/> */}
             <SearchTrails />
             <p>There are no shortcuts to any place worth going.</p>
           </Carousel.Caption>
@@ -52,6 +64,36 @@ export default function Home() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+
+      <div className="localFavorite">
+        <h1>Local Favorites near Vancouver City</h1>
+        <div className="wrapper">
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+        </div>
+      </div>
+
+      <div className="favoriteHiking">
+        <h1>Best Hiking Trails</h1>
+        <div className="wrapper">
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+        </div>
+      </div>
+
+      <div className="favoriteBiking">
+        <h1>Best Biking Trails</h1>
+        <div className="wrapper">
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+          <PopularHikingTrail />
+        </div>
+      </div>
     </div>
   );
 }
