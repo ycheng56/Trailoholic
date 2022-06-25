@@ -22,6 +22,7 @@ function Search() {
   }, []);
 
   const onResult = useCallback((e) => {
+    console.log("on result")
     const { result } = e;
     const location =
       result &&
@@ -29,10 +30,9 @@ function Search() {
         (result.geometry?.type === "Point" && result.geometry.coordinates));
     if (location) {
       setGeoData(result);
-    } else {
-      // do nothing
-    }
+    } 
   }, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

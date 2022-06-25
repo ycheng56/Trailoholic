@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./css/home.css";
 import { Link } from "react-router-dom";
 import SearchTrails from "../components/SearchTrails";
@@ -19,62 +19,36 @@ import PopularHikingTrail from "../components/TrailCollectionComponents/PopularH
 import { FaArrowCircleRight } from "react-icons/fa";
 import Slider from "react-slick";
 import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
-import Search from "../mapbox/Search"
+import Search from "../mapbox/Search";
+import { fetchAllTrails, fetchTrailsByMode } from "../api/API";
 
 export default function Home() {
+  const [trails, setTrails] = useState([]);
+  const [cyclingTrails, setCyclingTrails] = useState([]);
+  const [hikingTrails, setHikingTrails] = useState([]);
+
+  useEffect(() => {
+    const getTrails = async () => {
+      const data = await fetchAllTrails();
+      const cycling = await fetchTrailsByMode("cycling");
+      const hiking = await fetchTrailsByMode("walking");
+      setTrails(data);
+      setCyclingTrails(cycling);
+      setHikingTrails(hiking);
+
+    };
+    getTrails();
+  }, []);
+
+
   return (
     <div className="landing-page">
       <div id="home">
         <div class="landing-text">
-          {/* <h1>Welcome to trailoholic</h1> */}
           <Greeting />
           <Search></Search>
         </div>
       </div>
-
-      {/* <Carousel fade className="landing-page-carousel">
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100 min-vh-90"
-            src={process.env.PUBLIC_URL + "/images/home_bg2.jpg"}
-            alt="Home slide"
-          />
-          <Carousel.Caption>
-            <SearchTrails />
-            <p>There are no shortcuts to any place worth going.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100 min-vh-90"
-            src={process.env.PUBLIC_URL + "/images/home_bg1.jpg"}
-            alt="Second slide"
-          />
-
-          <Carousel.Caption>
-            <Greeting />
-            <SearchTrails />
-            <p>
-              Look deep into nature and you will understand everything better.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100 min-vh-90"
-            src={process.env.PUBLIC_URL + "/images/home_bg3.jpg"}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <Greeting />
-            <SearchTrails />
-            <p>The best views come after the hardest climb</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel> */}
 
       <main className="main-container">
         <div className="section-container localFavorite">
@@ -88,7 +62,7 @@ export default function Home() {
             </div>
           </div>
 
-          <ResponsiveSlider></ResponsiveSlider>
+          <ResponsiveSlider list={trails}></ResponsiveSlider>
         </div>
 
         <div className="section-container favoriteHiking">
@@ -102,7 +76,7 @@ export default function Home() {
             </div>
           </div>
 
-          <ResponsiveSlider></ResponsiveSlider>
+          <ResponsiveSlider list={hikingTrails}></ResponsiveSlider>
         </div>
 
         <div className="section-container favoriteBiking">
@@ -116,7 +90,7 @@ export default function Home() {
             </div>
           </div>
 
-          <ResponsiveSlider></ResponsiveSlider>
+          <ResponsiveSlider list={cyclingTrails}></ResponsiveSlider>
         </div>
       </main>
     </div>

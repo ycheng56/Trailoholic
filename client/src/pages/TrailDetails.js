@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FaDirections, FaHiking, FaRoad, FaRegClock } from "react-icons/fa";
 import MapSinglePoint from "../mapbox/MapSinglePoint";
 import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
+import MapSingleTrail from "../mapbox/MapSingleTrail";
 
 export default function TrailDetails() {
   const { user, isAuthenticated } = useAuth0();
@@ -160,7 +161,7 @@ export default function TrailDetails() {
           <strong>Instruction for the trail:</strong>
           {instruction.map((item, index) => (
             <li key={index}>
-              <FaDirections />
+              <FaDirections className="direction-icon" />
               {item}
             </li>
           ))}
@@ -181,7 +182,7 @@ export default function TrailDetails() {
       <div className="detail-map" id="detail-map">
         <h1>Location</h1>
         <div className="map-container">
-          <MapSinglePoint trails={trails} Lng={Lng} Lat={Lat} />
+          <MapSingleTrail trail={trails}/>
         </div>
       </div>
 

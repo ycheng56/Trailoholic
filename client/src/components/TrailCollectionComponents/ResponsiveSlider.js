@@ -6,7 +6,7 @@ import PopularHikingTrail from "./PopularHikingTrail"
 import "../css/TrailCollection.css";
 
 
-export default function ResponsiveSlider() {
+export default function ResponsiveSlider({list}) {
   var settings = {
     dots: true,
     infinite: false,
@@ -26,7 +26,7 @@ export default function ResponsiveSlider() {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -46,27 +46,9 @@ export default function ResponsiveSlider() {
   return (
     <div className="slider-wrapper">
       <Slider {...settings}>
-        <div>
-          <PopularHikingTrail />
-        </div>
-        <div>
-        <PopularHikingTrail />
-        </div>
-        <div>
-        <PopularHikingTrail />
-        </div>
-        <div>
-        <PopularHikingTrail />
-        </div>
-        <div>
-        <PopularHikingTrail />
-        </div>
-        <div>
-        <PopularHikingTrail />
-        </div>
-        <div>
-        <PopularHikingTrail />
-        </div>
+        {list.map((item)=>
+          <PopularHikingTrail trail={item}/>
+        )}
       </Slider>
     </div>
   );

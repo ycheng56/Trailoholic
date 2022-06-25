@@ -72,6 +72,20 @@
     letter-spacing: 1px;
 }
 
+.detail-instruction li {
+    list-style: none;
+}
+
+.detail-instruction li {
+    list-style: none;
+}
+
+.detail-instruction .direction-icon {
+    margin-right: 1rem;
+}
+
+/* .fa- */
+
 .map-container{
     width: 80%;
     margin: auto;
