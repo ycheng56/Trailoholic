@@ -67,8 +67,8 @@
 }
 
 
-/* .search-form .inner-button {
-  height: 100%;
-} */
+.mapboxgl-popup-content {
+  padding: 0;
+}
 
 

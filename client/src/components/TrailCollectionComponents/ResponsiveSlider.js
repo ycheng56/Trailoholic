@@ -47,7 +47,7 @@ export default function ResponsiveSlider({list}) {
     <div className="slider-wrapper">
       <Slider {...settings}>
         {list.map((item)=>
-          <PopularHikingTrail trail={item}/>
+          <PopularHikingTrail key={item._id} trail={item}/>
         )}
       </Slider>
     </div>

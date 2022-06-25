@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
-// import "./pages/css/Map.css";
-import MapGL, { Marker, Popup } from "react-map-gl";
-import SearchResultCard from "../components/SearchResultCard";
-import 'mapbox-gl/dist/mapbox-gl.css';
+import "../mapbox/Map.css";
+import MapGL, { Marker, Popup, Source, Layer } from "react-map-gl";
+import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail"
+import "mapbox-gl/dist/mapbox-gl.css";
+import {layerStyleRoute} from "./data.js"
 
 function Map({ trails }) {
   const [showPopup, setShowPopup] = useState({});
@@ -38,18 +39,28 @@ function Map({ trails }) {
           ></Marker>
 
           {showPopup[entry._id] ? (
-            <Popup className="popupResult"
-            longitude={entry.start.center[0]}
-            latitude={entry.start.center[1]}
+            <Popup
+              className="popupResult"
+              longitude={entry.start.center[0]}
+              latitude={entry.start.center[1]}
               closeButton={true}
               closeOnClick={false}
               dynamicPosition={true}
               onClose={() => setShowPopup({})}
               anchor="top"
               maxWidth="100%"
+              closeOnMove={true}
             >
-              <SearchResultCard  trail={entry}/>
+              <PopularHikingTrail trail={entry}></PopularHikingTrail>
             </Popup>
+          ) : (
+            <></>
+          )}
+
+          {showPopup[entry._id] ? (
+            <Source id="route-source" type="geojson" data={entry.route}>
+              <Layer {...layerStyleRoute} />
+            </Source>
           ) : (
             <></>
           )}

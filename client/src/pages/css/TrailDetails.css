@@ -86,12 +86,10 @@
 
 /* .fa- */
 
-.map-container{
+.detail-map .map-container{
     width: 80%;
     margin: auto;
 }
-
-
 
 .detail-nearby-card{
     display: grid;

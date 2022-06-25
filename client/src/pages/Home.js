@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="landing-page">
       <div id="home">
-        <div class="landing-text">
+        <div className="landing-text">
           <Greeting />
           <Search></Search>
         </div>

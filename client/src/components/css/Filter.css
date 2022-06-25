@@ -10,12 +10,12 @@
     cursor: pointer;
 }
 
- button:hover{
+.filter-container  button:hover{
     background:rgb(152, 182, 167);
     color:white;
 }
 
-button:focus{
+.filter-container button:focus{
     background:rgb(65, 168, 118);
     color:white;
 }
