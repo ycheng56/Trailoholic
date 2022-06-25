@@ -4,7 +4,7 @@ body{
 
 .card{
     overflow: hidden;
-    box-shadow: 0 2px 20px grey;
+    box-shadow: 0 2px 5px grey;
     border-radius: 0.2rem;
     display: flex;
     flex-direction: column;
@@ -14,16 +14,42 @@ body{
 }
 
 .card .card-img{
-    height: 12rem;
+    height: 10rem;
     width: 100%;
     object-fit: cover;
 }
-.card-title{
-    padding: 1rem;
+
+.card-title {
+    /* height: 3em; */
+    margin: 2% auto;
+    line-height: 1em;
+    word-wrap:break-word;
 }
+
+/* .card-title strong {
+    word-wrap:break-word;
+    white-space: nowrap;
+    overflow:auto;
+} */
+
 .card-description{
-    padding: 0 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: gray;
 }
+
+.card-description span {
+    margin-right: 2px;
+    display: inline-block;
+    vertical-align:top;
+}
+
+.card-description .star {
+    padding: 0;
+}
+
 .card-btn{
     padding: 0.5rem;
     font-family: inherit;
@@ -43,4 +69,40 @@ body{
 .card:hover .card-btn{
     background-color: burlywood;
     color:white;
+}
+
+.slider-wrapper {
+    margin: 1rem auto;
+}
+.slick-slide {
+    padding: 5px 10px;
+}
+
+.slick-slide > button {
+    border: 1px red solid;
+}
+.slick-list {
+    margin-top: 1rem;
+}
+
+.slick-prev:before, .slick-next:before {
+    opacity: 0.5 !important;
+    color: black !important;
+}
+
+@media (max-width: 1024px){
+    .card {
+        font: 0.9em sans-serif;
+    }
+}
+
+@media (max-width: 768px){
+
+    .card {
+        font: 0.8em sans-serif;
+    }
+}
+
+@media (max-width: 480px){
+
 }

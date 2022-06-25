@@ -6,9 +6,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 function MapSinglePoint({ trails, Lng , Lat}) {
   const [viewport, setViewport] = useState({
-    latitude: 49.19,
-    longitude: -123.17,
-    zoom: 10,
+    longitude: Lng,
+    latitude: Lat,
+    zoom: 12,
   });
 
 

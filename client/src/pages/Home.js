@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./css/home.css";
 import { Link } from "react-router-dom";
 import SearchTrails from "../components/SearchTrails";
@@ -16,84 +16,83 @@ import {
   Button,
 } from "@mui/material";
 import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
+import { FaArrowCircleRight } from "react-icons/fa";
+import Slider from "react-slick";
+import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
+import Search from "../mapbox/Search";
+import { fetchAllTrails, fetchTrailsByMode } from "../api/API";
 
 export default function Home() {
+  const [trails, setTrails] = useState([]);
+  const [cyclingTrails, setCyclingTrails] = useState([]);
+  const [hikingTrails, setHikingTrails] = useState([]);
+
+  useEffect(() => {
+    const getTrails = async () => {
+      const data = await fetchAllTrails();
+      const cycling = await fetchTrailsByMode("cycling");
+      const hiking = await fetchTrailsByMode("walking");
+      setTrails(data);
+      setCyclingTrails(cycling);
+      setHikingTrails(hiking);
+
+    };
+    getTrails();
+  }, []);
+
+
   return (
     <div className="landing-page">
-      <Carousel fade className="landing-page-carousel">
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100 min-vh-90"
-            src={process.env.PUBLIC_URL + "/images/home_bg2.jpg"}
-            alt="Home slide"
-          />
-          <Carousel.Caption>
-            {/* <Greeting/> */}
-            <SearchTrails />
-            <p>There are no shortcuts to any place worth going.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100 min-vh-90"
-            src={process.env.PUBLIC_URL + "/images/home_bg1.jpg"}
-            alt="Second slide"
-          />
-
-          <Carousel.Caption>
-            <Greeting />
-            <SearchTrails />
-            <p>
-              Look deep into nature and you will understand everything better.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100 min-vh-90"
-            src={process.env.PUBLIC_URL + "/images/home_bg3.jpg"}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <Greeting />
-            <SearchTrails />
-            <p>The best views come after the hardest climb</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-
-      <div className="localFavorite">
-        <h1>Local Favorites near Vancouver City</h1>
-        <div className="wrapper">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
+      <div id="home">
+        <div className="landing-text">
+          <Greeting />
+          <Search></Search>
         </div>
       </div>
 
-      <div className="favoriteHiking">
-        <h1>Best Hiking Trails</h1>
-        <div className="wrapper">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-        </div>
-      </div>
+      <main className="main-container">
+        <div className="section-container localFavorite">
+          <div className="section-header-container">
+            <div className="section-header-content">
+              <h1>Local Favorites near Vancouver</h1>
+              <a className="section-header-link">
+                <strong>view all</strong>
+                <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
+              </a>
+            </div>
+          </div>
 
-      <div className="favoriteBiking">
-        <h1>Best Biking Trails</h1>
-        <div className="wrapper">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
+          <ResponsiveSlider list={trails}></ResponsiveSlider>
         </div>
-      </div>
+
+        <div className="section-container favoriteHiking">
+          <div className="section-header-container">
+            <div className="section-header-content">
+              <h1>Best Hiking Trails</h1>
+              <a className="section-header-link">
+                <strong>view all</strong>
+                <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
+              </a>
+            </div>
+          </div>
+
+          <ResponsiveSlider list={hikingTrails}></ResponsiveSlider>
+        </div>
+
+        <div className="section-container favoriteBiking">
+          <div className="section-header-container">
+            <div className="section-header-content">
+              <h1>Best Biking Trails</h1>
+              <a className="section-header-link">
+                <strong>view all</strong>
+                <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
+              </a>
+            </div>
+          </div>
+
+          <ResponsiveSlider list={cyclingTrails}></ResponsiveSlider>
+        </div>
+      </main>
     </div>
   );
 }

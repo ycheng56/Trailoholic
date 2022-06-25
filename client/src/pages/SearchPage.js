@@ -8,13 +8,13 @@ import { Pagination } from "@mui/material";
 export default function SearchPage() {
   const { searchCriteria } = useParams();
   const [trails, setTrails] = useState([]);
+  console.log(searchCriteria);
+  const [location, setLocation] = useState("");
 
   useEffect(() => {
     async function fetchTrails() {
       try {
-        const response = await fetch(
-          `/api/search/trais?mode=${searchCriteria}`
-        );
+        const response = await fetch(`/api/search/trails?${searchCriteria}`);
         //   console.log(searchCriteria);
         //   console.log(response)
         if (!response.ok) {
@@ -22,8 +22,8 @@ export default function SearchPage() {
         }
         const data = await response.json();
         setTrails(data);
-          console.log("data",data);
-          console.log("trails:",trails);
+        const params = new URLSearchParams(searchCriteria);
+        setLocation(params.get("location"));
       } catch (err) {
         console.log("err", err);
       }
@@ -32,16 +32,12 @@ export default function SearchPage() {
   }, [searchCriteria]);
 
   return (
-    <div>
-      {/* <div>
-        {trails.map((item) => (
-            <TrailCard key={item._id} trail={item} />
-          ))}
-      </div> */}
-      {trails.map((item)=>(
-        <SearchResultCard  key={item._id} trail={item}/>
+    <div className="d-flex flex-column justify-content-center align-items-center">
+      <div>trails near {location} </div>
+      {trails.map((item) => (
+        <SearchResultCard key={item._id} trail={item} />
       ))}
-      <Pagination count={10} />
+      {/* <Pagination count={2} /> */}
     </div>
   );
 }

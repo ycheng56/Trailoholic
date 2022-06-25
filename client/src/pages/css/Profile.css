@@ -2,18 +2,18 @@
 .profile-avatar{
     margin-left: 7rem;
 }
-h2{
+.profile-header h2{
     font-family: 'Montserrat', sans-serif;
     padding-top: 2rem;
     font-size: medium !important;
 }
 
-p{
+.profile-header p{
     font-family: 'Roboto', sans-serif;
     font-size: medium !important;
 }
 
-hr{
+.profile-header hr{
     margin: auto !important;
     width: 50%;
     margin-bottom: 3rem;

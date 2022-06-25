@@ -20,7 +20,7 @@
     background-color: #fff;
     z-index:1;
     overflow: scroll;
-    height: 80%;
+    /* height: 80%; */
 }
 .map-container {
     height: 80vh;

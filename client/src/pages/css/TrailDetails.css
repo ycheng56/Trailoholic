@@ -8,7 +8,7 @@
     border: none;
     height: 3px !important;
 }
-h1{
+.detail-wrapper h1{
     font-family: "Merriweather",sans-serif  !important;
     color: #4a4a4a;
     line-height: 1.33 !important;
@@ -28,7 +28,7 @@ h1{
     position: absolute;
   } */
 
-hr{
+.detail-wrapper hr{
     width: 70%;
     border: 0;
     height: 1px;
@@ -72,12 +72,24 @@ hr{
     letter-spacing: 1px;
 }
 
-.map-container{
+.detail-instruction li {
+    list-style: none;
+}
+
+.detail-instruction li {
+    list-style: none;
+}
+
+.detail-instruction .direction-icon {
+    margin-right: 1rem;
+}
+
+/* .fa- */
+
+.detail-map .map-container{
     width: 80%;
     margin: auto;
 }
-
-
 
 .detail-nearby-card{
     display: grid;

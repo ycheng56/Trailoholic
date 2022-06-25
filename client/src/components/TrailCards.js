@@ -1,17 +1,14 @@
 import "./css/TrailCards.css";
 import React from 'react'
-import TrailCard from "./TrailCard";
+import PopularHikingTrail from "./TrailCollectionComponents/PopularHikingTrail"
 
 function TrailCards({trails}) {
 
   return (
-    <div className="trailCards">
+    <div className="cards-collection">
       <div className="cards">
         {trails.map((item)=>
-          <TrailCard
-            key={item._id}
-            trail={item}
-          />
+          <PopularHikingTrail key={item._id} trail={item}/>
         )}
       </div>
     </div>
