@@ -7,6 +7,7 @@ import { FaDirections, FaHiking, FaRoad, FaRegClock } from "react-icons/fa";
 import MapSinglePoint from "../mapbox/MapSinglePoint";
 import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
 import MapSingleTrail from "../mapbox/MapSingleTrail";
+import ReviewPanel from "../components/ReviewPanel"
 
 export default function TrailDetails() {
   const { user, isAuthenticated } = useAuth0();
@@ -98,8 +99,7 @@ export default function TrailDetails() {
       console.log(err);
     }
   }
-  console.log(trails);
-  // console.log("trails:",trails?.start["text_en"]);
+
   return (
     <div className="detail-wrapper">
       {/*
@@ -183,6 +183,15 @@ export default function TrailDetails() {
         <h1>Location</h1>
         <div className="map-container">
           <MapSingleTrail trail={trails}/>
+        </div>
+      </div>
+
+      <hr />
+
+      <div className="reviews" id="reviews">
+        <h1>Reviews</h1>
+        <div className="review-list">
+          <ReviewPanel trail_id={trailId}></ReviewPanel>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaEdit } from "react-icons/fa";
 import "./css/Profile.css"
+import Avatar from 'react-avatar';
 
 function UserProfile() {
   const { user } = useAuth0();
@@ -62,6 +63,14 @@ function UserProfile() {
     <div>
     
       <div className="row align-items-center profile-header">
+        
+        <div className="profile-avatar col-md-2 mb-3">
+        <Avatar 
+        className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
+        name={user?.nickname}></Avatar>
+          <h1>{user?.nickname}</h1>
+        </div>
+
         <div className="profile-avatar col-md-2 mb-3">
           <img
             src={user?.picture}
