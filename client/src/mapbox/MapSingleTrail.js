@@ -29,10 +29,6 @@ function MapSingleTrail({ trail }) {
     getCoords();
   }, [trail]);
 
-
-  console.log("start", startCoords);
-  console.log("vp", viewport);
-
   return viewport ? (
     <MapGL
       initialViewState={viewport}
