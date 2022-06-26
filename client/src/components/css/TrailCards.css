@@ -26,3 +26,42 @@
     display: flex;
     flex-direction: row-reverse;
 }
+
+/* userList-TrailCardOfUser-new */
+.userList-wrapper{
+    overflow: hidden;
+    box-shadow: 0 2px 5px grey;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    margin: auto 20% 2% 20%;
+}
+.userList-detail{
+    display: grid;
+    grid-template-columns: 36% 65%;
+}
+.userList-wrapper .card-img{
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+}
+.userList-Img{
+    margin: auto;
+    padding: 1rem;
+}
+.userList-card-title{
+    padding-bottom: 10%;
+    font-size: 110%;
+}
+
+.userList-deleteBtn{
+    float: right;
+}
+
+.userList-detailInfo{
+    margin: auto auto auto 10%;
+    text-align: left;
+}
