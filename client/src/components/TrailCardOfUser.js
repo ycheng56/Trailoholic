@@ -45,14 +45,15 @@ export default function TrailCardOfUser({ trail, onDelete }) {
         </Row>
       </Card> */}
       <div className="userList-card">
-        <Link
+          <div className="userList-card-body">
+            <div className="userList-deleteBtn">
+            Remove
+              <FaTimes onClick={() => onDelete(trail._id)} />
+            </div>
+            <Link
           style={{ textDecoration: "none", color: "inherit" }}
           to={`/trails/${trail?._id}`}
         >
-          <div className="userList-card-body">
-            <div className="userList-deleteBtn">
-              <FaTimes onClick={() => onDelete(trail._id)} />
-            </div>
             <div className="userList-detail">
               <div className="userList-Img">
                 {trail?.mode === "cycling" ? (
@@ -78,27 +79,27 @@ export default function TrailCardOfUser({ trail, onDelete }) {
                 <div className="userList-card-description">
                   <span>
                     {trail?.mode === "cycling" ? (
-                      <FaBicycle></FaBicycle>
+                      <FaBicycle size={"7%"}></FaBicycle>
                     ) : (
-                      <FaHiking></FaHiking>
+                      <FaHiking size={"7%"}></FaHiking>
                     )}
                   </span>
-                  <span> • </span>
+                  <span>  •  </span>
                   <span>{trail?.difficulty}</span>
-                  <span> • </span>
+                  <span>  •  </span>
                   <FaStar color="#f5d24c" className="star"></FaStar>
                   <span> 523 </span>
                 </div>
 
                 <div className="userList-card-description">
                   <span><strong>Length:</strong> {trail?.distance} km</span>
-                  <span> • </span>
+                  <span>  •  </span>
                   <span><strong>Time:</strong> {trail?.duration} mins</span>
                 </div>
               </div>
             </div>
+            </Link>
           </div>
-        </Link>
       </div>
     </div>
   );

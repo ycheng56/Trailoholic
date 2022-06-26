@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
 .cards-collection{
     padding-left: 2%;
 }
@@ -54,14 +55,33 @@
 }
 .userList-card-title{
     padding-bottom: 10%;
-    font-size: 110%;
+    font-size: 120%;
 }
 
 .userList-deleteBtn{
     float: right;
+    padding: 2% 4% 0 0;
+    color:rgb(2, 51, 2)
 }
 
 .userList-detailInfo{
-    margin: auto auto auto 10%;
+    margin: auto auto auto 5%;
     text-align: left;
+}
+.userList-card-description{
+    color:rgb(76, 73, 73);
+    line-height: 2rem;
+}
+
+@media (max-width: 1024px){
+    .userList-wrapper {
+        font: 0.9em sans-serif;
+    }
+}
+
+@media (max-width: 768px){
+
+    .userList-wrapper {
+        font: 0.6em sans-serif;
+    }
 }
