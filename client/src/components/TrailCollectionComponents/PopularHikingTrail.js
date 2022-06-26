@@ -10,7 +10,6 @@ import { fetchAllTrails } from "../../api/API";
 export default function PopularHikingTrail({ trail }) {
 
   const num = trail?.image;
-  console.log(num);
   const picNum = (num)%5;
   const hikePicUri = "trail_"+picNum+".jpg";
   const cyclePicUri = "cycling_"+picNum+".jpg";
