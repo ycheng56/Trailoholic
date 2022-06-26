@@ -14,14 +14,10 @@ export default function ReviewPanel({ trail_id }) {
     getReviews();
   }, [trail_id]);
 
-  console.log("trailid", trail_id);
-  console.log("review", reviews);
-
-
   return (
     <div className="review-container">
-      {reviews.map((item) => (
-        <Review review={item}></Review>
+      {reviews.map((item,index) => (
+        <Review key={index} review={item}></Review>
     ))}
     </div>
   );

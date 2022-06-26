@@ -45,7 +45,9 @@ reviewRoutes.route("/reviews/add").post( async function (req, res) {
     let myobj = {
       trail_id: req.body.trail_id,
       user_id: req.body.user_id,
-      comment: req.body.comment
+      rating: parseInt(req.body.rating),
+      comment: req.body.comment,
+      date: req.body.date
     };
     const data = await db_connect.collection(collectionName).insertOne(myobj);
     res.json(data);

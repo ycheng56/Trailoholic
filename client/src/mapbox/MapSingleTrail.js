@@ -1,14 +1,21 @@
 import React, { useRef, useEffect, useState } from "react";
 // import "./pages/css/Map.css";
-import MapGL, { Marker, Popup, Source, Layer } from "react-map-gl";
+import MapGL, {
+  Marker,
+  NavigationControl,
+  GeolocateControl,
+  Layer,
+  Source,
+} from "react-map-gl";
+
 import "mapbox-gl/dist/mapbox-gl.css";
-import {layerStyleRoute} from "./data.js"
+import { layerStyleRoute } from "./data.js";
 
 function MapSingleTrail({ trail }) {
   const [startCoords, setStartCoords] = useState([]);
   const [destCoords, setDestCoords] = useState([]);
   const [viewport, setViewport] = useState(null);
-  const [routeGeojson,setRouteGeojson] = useState(null);
+  const [routeGeojson, setRouteGeojson] = useState(null);
 
   useEffect(() => {
     const getCoords = async () => {
@@ -20,8 +27,8 @@ function MapSingleTrail({ trail }) {
       setRouteGeojson(json);
       if (start) {
         setViewport({
-          longitude: (start[0]+destination[0])/2,
-          latitude: (start[1]+destination[1])/2,
+          longitude: (start[0] + destination[0]) / 2,
+          latitude: (start[1] + destination[1]) / 2,
           zoom: 12,
         });
       }
@@ -36,6 +43,9 @@ function MapSingleTrail({ trail }) {
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
+      <GeolocateControl position="top-right" />
+      <NavigationControl position="top-right" />
+      
       {startCoords ? (
         <Marker
           role="application"
@@ -67,7 +77,6 @@ function MapSingleTrail({ trail }) {
       ) : (
         <></>
       )}
-
     </MapGL>
   ) : (
     <></>
