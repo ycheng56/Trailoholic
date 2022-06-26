@@ -6,7 +6,7 @@ import Filter from "../components/Filter";
 import SearchTrails from "../components/SearchTrails";
 import "./css/TrailMap.css";
 
-function TrailsMap() {
+function TrailsMap({}) {
   const [trails, setTrails] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [activeType, setActiveType] = useState("");
@@ -47,7 +47,7 @@ function TrailsMap() {
       </div>
       <div className="trailList">
         <div className="trailsCardSideBar">
-          <TrailCards trails={filtered} />
+          <TrailCards trails={filtered}/>
         </div>
 
         <div className="map-container">
