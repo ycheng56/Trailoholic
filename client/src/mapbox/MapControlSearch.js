@@ -40,6 +40,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Map.css";
 import { FaAngleDown } from "react-icons/fa";
+import { fetchAllTrails } from "../api/API";
 
 function MapControlSearch() {
   let navigate = useNavigate();
@@ -67,6 +68,7 @@ function MapControlSearch() {
   const [instruction, setinstruction] = useState([]);
   const [duration, setduration] = useState(0);
   const [distance, setdistance] = useState(0.0);
+  const [imageUri,setImageUri] = useState(9);
 
   //resize screen
   useEffect(() => {
@@ -140,6 +142,7 @@ function MapControlSearch() {
       alert("Please enter a valid destination.");
       return;
     }
+    setImageUri(imageUri+1);
     updateRoute(trailType);
   }
 
@@ -187,6 +190,7 @@ function MapControlSearch() {
     addRoute(coords);
     getInstructions(coords);
     setShowResult(true);
+    
   }
 
   function addRoute(coords) {
@@ -217,6 +221,8 @@ function MapControlSearch() {
     setduration(dur);
   }
 
+  
+  console.log("NewimageUriNum:",imageUri);
   // handle the submission of the form
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -229,6 +235,7 @@ function MapControlSearch() {
       duration: duration,
       distance: distance,
       instruction: instruction,
+      image:imageUri
     };
 
     try {

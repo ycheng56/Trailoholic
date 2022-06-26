@@ -4,12 +4,15 @@ import Map from "../mapbox/Map";
 import TrailCards from "../components/TrailCards";
 import Filter from "../components/Filter";
 import SearchTrails from "../components/SearchTrails";
+import { Collapse } from "react-bootstrap";
+import { ExpandMore } from "@mui/icons-material";
 import "./css/TrailMap.css";
 
-function TrailsMap() {
+function TrailsMap({}) {
   const [trails, setTrails] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [activeType, setActiveType] = useState("");
+  const [open,setOpen] = useState(false);
 
   useEffect(() => {
     async function fetchTrails() {
@@ -44,11 +47,16 @@ function TrailsMap() {
         />
         </div>
 
+
       </div>
+
       <div className="trailList">
-        <div className="trailsCardSideBar">
-          <TrailCards trails={filtered} />
+
+
+    <div className="trailsCardSideBar">
+          <TrailCards trails={filtered}/>
         </div>
+
 
         <div className="map-container">
           <Map trails={filtered} />
