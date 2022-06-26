@@ -17,8 +17,6 @@ export default function Greeting() {
     };
     getUser();
   }, []);
-
-  console.log("username",userName);
   
 
   function getDate(){

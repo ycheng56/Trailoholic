@@ -63,7 +63,8 @@ trailRoutes.route("/trails/add").post( async function (req, res) {
       duration: req.body.duration,
       distance: req.body.distance,
       instruction: req.body.instruction,
-      image:req.body.image
+      image:req.body.image,
+      like:req.body.like,
     };
     const data = await db_connect.collection(collectionName).insertOne(myobj);
     res.json(data);
@@ -74,15 +75,30 @@ trailRoutes.route("/trails/add").post( async function (req, res) {
 
 });
 
-// This section will help you update a record by id.
-trailRoutes.route("/trails/update/:id").post(function (req, response) {
+// This section will help you increase the like number by trail id.
+trailRoutes.route("/trails/like/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   let newvalues = {
     $set: {
-      start: req.body.start,
-      destination: req.body.destination,
-      mode: req.body.mode,
+      like: req.body.like
+    },
+  };
+  db_connect
+    .collection(collectionName)
+    .updateOne(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      response.json(res);
+    });
+});
+
+// This section will help you decrease the like number by trail id.
+trailRoutes.route("/trails/unlike/:id").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  let newvalues = {
+    $set: {
+      like: req.body.like
     },
   };
   db_connect

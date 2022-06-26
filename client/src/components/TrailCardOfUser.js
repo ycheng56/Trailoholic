@@ -12,7 +12,6 @@ export default function TrailCardOfUser({ trail, onDelete }) {
     return Math.floor(Math.random() * 5 + 1);
   }
   const num = trail?.image;
-  console.log(num);
   const picNum = num % 5;
   const hikePicUri = "trail_" + picNum + ".jpg";
   const cyclePicUri = "cycling_" + picNum + ".jpg";
@@ -88,7 +87,7 @@ export default function TrailCardOfUser({ trail, onDelete }) {
                   <span>{trail?.difficulty}</span>
                   <span>  •  </span>
                   <FaStar color="#f5d24c" className="star"></FaStar>
-                  <span> 523 </span>
+                  <span> {trail?.like} </span>
                 </div>
 
                 <div className="userList-card-description">
