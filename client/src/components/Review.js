@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {fetchUser} from "../api/API"
+import { fetchUser } from "../api/API";
 import { useAuth0 } from "@auth0/auth0-react";
-import Avatar from 'react-avatar';
+import Avatar from "react-avatar";
+import "./css/Review.css";
+import { Rating } from "@mui/material";
 
-export default function Review({review}) {
-//   const [review, setReview]= useState(review);
+export default function Review({ review }) {
+  //   const [review, setReview]= useState(review);
   const [user, setUser] = useState(null);
+  const [star, setStar] = useState(3);
 
   useEffect(() => {
     const getUser = async () => {
@@ -15,23 +18,25 @@ export default function Review({review}) {
     getUser();
   }, []);
 
-  console.log("user", user);
-  console.log("review", review);
-
-
   return (
-    <div className="review d-flex">
-
-        <div className="profile-avatar col-md-2 mb-3">
-        <Avatar 
-        className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-        name={user?.avatar_name}></Avatar>
+    <div className="review-item">
+      <div className="reviewer-profile">
+        <Avatar
+          size="80"
+          className="reviewer-avatar"
+          round= {true}
+          textSizeRatio={1.75}
+          name={user?.avatar_name}
+        ></Avatar>
+        <div className="reviewer-profile-info">
           <strong>{user?.avatar_name}</strong>
-        </div>
 
-        <div>
-            {review.comment}
+          <Rating name="read-only" value={review.rating} readOnly />
+          <p>{review.date}</p>
         </div>
+      </div>
+
+      <div>{review.comment}</div>
     </div>
   );
 }

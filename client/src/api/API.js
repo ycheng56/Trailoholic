@@ -58,14 +58,13 @@ export async function fetchUser(id) {
   try {
     const response = await fetch(
       `/api/users/${id}`);
-    console.log("response", response);
     if (!response.ok) {
       throw Error("Fetch failed: user infomation");
     }
     const data = await response.json();
-    console.log(data);
     return data;
   }catch (err) {
     console.log("err", err);
   }
 }
+

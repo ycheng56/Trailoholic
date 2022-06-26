@@ -29,7 +29,7 @@ export default function PopularHikingTrail({ trail }) {
         ></img>
         
         <div className="card-title">
-          <strong >{trail?.start.text_en}</strong>
+          <strong >{trail?.start?.text_en}</strong>
         </div>
         
         <div className="card-description">

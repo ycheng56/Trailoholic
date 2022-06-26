@@ -3,11 +3,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./css/TrailDetails.css";
 import { useEffect, useState } from "react";
-import { FaDirections, FaHiking, FaRoad, FaRegClock } from "react-icons/fa";
+import {
+  FaStar,
+  FaRegStar,
+  FaDirections,
+  FaHiking,
+  FaRoad,
+  FaRegClock,
+} from "react-icons/fa";
 import MapSinglePoint from "../mapbox/MapSinglePoint";
 import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
 import MapSingleTrail from "../mapbox/MapSingleTrail";
-import ReviewPanel from "../components/ReviewPanel"
+import ReviewPanel from "../components/ReviewPanel";
+import { Button, Form } from "react-bootstrap";
+import AddReview from "../components/AddReview";
+import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
 
 export default function TrailDetails() {
   const { user, isAuthenticated } = useAuth0();
@@ -15,8 +25,11 @@ export default function TrailDetails() {
   const [trails, setTrails] = useState([]);
   const [userLists, setUserLists] = useState([]);
   const [instruction, setInstruction] = useState([]);
-  const [Lng, setLng] = useState(0);
+  const [Lng, setLng ] = useState(0);
   const [Lat, setLat] = useState(0);
+  const [nearBy, setNearBy] = useState([]);
+
+
 
   useEffect(() => {
     async function fetchTrails() {
@@ -74,12 +87,28 @@ export default function TrailDetails() {
       if (!response.ok) {
         throw Error("PATCH request failed!");
       }
-      alert("Successfully added to your list");
       setUserLists(updatedMyLists);
     } catch (err) {
       console.log("err", err);
     }
   }
+
+  useEffect(() => {
+    async function fetchNearByTrail() {
+      try {
+        const response = await fetch(`/api/search/trails?lng=${Lng}&lat=${Lat}`);
+        if (!response.ok) {
+          throw Error("Fetch failed");
+        }
+        const data = await response.json();
+        setNearBy(data);
+      } catch (err) {
+        console.log("err", err);
+      }
+    }
+    fetchNearByTrail();
+  }, [Lng]);
+
 
   async function removeFromList() {
     const deletedId = trailId;
@@ -102,120 +131,126 @@ export default function TrailDetails() {
 
   return (
     <div className="detail-wrapper">
-      {/*
+      <div id="detail-landing">
+      </div>
 
-      <p>Instruction for the trail:{instruction.map((item,index)=>(<li key={index}>{item}</li>))}</p>
-
-      {userLists.includes(trailId) ? (
-        <button onClick={removeFromList}>Remove From My Lists</button>
-      ) : (
-        <button onClick={addToList}>Add to my lists</button>
-      )}
-      <div className="map-container">
-        <MapSinglePoint trails={trails} Lng={Lng} Lat={Lat} />
-      </div> */}
-
-      <div className="detail-img">
+      {/* <div className="detail-img">
         <img
           alt="trail detail picture"
           src={process.env.PUBLIC_URL + "/images/home_bg3.jpg"}
         ></img>
-        {/* <div className="button-left"><h1>{trails.start?.["text_en"]}</h1></div> */}
-      </div>
+      </div> */}
 
-      <div className="detail-navbar">
-        <a href="#detail-type">TRAIL DETAIL</a>
-        <a href="#detail-instruction">INSTRUCTION</a>
-        <a href="#detail-map">LOCATION</a>
-        <a href="#detail-nearby">WHAT'S NEARBY</a>
-        <a href="#detail-suggestion">YOU MAY ALSO ENJOY</a>
-      </div>
-      <hr className="navbar-hr"></hr>
+      <main className="main-container">
+        <div className="detail-navbar">
+          <a href="#detail-type">TRAIL DETAIL</a>
+          <a href="#detail-instruction">INSTRUCTION</a>
+          <a href="#detail-map">LOCATION</a>
+          <a href="#reviews">REVIEWS</a>
+          <a href="#detail-nearby">WHAT'S NEARBY</a>
+        </div>
+        
 
-      <div className="detail-type" id="detail-type">
-        <h1>TRAIL DETAIL</h1>
-        <div className="detail-type-wrapper">
-          <div>
-            <FaHiking size="2rem" />
-            <p>Trail Type</p>
-            <p>{trails.mode}</p>
+        <div className="detail-type" id="detail-type">
+          <h1>TRAIL DETAIL</h1>
+          <br />
+          <div className="detail-type-wrapper">
+            <div className="detail-type-item">
+              <h2>{trails.mode}</h2>
+              <FaHiking size="2rem" />
+              <p>Trail Type</p>
+            </div>
+            <div className="detail-type-item">
+              <h2>{trails.distance} km</h2>
+              <FaRoad size="2rem" />
+              <p>Trail Distance</p>
+            </div>
+            <div className="detail-type-item">
+              <h2>{trails.duration} mins</h2>
+              <FaRegClock size="2rem" />
+              <p>Trail Duration</p>
+            </div>
           </div>
-          <div>
-            <FaRoad size="2rem" />
-            <p>Trail Distance</p>
-            <p>{trails.distance} km</p>
+        </div>
+
+        <hr />
+
+        <div className="detail-instruction" id="detail-instruction">
+          <h1>INSTRUCTION</h1>
+          <div className="detail-instruction-place">
+          <p>
+            <strong>Starting Point: {trails.start?.["text_en"]}</strong>
+          </p>
+          <p>{trails.start?.["place_name_en"]}</p>
           </div>
-          <div>
-            <FaRegClock size="2rem" />
-            <p>Trail Duration</p>
-            <p>{trails.duration} mins</p>
+
+          <div className="detail-instruction-place">
+          <p>
+            <strong>Destination: {trails.destination?.["text_en"]}</strong>
+          </p>
+          <p>{trails.destination?.["place_name_en"]}</p>
+          </div>
+
+
+          <p>
+            {instruction.map((item, index) => (
+              <li key={index}>
+                <FaDirections className="direction-icon" />
+                {item}
+              </li>
+            ))}
+          </p>
+
+          <div className="addlist">
+            <p>Do you like it? Add this trail to my list:</p>
+            {userLists.includes(trailId) ? (
+              <button
+                onClick={removeFromList}
+                className="addToListBtn like-button"
+              >
+                <FaStar color="#f5d24c"></FaStar>
+                Remove From My Lists
+              </button>
+            ) : (
+              <button onClick={addToList} className="like-button">
+                <FaRegStar color="#f5d24c"></FaRegStar>
+                Add to my lists
+              </button>
+            )}
           </div>
         </div>
-      </div>
-      <hr />
-      <div className="detail-instruction" id="detail-instruction">
-        <h1>INSTRUCTION</h1>
-        <p>Starts from:{trails.start?.["text_en"]}</p>
-        <p>Destination:{trails.destination?.["text_en"]}</p>
-        <p>
-          <strong>Instruction for the trail:</strong>
-          {instruction.map((item, index) => (
-            <li key={index}>
-              <FaDirections className="direction-icon" />
-              {item}
-            </li>
-          ))}
-        </p>
-        <div className="addlist">
-          <p>Do you like it? Add this trail to my list:</p>
-          {userLists.includes(trailId) ? (
-            <button onClick={removeFromList} className="addToListBtn">
-              Remove From My Lists
-            </button>
-          ) : (
-            <button onClick={addToList}>Add to my lists❤</button>
-          )}
-        </div>
-      </div>
 
-      <hr />
-      <div className="detail-map" id="detail-map">
-        <h1>Location</h1>
-        <div className="map-container">
-          <MapSingleTrail trail={trails}/>
+        <hr />
+        <div className="detail-map" id="detail-map">
+          <h1>Location</h1>
+          <div className="detail-map-container">
+            <MapSingleTrail trail={trails} />
+          </div>
         </div>
-      </div>
 
-      <hr />
+        <hr />
 
-      <div className="reviews" id="reviews">
-        <h1>Reviews</h1>
-        <div className="review-list">
-          <ReviewPanel trail_id={trailId}></ReviewPanel>
+        <div className="reviews" id="reviews">
+          <h1>Reviews</h1>
+          <div className="review-add">
+            <AddReview trail_id={trailId}></AddReview>
+          </div>
+
+          <div className="review-list">
+            <ReviewPanel trail_id={trailId}></ReviewPanel>
+          </div>
         </div>
-      </div>
 
-      <hr />
+        <hr />
 
-      <div className="detail-nearby" id="detail-nearby">
-        <h1>What's Nearby</h1>
-        <div className="detail-nearby-card">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
+        <div className="detail-nearby" id="detail-nearby">
+          <h1>What's Nearby</h1>
+          {nearBy && <ResponsiveSlider
+            list={[...nearBy]}
+          ></ResponsiveSlider>}
+          <br />
         </div>
-      </div>
-      <hr />
-      <div className="detail-suggestion" id="detail-suggestion">
-        <h1>You May Also Enjoy</h1>
-        <div className="detail-nearby-card">
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-          <PopularHikingTrail />
-        </div>
-      </div>
+      </main>
     </div>
   );
 }
