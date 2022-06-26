@@ -1,35 +1,31 @@
 import React from "react";
-import {
-  Card,
-  Typography,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  CardActions,
-  Button,
-  ImageCard,
-  Rating,
-  Box,
-} from "@mui/material";
 import { useState, useEffect } from "react";
 import "../css/TrailCollection.css";
 import { Link } from "react-router-dom";
 import {FaStar, FaBicycle , FaHiking} from "react-icons/fa"
+import { useParams } from "react-router-dom";
+import { fetchAllTrails } from "../../api/API";
 
 
 export default function PopularHikingTrail({ trail }) {
+
+  const num = trail?.image;
+  console.log(num);
+  const picNum = (num)%5;
+  const hikePicUri = "trail_"+picNum+".jpg";
+  const cyclePicUri = "cycling_"+picNum+".jpg";
   return (
-    <div className="card">
+    <div className="card landingpage-card">
       <Link style={{textDecoration:"none", color:"inherit"}} to={`/trails/${trail?._id}`}>
       <div className="card-body">
-        <img
-          src={process.env.PUBLIC_URL + "/images/trail_3.jpg"}
+      {(trail?.mode === "cycling")?<img src={process.env.PUBLIC_URL + "/images/"+cyclePicUri}
           alt="pic"
-          className="card-img"
-        ></img>
-        
+          className="card-img"></img> : <img src={process.env.PUBLIC_URL + "/images/"+hikePicUri}
+          alt="pic"
+          className="card-img"></img>}
+
         <div className="card-title">
-          <strong >{trail?.start?.text_en}</strong>
+          <p><strong >{trail?.start.text_en}</strong></p>
         </div>
         
         <div className="card-description">

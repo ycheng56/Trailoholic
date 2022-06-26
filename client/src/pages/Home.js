@@ -1,20 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./css/home.css";
-import { Link } from "react-router-dom";
-import SearchTrails from "../components/SearchTrails";
-import { Carousel } from "react-bootstrap";
 import Greeting from "../components/Greeting";
-import { Box, Rating } from "@mui/material";
-import {
-  Grid,
-  Card,
-  Typography,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  CardActions,
-  Button,
-} from "@mui/material";
 import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
 import { FaArrowCircleRight } from "react-icons/fa";
 import Slider from "react-slick";
@@ -35,11 +21,9 @@ export default function Home() {
       setTrails(data);
       setCyclingTrails(cycling);
       setHikingTrails(hiking);
-
     };
     getTrails();
   }, []);
-
 
   return (
     <div className="landing-page">
@@ -55,7 +39,7 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Local Favorites near Vancouver</h1>
-              <a className="section-header-link">
+              <a className="section-header-link" href="/trails">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>
@@ -69,7 +53,7 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Best Hiking Trails</h1>
-              <a className="section-header-link">
+              <a className="section-header-link"  href="/trails">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>
@@ -83,7 +67,7 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Best Biking Trails</h1>
-              <a className="section-header-link">
+              <a className="section-header-link" href="/trails">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>

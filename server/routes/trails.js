@@ -63,6 +63,7 @@ trailRoutes.route("/trails/add").post( async function (req, res) {
       duration: req.body.duration,
       distance: req.body.distance,
       instruction: req.body.instruction,
+      image:req.body.image
     };
     const data = await db_connect.collection(collectionName).insertOne(myobj);
     res.json(data);

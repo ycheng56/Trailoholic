@@ -70,7 +70,7 @@ function UserLists() {
   return (
     <div>
       <div className="row align-items-center profile-header">
-        <h1>My Favorite Trails</h1>
+        <h1>❤ My Favorite Trails</h1>
         <div className="list-cards col-md text-center text-md-left">
           <div className="cards">
             {trails.map((trail) => (
