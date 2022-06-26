@@ -23,12 +23,14 @@ body{
     line-height: 1em;
     word-wrap:break-word;
 }
-.card .card-title {
-    height: 3em;
+.landingpage-card .card-title {
+    height: 4em;
     margin: 2% auto;
     line-height: 1em;
     word-wrap:break-word;
+    padding-top: 10%;
 }
+
 
 /* .card-title strong {
     word-wrap:break-word;

@@ -15,7 +15,7 @@ export default function PopularHikingTrail({ trail }) {
   const hikePicUri = "trail_"+picNum+".jpg";
   const cyclePicUri = "cycling_"+picNum+".jpg";
   return (
-    <div className="card">
+    <div className="card landingpage-card">
       <Link style={{textDecoration:"none", color:"inherit"}} to={`/trails/${trail?._id}`}>
       <div className="card-body">
       {(trail?.mode === "cycling")?<img src={process.env.PUBLIC_URL + "/images/"+cyclePicUri}
@@ -25,7 +25,7 @@ export default function PopularHikingTrail({ trail }) {
           className="card-img"></img>}
 
         <div className="card-title">
-          <strong >{trail?.start.text_en}</strong>
+          <p><strong >{trail?.start.text_en}</strong></p>
         </div>
         
         <div className="card-description">
