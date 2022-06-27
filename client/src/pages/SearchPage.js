@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import TrailCard from "../components/TrailCard";
 import SearchResultCard from "../components/SearchResultCard";
 import { Pagination } from "@mui/material";
+import TrailCardOfUser from "../components/TrailCardOfUser";
+import SearchResult from "../components/TrailCollectionComponents/SearchResult";
 
 export default function SearchPage() {
   const { searchCriteria } = useParams();
@@ -33,11 +35,15 @@ export default function SearchPage() {
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
-      <div>trails near {location} </div>
+      <h1>Trails near {location}</h1>
       {trails.map((item) => (
-        <SearchResultCard key={item._id} trail={item} />
+        <SearchResult key={item._id} trail={item} />
       ))}
       {/* <Pagination count={2} /> */}
     </div>
   );
+}
+
+{
+  /* <SearchResultCard key={item._id} trail={item} /> */
 }

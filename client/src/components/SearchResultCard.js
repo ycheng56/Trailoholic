@@ -8,8 +8,16 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import "./css/Search.css";
+import {FaStar, FaBicycle , FaHiking} from "react-icons/fa"
+import PopularHikingTrail from "./TrailCollectionComponents/PopularHikingTrail"
+import TrailCardOfUser from "./TrailCardOfUser";
 
 export default function SearchResultCard({ trail }) {
+  const num = trail?.image;
+  console.log(num);
+  const picNum = (num)%5;
+  const hikePicUri = "trail_"+picNum+".jpg";
+  const cyclePicUri = "cycling_"+picNum+".jpg";
   return (
     <div>
       {/* <div className="searchTitle">
@@ -20,8 +28,9 @@ export default function SearchResultCard({ trail }) {
         </p>
       </div> */}
 
-      <div className="searchResultCard">
-        <Card sx={{ maxWidth: 1000, display: "flex", textAlign: "justify" }}>
+      <div className="card searchResultCard">
+      <TrailCardOfUser/>
+        {/* <Card sx={{ maxWidth: 1000, display: "flex", textAlign: "justify" }}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardMedia
               component="img"
@@ -48,7 +57,7 @@ export default function SearchResultCard({ trail }) {
               <p>View Trail Details</p>
             </Link></Button>
           </CardActions>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );
