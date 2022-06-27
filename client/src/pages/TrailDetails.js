@@ -20,6 +20,7 @@ import AddReview from "../components/AddReview";
 import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
 
 export default function TrailDetails() {
+  let navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
   const { trailId } = useParams();
   const [trails, setTrails] = useState([]);
@@ -37,6 +38,7 @@ export default function TrailDetails() {
       try {
         const response = await fetch(`/api/trails/${trailId}`);
         if (!response.ok) {
+          navigate("/error");
           throw Error("Fetch failed");
         }
         const data = await response.json();

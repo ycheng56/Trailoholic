@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import TrailDetails from "./pages/TrailDetails";
 import UserProfile from "./pages/UserProfile";
 import UserLists from "./pages/UserLists";
@@ -19,6 +19,8 @@ import GeoSearch from "./mapbox/GeoSearch"
 
 function App() {
   const { isLoading } = useAuth0();
+  const location=useLocation();
+  const hideFooter = location.pathname.includes("/map") || location.pathname === "/addtrail"
 
   if (isLoading) {
     return <Loading />;
@@ -28,7 +30,9 @@ function App() {
     <div className="App">
       <Banner />
       <AppRouter />
-      {/* <Footer /> */}
+      <Footer />
+      {/* {!hideFooter && <Footer />} */}
+      
     </div>
   );
 }
@@ -38,14 +42,14 @@ function AppRouter() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/trails" element={<TrialsMap />} />
-      <Route path="/trails/type/:trailType" element={<TrialsMap />} />
+      <Route path="/trails/map" element={<TrialsMap />} />
+      <Route path="/trails/map/:trailType" element={<TrialsMap />} />
       <Route path="trails/:trailId" element={<TrailDetails />} />
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="/trails/search" element={<SearchPage/>}/>
       <Route path="/trails/search/:searchCriteria" element={<SearchPage/>}/>
-      <Route path="*" element={<p>Nothing Here</p>} />
+      <Route path="*" element={<p>This page isn't available. Sorry about that. </p>} />
       <Route path="/addtrail" element={<AddTrail />} />
       <Route path="/addtrail2" element={<AddTrail2 />} />
       <Route path="/search" element={<GeoSearch />} />

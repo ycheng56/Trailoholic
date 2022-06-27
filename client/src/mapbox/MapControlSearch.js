@@ -256,7 +256,7 @@ function MapControlSearch() {
 
 
   return (
-    <Fragment>
+    <div className="mapcontrol-wrapper">
       <Row className="map-block">
         <Col className="map-block" xs={12} md={4} lg={3}>
           <div className="trailsCardSideBar">
@@ -427,7 +427,7 @@ function MapControlSearch() {
           </MapGL>
         </Col>
       </Row>
-    </Fragment>
+    </div>
   );
 }
 

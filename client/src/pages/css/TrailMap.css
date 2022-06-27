@@ -34,16 +34,6 @@
     color:rgb(88, 104, 92);
 }
 
-.trailList{
-    display: grid;
-    grid-template-columns: 25% 75%;
-}
-
-/* .trailsCardSideBar{
-    background-color: #fff;
-    z-index:1;
-    overflow: scroll;
-} */
 
 .trailWrapper .row > * {
     padding: 1px;
@@ -55,15 +45,5 @@
     display: flex;
     flex-direction: column;
 }
-/* .map-container {
-    height: 80vh;
-  }
-.trailWrapper .map {
-    height:100vh;
-}
-
-.trailWrapper .mapboxgl-canvas{
-    min-height: 100%;
-} */
 
   

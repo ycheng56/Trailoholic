@@ -4,10 +4,6 @@
   max-height: 90vh;
 }
 
-.map-container {
-  height: 80vh;
-}
-
 .trailsCardSideBar{
     background-color: #fff;
     z-index:0;
@@ -43,11 +39,14 @@
 
 .map {
   height:90vh;
-  /* width: fit-content; */
 }
-/* .mapboxgl-map .mapboxgl-canvas {
-  min-height: 100%;
-  min-width: 100%;
+
+/* .mapcontrol-wrapper .map {
+  height: 90vh;
+} */
+
+/* .mapcontrol-wrapper{
+  margin-bottom: 10rem;
 } */
 
 .collapse-control-panel {

@@ -53,7 +53,7 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Best Hiking Trails</h1>
-              <a className="section-header-link"  href="/trails/type/walking">
+              <a className="section-header-link"  href="/trails/map/walking">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>
@@ -67,7 +67,7 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Best Cycling Trails</h1>
-              <a className="section-header-link" href="/trails/type/cycling">
+              <a className="section-header-link" href="/trails/map/cycling">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>
