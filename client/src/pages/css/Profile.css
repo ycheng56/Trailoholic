@@ -31,7 +31,7 @@
 } */
 
 .profile-btn{
-    padding: 5% 0 5%;
+    padding: 5% 0 15%;
 }
 .profile-Img p{
     text-align: left;
@@ -40,8 +40,9 @@
 
 
 
-.profile-form .row{
+.profile-wrapper .row{
     padding-top: 2%;
+    padding-left: 10%;
 }
 
 @media (max-width: 1024px) {
@@ -55,4 +56,3 @@
       width: calc(100% - 80px);
     }
   }
-
