@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="landing-page">
+    <div className="landing-page" id="Home-Page">
       <div id="home">
         <div className="landing-text">
           <Greeting />

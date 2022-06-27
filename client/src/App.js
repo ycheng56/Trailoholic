@@ -21,6 +21,7 @@ function App() {
   const { isLoading } = useAuth0();
   const location=useLocation();
   const hideFooter = location.pathname.includes("/map") || location.pathname === "/addtrail"
+  // const hideFooter =  location.pathname === "/addtrail"
 
   if (isLoading) {
     return <Loading />;
@@ -30,8 +31,8 @@ function App() {
     <div className="App">
       <Banner />
       <AppRouter />
-      <Footer />
-      {/* {!hideFooter && <Footer />} */}
+      {/* <Footer /> */}
+      {!hideFooter && <Footer />}
       
     </div>
   );
