@@ -25,6 +25,19 @@ trailRoutes.route("/trails").get(function (req, res) {
     });
 });
 
+// This section will help you get a list of trails sorted by number of like.
+trailRoutes.route("/trails/mostlike").get(function (req, res) {
+  let db_connect = dbo.getDb("TrailoholicDatabse");
+  db_connect
+    .collection(collectionName)
+    .find({})
+    .sort({like:-1})
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 // This section will help you get a single record by id
 trailRoutes.route("/trails/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
@@ -152,6 +165,7 @@ trailRoutes.route("/trails/search/mode/:mode").get(function (req, res) {
   db_connect
     .collection(collectionName)
     .find(query)
+    .sort({like:-1})
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);

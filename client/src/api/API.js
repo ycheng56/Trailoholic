@@ -1,6 +1,6 @@
 export async function fetchAllTrails() {
   try {
-    const response = await fetch("/api/trails");
+    const response = await fetch("/api/trails/mostlike");
 
     if (!response.ok) {
       throw Error("Fetch failed");

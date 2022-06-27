@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import "../css/TrailCollection.css";
 import { Link } from "react-router-dom";
 import {FaStar, FaBicycle , FaHiking} from "react-icons/fa"
-import { useParams } from "react-router-dom";
-import { fetchAllTrails } from "../../api/API";
 
 
 export default function PopularHikingTrail({ trail }) {
