@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { fetchUser } from "../api/API";
 
 
 export default function Greeting() {
-  const { user } = useAuth0();
+  const { user,isAuthenticated } = useAuth0();
+  const [userName, setuserName] = useState(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      if (isAuthenticated) {
+        const data = await fetchUser(user?.sub);
+        setuserName(data.avatar_name);
+        
+      }
+    };
+    getUser();
+  }, []);
   
 
   function getDate(){
@@ -23,7 +36,12 @@ export default function Greeting() {
 
   return (
     <div>
-      <h1>{getDate()} {user?.nickname}!</h1>
+      {!isAuthenticated?
+      <h1>Find Your Trail</h1>
+      :
+      <h1>{getDate()}, {userName}!</h1>
+      }
+      
     </div>
   );
 }

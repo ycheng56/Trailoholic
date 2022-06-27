@@ -20,6 +20,7 @@ import AddReview from "../components/AddReview";
 import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
 
 export default function TrailDetails() {
+  let navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
   const { trailId } = useParams();
   const [trails, setTrails] = useState([]);
@@ -28,6 +29,7 @@ export default function TrailDetails() {
   const [Lng, setLng ] = useState(0);
   const [Lat, setLat] = useState(0);
   const [nearBy, setNearBy] = useState([]);
+  const [like, setLike] = useState(0);
 
 
 
@@ -36,6 +38,7 @@ export default function TrailDetails() {
       try {
         const response = await fetch(`/api/trails/${trailId}`);
         if (!response.ok) {
+          navigate("/error");
           throw Error("Fetch failed");
         }
         const data = await response.json();
@@ -43,6 +46,7 @@ export default function TrailDetails() {
         setInstruction(data.instruction);
         setLng(data.start.center[0]);
         setLat(data.start.center[1]);
+        setLike(data.like);
       } catch (err) {
         console.log("err", err);
       }
@@ -85,9 +89,26 @@ export default function TrailDetails() {
         }),
       });
       if (!response.ok) {
-        throw Error("PATCH request failed!");
+        throw Error("Post request failed!");
       }
       setUserLists(updatedMyLists);
+    } catch (err) {
+      console.log("err", err);
+    }
+
+    try {
+      const newlike = like + 1;
+      const response = await fetch(`/api/trails/like/${trailId}`, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          like: newlike,
+        }),
+      });
+      if (!response.ok) {
+        throw Error("PATCH request failed!");
+      }
+      setLike(newlike);
     } catch (err) {
       console.log("err", err);
     }
@@ -126,6 +147,24 @@ export default function TrailDetails() {
       setUserLists(updatedLists);
     } catch (err) {
       console.log(err);
+    }
+
+    try {
+      const newlike = like - 1;
+      if (newlike < 0) return;
+      const response = await fetch(`/api/trails/unlike/${trailId}`, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          like: newlike,
+        }),
+      });
+      if (!response.ok) {
+        throw Error("Post request failed!");
+      }
+      setLike(newlike);
+    } catch (err) {
+      console.log("err", err);
     }
   }
 
@@ -202,7 +241,7 @@ export default function TrailDetails() {
           </p>
 
           <div className="addlist">
-            <p>Do you like it? Add this trail to my list:</p>
+            <p>{like} trailcoholics like this trail. Do you like it?</p>
             {userLists.includes(trailId) ? (
               <button
                 onClick={removeFromList}

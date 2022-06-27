@@ -68,7 +68,7 @@ function MapControlSearch() {
   const [instruction, setinstruction] = useState([]);
   const [duration, setduration] = useState(0);
   const [distance, setdistance] = useState(0.0);
-  const [imageUri,setImageUri] = useState(9);
+  const [imageUri,setImageUri] = useState(Math.ceil(Math.random() * 10));
 
   //resize screen
   useEffect(() => {
@@ -142,7 +142,6 @@ function MapControlSearch() {
       alert("Please enter a valid destination.");
       return;
     }
-    setImageUri(imageUri+1);
     updateRoute(trailType);
   }
 
@@ -222,7 +221,6 @@ function MapControlSearch() {
   }
 
   
-  console.log("NewimageUriNum:",imageUri);
   // handle the submission of the form
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -235,7 +233,8 @@ function MapControlSearch() {
       duration: duration,
       distance: distance,
       instruction: instruction,
-      image:imageUri
+      image:imageUri,
+      like:0,
     };
 
     try {
@@ -257,7 +256,7 @@ function MapControlSearch() {
 
 
   return (
-    <Fragment>
+    <div className="mapcontrol-wrapper">
       <Row className="map-block">
         <Col className="map-block" xs={12} md={4} lg={3}>
           <div className="trailsCardSideBar">
@@ -428,7 +427,7 @@ function MapControlSearch() {
           </MapGL>
         </Col>
       </Row>
-    </Fragment>
+    </div>
   );
 }
 
