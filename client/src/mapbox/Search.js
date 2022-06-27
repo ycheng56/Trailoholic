@@ -50,7 +50,7 @@ function Search() {
     <div className="search-wrapper">
       <Form className="search-form" onSubmit={handleSubmit}>
         <div id="search"></div>
-    
+
         <Button className="inner-button" variant="success" type="submit">
           Submit
         </Button>

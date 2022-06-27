@@ -32,7 +32,7 @@ function UserProfile() {
       }
     }
     fetchUserDescription();
-  }, [user.sub]);
+  }, [user]);
 
   // handle the submission of the form
   const handleSubmit = async (e) => {
@@ -65,13 +65,13 @@ function UserProfile() {
         }
         const data = await response.json();
         setUserName(data.avatar_name);
-        console.log("avatartname::::", userName);
       } catch (err) {
         console.log("catch ", err);
       }
     }
     fetchUserName();
-  }, [user.sub]);
+  }, [user]);
+
 
   const refreshPage = () => {
     window.location.reload(false);
@@ -80,7 +80,7 @@ function UserProfile() {
   return (
     <div className="profile-wrapper">
     <Row className="justify-content-md-center">
-      <Col className="profile-Img " xs lg="4">
+      <Col className="profile-Img " xs="12" md="4" lg="3">
           <img
             src={user?.picture}
             alt="Profile"
@@ -149,7 +149,7 @@ function UserProfile() {
           )}
         </div>
       </div> */}
-      <Col className="profile-form">
+      <Col className="profile-form"  xs={12} md={8} lg={9}>
           <Form onSubmit={handleSubmit}>
             <Row>
               <Col md={{ span: 5 }}>

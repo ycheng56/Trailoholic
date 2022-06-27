@@ -24,7 +24,7 @@ function UserLists() {
       }
     }
     fetchUserList();
-  }, [user.sub]);
+  }, [user]);
 
   useEffect(() => {
     async function fetchTrails() {
