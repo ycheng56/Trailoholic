@@ -34,7 +34,7 @@ export default function SearchPage() {
   }, [searchCriteria]);
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
+    <div id="Search-Page" className="d-flex flex-column justify-content-center align-items-center">
       <h1>Trails near {location}</h1>
       {trails.map((item) => (
         <SearchResult key={item._id} trail={item} />
@@ -42,8 +42,4 @@ export default function SearchPage() {
       {/* <Pagination count={2} /> */}
     </div>
   );
-}
-
-{
-  /* <SearchResultCard key={item._id} trail={item} /> */
 }

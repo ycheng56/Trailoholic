@@ -5,7 +5,7 @@ import MapControlSearch from "../mapbox/MapControlSearch";
 function AddTrail() {
     return (
       <>
-        <div className="map-container">
+        <div >
         <MapControlSearch />
       </div>
 

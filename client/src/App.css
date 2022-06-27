@@ -1,5 +1,7 @@
 .App {
     text-align: center;
+    position: relative;
+    min-height: 100vh;
   }
   
   .App-logo {
@@ -36,5 +38,9 @@
       transform: rotate(360deg);
     }
   }
+
+#Home-Page,#UserList-Page,#UserProfile-Page,#TrailDetrails-Page,#Search-Page {
+  padding-bottom: 10rem;
+}
 
   

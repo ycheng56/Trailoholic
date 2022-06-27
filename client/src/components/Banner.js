@@ -19,7 +19,7 @@ export default function Banner() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/trails">Explore</Nav.Link>
+              <Nav.Link as={Link} to="/trails/map">Explore</Nav.Link>
               <Nav.Link as={Link} to="/addtrail">Add Trail</Nav.Link>
               <Nav.Link as={Link} to="/search">Search</Nav.Link>
             </Nav>

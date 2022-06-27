@@ -5,13 +5,13 @@
 
 .cards-collection{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: stretch;
 }
 .cards-collection .card {
-    margin: 2em auto;
+    margin: 2em 1em;
 }
 
 .trail-map{
@@ -83,5 +83,9 @@
 
     .userList-wrapper {
         font: 0.6em sans-serif;
+    }
+
+    .cards-collection .card {
+        margin: 2em 5em;
     }
 }

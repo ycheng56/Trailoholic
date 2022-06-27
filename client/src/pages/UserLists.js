@@ -49,6 +49,8 @@ function UserLists() {
   }, [userLists]);
 
   async function deleteClicked(deletedId) {
+    const deletedTrail = trails.filter((item) => item._id === deletedId);
+    if (!deletedTrail) return;
     try {
       const updatedLists = userLists.filter((item) => item !== deletedId);
       const response = await fetch(
@@ -65,10 +67,27 @@ function UserLists() {
     } catch (err) {
       console.log(err);
     }
+
+    try {
+      const newlike = deletedTrail[0].like - 1;
+      if (newlike < 0 || !newlike) return;
+      const response = await fetch(`/api/trails/unlike/${deletedId}`, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          like: newlike,
+        }),
+      });
+      if (!response.ok) {
+        throw Error("Post request failed!");
+      }
+    } catch (err) {
+      console.log("err", err);
+    }
   }
 
   return (
-    <div>
+    <div id="UserList-Page">
       <div className="row align-items-center profile-header">
         <h1>❤ My Favorite Trails</h1>
         <div className="list-cards col-md text-center text-md-left">
