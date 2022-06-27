@@ -78,7 +78,7 @@ function UserProfile() {
   };
 
   return (
-    <div className="profile-wrapper">
+    <div className="profile-wrapper" id="UserProfile-Page">
     <Row className="justify-content-md-center">
       <Col className="profile-Img " xs lg="4">
           <img

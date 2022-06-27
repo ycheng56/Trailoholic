@@ -180,7 +180,7 @@ export default function TrailDetails() {
         ></img>
       </div> */}
 
-      <main className="main-container">
+      <main className="main-container" id="TrailDetrails-Page">
         <div className="detail-navbar">
           <a href="#detail-type">TRAIL DETAIL</a>
           <a href="#detail-instruction">INSTRUCTION</a>

@@ -47,7 +47,7 @@ function Search() {
   };
 
   return (
-    <div className="search-wrapper">
+    <div className="search-component-wrapper">
       <Form className="search-form" onSubmit={handleSubmit}>
         <div id="search"></div>
     

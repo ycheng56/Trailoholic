@@ -75,7 +75,7 @@ function SearchFilter({ trails, setFiltered, setResult }) {
   }, []);
 
   return (
-    <div className="search-wrapper">
+    <div className="search-component-wrapper">
       <div className="search-form">
         <div id="searchfilter"></div>
       </div>

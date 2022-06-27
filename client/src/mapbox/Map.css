@@ -59,7 +59,7 @@
     bottom: 0px;
 }
 
-.search-wrapper {
+.search-component-wrapper {
   display: block;
 }
 .search-form {
@@ -70,6 +70,7 @@
 }
 
 #search .mapboxgl-ctrl-geocoder {
+  /* height: 5rem; */
   width: 50vw;
 }
 
