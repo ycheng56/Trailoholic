@@ -40,7 +40,7 @@ function Search() {
       if (!geoData) {
         return;
       }
-      navigate(`trails/search/location=${geoData.text_en}&lng=${geoData.center[0]}&lat=${geoData.center[1]}`);
+      navigate(`trails/search/location=${geoData.text}&lng=${geoData.center[0]}&lat=${geoData.center[1]}`);
     } catch (err) {
       console.log(err);
     }
@@ -50,7 +50,7 @@ function Search() {
     <div className="search-wrapper">
       <Form className="search-form" onSubmit={handleSubmit}>
         <div id="search"></div>
-
+    
         <Button className="inner-button" variant="success" type="submit">
           Submit
         </Button>

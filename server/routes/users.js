@@ -51,12 +51,13 @@ userRoutes.route("/users/add").post(function (req, response) {
 
 
 // update a user's description by id.
-userRoutes.route("/users/update/profile/description/:id").post(function (req, response) {
+userRoutes.route("/users/update/profile/:id").post(function (req, response) {
   let db_connect = dbo.getDb(); 
   let myquery = { _id: req.params.id }; 
   let newvalues = {   
     $set: {     
-      description: req.body.description
+      description: req.body.description,
+      avatar_name:req.body.avatar_name
     }, 
    }
    db_connect.collection(collectionName).updateOne(myquery, newvalues, function (err, res) {

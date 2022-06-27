@@ -8,9 +8,6 @@ import { FaBicycle } from "react-icons/fa";
 import { FaHiking } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 export default function TrailCardOfUser({ trail, onDelete }) {
-  function getRandomNumber() {
-    return Math.floor(Math.random() * 5 + 1);
-  }
   const num = trail?.image;
   console.log(num);
   const picNum = num % 5;
