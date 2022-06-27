@@ -1,14 +1,37 @@
 
 .search-area{
-    margin: 1rem;
-    padding: 1rem 1rem;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px gainsboro solid;
 }
 
-.chilren{
-    width: 100%;
-    display: inline-block;
-    padding: 1rem 1rem;
-    vertical-align: middle;  
+
+.serach-box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;   
+    padding: 0 1rem;
+    gap:1rem;
+}
+
+#searchfilter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.serach-box .mapboxgl-ctrl-geocoder {
+    max-width: 100%;
+}
+
+.control-icons{
+    font-size: 1.5rem;
+    display: inline-flex;
+    gap: 1rem;
+    color:rgb(88, 104, 92);
 }
 
 .trailList{
@@ -16,17 +39,31 @@
     grid-template-columns: 25% 75%;
 }
 
-.trailsCardSideBar{
+/* .trailsCardSideBar{
     background-color: #fff;
     z-index:1;
     overflow: scroll;
-    /* height: 80%; */
+} */
+
+.trailWrapper .row > * {
+    padding: 1px;
 }
-.map-container {
+
+.info-box {
+    box-shadow: 0 2px 5px grey;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+/* .map-container {
     height: 80vh;
   }
-.map {
-    height:80vh;
-  }
+.trailWrapper .map {
+    height:100vh;
+}
+
+.trailWrapper .mapboxgl-canvas{
+    min-height: 100%;
+} */
 
   

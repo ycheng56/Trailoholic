@@ -1,9 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../mapbox/Map.css";
-import MapGL, { Marker, Popup, Source, Layer } from "react-map-gl";
-import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail"
+import MapGL, {
+  Marker,
+  Popup,
+  Source,
+  Layer,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl,
+} from "react-map-gl";
+import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
 import "mapbox-gl/dist/mapbox-gl.css";
-import {layerStyleRoute} from "./data.js"
+import { layerStyleRoute } from "./data.js";
 
 function Map({ trails }) {
   const [showPopup, setShowPopup] = useState({});
@@ -27,6 +36,11 @@ function Map({ trails }) {
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
       onDblClick={showMarkerPopup}
     >
+      <GeolocateControl position="top-right" />
+      <FullscreenControl position="top-right" />
+      <NavigationControl position="top-right" />
+      <ScaleControl position="bottom-right" />
+
       {trails.map((entry) => (
         <React.Fragment key={entry._id}>
           <Marker
@@ -36,7 +50,8 @@ function Map({ trails }) {
             latitude={entry.start.center[1]}
             color="red"
             aria-label="Map marker"
-          ></Marker>
+          >
+          </Marker>
 
           {showPopup[entry._id] ? (
             <Popup

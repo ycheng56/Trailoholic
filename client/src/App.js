@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <Banner />
       <AppRouter />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
@@ -39,6 +39,7 @@ function AppRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/trails" element={<TrialsMap />} />
+      <Route path="/trails/type/:trailType" element={<TrialsMap />} />
       <Route path="trails/:trailId" element={<TrailDetails />} />
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />

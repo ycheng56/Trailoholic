@@ -53,7 +53,7 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Best Hiking Trails</h1>
-              <a className="section-header-link"  href="/trails">
+              <a className="section-header-link"  href="/trails/type/walking">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>
@@ -66,8 +66,8 @@ export default function Home() {
         <div className="section-container favoriteBiking">
           <div className="section-header-container">
             <div className="section-header-content">
-              <h1>Best Biking Trails</h1>
-              <a className="section-header-link" href="/trails">
+              <h1>Best Cycling Trails</h1>
+              <a className="section-header-link" href="/trails/type/cycling">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>
