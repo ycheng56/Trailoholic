@@ -7,7 +7,6 @@ import "../css/Search.css";
 
 export default function SearchResult({ trail }) {
   const num = trail?.image;
-  console.log(num);
   const picNum = num % 5;
   const hikePicUri = "trail_" + picNum + ".jpg";
   const cyclePicUri = "cycling_" + picNum + ".jpg";
@@ -54,7 +53,7 @@ export default function SearchResult({ trail }) {
                   <span>{trail?.difficulty}</span>
                   <span> • </span>
                   <FaStar color="#f5d24c" className="star"></FaStar>
-                  <span> 523 </span>
+                  <span> {trail?.like} </span>
                 </div>
 
                 <div className="search-card-description">

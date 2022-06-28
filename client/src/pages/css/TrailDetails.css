@@ -88,7 +88,7 @@
 }
 
 .detail-type-item p {
-  color: rgb(108, 124, 115);
+  color: rgb(63, 75, 68);
   text-transform: uppercase;
 }
 
@@ -153,7 +153,7 @@
 
 .review-add {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 #detail-map .detail-map-container {

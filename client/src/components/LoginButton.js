@@ -6,7 +6,7 @@ export default function LoginButton() {
   return (
     <button
       className="btn btn-primary btn-block"
-      onClick={() => loginWithRedirect()}
+      onClick={() => loginWithRedirect({ appState: { returnTo: window.location.pathname } })}
     >
       Log In
     </button>

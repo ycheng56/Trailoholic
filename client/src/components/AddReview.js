@@ -4,7 +4,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { Rating } from "@mui/material";
 
 export default function AddReview({trail_id}) {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const [show, setShow] = useState(false);
   const [star, setStar] = useState(0);
   const [comment, setComment] = useState("");
@@ -14,7 +14,7 @@ export default function AddReview({trail_id}) {
 
   const handleShow = () => {
     if (!isAuthenticated) {
-      alert("Please Login");
+      loginWithRedirect({ appState: { returnTo: window.location.pathname } });
       return;
     }
     setShow(true)
@@ -30,7 +30,6 @@ export default function AddReview({trail_id}) {
         comment: comment,
         date: date,
       };
-      console.log(newreview);
       const response = await fetch("/api/reviews/add", {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -60,7 +59,7 @@ export default function AddReview({trail_id}) {
             <Rating
               name="size-large"
               size="large"
-              defaultValue={0}
+              defaultValue={5}
               onChange={(event, newValue) => {
                 setStar(newValue);
               }}

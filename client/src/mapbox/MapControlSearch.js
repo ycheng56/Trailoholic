@@ -40,7 +40,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Map.css";
 import { FaAngleDown } from "react-icons/fa";
-import { fetchAllTrails } from "../api/API";
 
 function MapControlSearch() {
   let navigate = useNavigate();
@@ -407,8 +406,6 @@ function MapControlSearch() {
                 onResults={() => {}}
               />
             )}
-
-            {/* <Marker longitude={marker[0]} latitude={marker[1]} /> */}
 
             {startMarker && (
               <Marker

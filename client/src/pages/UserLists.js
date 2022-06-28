@@ -88,13 +88,14 @@ function UserLists() {
 
   return (
     <div id="UserList-Page">
-      <div className="row align-items-center profile-header">
+      <div className="align-items-center profile-header">
         <h1>❤ My Favorite Trails</h1>
         <div className="list-cards col-md text-center text-md-left">
           <div className="cards">
             {trails.map((trail) => (
               <TrailCardOfUser key={trail?._id} trail={trail} onDelete={deleteClicked} />
             ))}
+            {trails.length === 0 && <p>You haven't add any trail to your list.</p>}
           </div>
         </div>
       </div>

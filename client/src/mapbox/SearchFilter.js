@@ -1,7 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import { Form, Button } from "react-bootstrap";
-// import "./Map.css";
 
 function SearchFilter({ trails, setFiltered, setResult }) {
   const [geoData, setGeoData] = useState(null);
@@ -21,7 +19,6 @@ function SearchFilter({ trails, setFiltered, setResult }) {
   }, []);
 
   const onResult = useCallback((e) => {
-    console.log("on result");
     const { result } = e;
     const location =
       result &&

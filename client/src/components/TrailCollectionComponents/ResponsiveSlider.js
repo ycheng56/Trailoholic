@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -46,7 +46,7 @@ export default function ResponsiveSlider({list}) {
   return (
     <div className="slider-wrapper">
       <Slider {...settings}>
-        {list.map((item)=>
+        {list.slice(0,8).map((item)=>
           <PopularHikingTrail key={item._id} trail={item}/>
         )}
       </Slider>

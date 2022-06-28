@@ -3,7 +3,7 @@
     min-width: 5rem;
     border:none;
     background: white;
-    color:rgb(65, 168, 118);
+    color:rgb(33, 118, 77);
     border:2px solid rgb(65, 36, 53);
     border-radius: 1rem;
     font-weight: bold;
@@ -11,11 +11,11 @@
 }
 
 .filter-container  button:hover{
-    background:rgb(152, 182, 167);
+    background:rgb(33, 118, 77);
     color:white;
 }
 
 .filter-container button:focus{
-    background:rgb(65, 168, 118);
+    background:rgb(33, 118, 77);
     color:white;
 }

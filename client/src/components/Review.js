@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { fetchUser } from "../api/API";
-import { useAuth0 } from "@auth0/auth0-react";
 import Avatar from "react-avatar";
 import "./css/Review.css";
 import { Rating } from "@mui/material";
 
 export default function Review({ review }) {
-  //   const [review, setReview]= useState(review);
   const [user, setUser] = useState(null);
-  const [star, setStar] = useState(3);
 
   useEffect(() => {
     const getUser = async () => {

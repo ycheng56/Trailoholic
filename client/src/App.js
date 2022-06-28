@@ -14,14 +14,11 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import TrialsMap from "./pages/TrailsMap"
 import SearchPage from "./pages/SearchPage";
 import AddTrail from "./pages/AddTrail";
-import AddTrail2 from "./pages/AddTrail2";
-import GeoSearch from "./mapbox/GeoSearch"
 
 function App() {
-  const { isLoading } = useAuth0();
+  const {isLoading } = useAuth0();
   const location=useLocation();
-  const hideFooter = location.pathname.includes("/map") || location.pathname === "/addtrail"
-  // const hideFooter =  location.pathname === "/addtrail"
+  const hideFooter = location.pathname.includes("/map") || location.pathname === "/addtrail";
 
   if (isLoading) {
     return <Loading />;
@@ -31,7 +28,6 @@ function App() {
     <div className="App">
       <Banner />
       <AppRouter />
-      {/* <Footer /> */}
       {!hideFooter && <Footer />}
       
     </div>
@@ -46,14 +42,12 @@ function AppRouter() {
       <Route path="/trails/map" element={<TrialsMap />} />
       <Route path="/trails/map/:trailType" element={<TrialsMap />} />
       <Route path="trails/:trailId" element={<TrailDetails />} />
+      <Route path="/addtrail" element={<ProtectedRoute Component={AddTrail} />} />
       <Route path="/user/profile" element={<ProtectedRoute Component={UserProfile} />} />
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="/trails/search" element={<SearchPage/>}/>
       <Route path="/trails/search/:searchCriteria" element={<SearchPage/>}/>
       <Route path="*" element={<p>This page isn't available. Sorry about that. </p>} />
-      <Route path="/addtrail" element={<AddTrail />} />
-      <Route path="/addtrail2" element={<AddTrail2 />} />
-      <Route path="/search" element={<GeoSearch />} />
     </Routes>
   );
 }

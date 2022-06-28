@@ -11,27 +11,22 @@ import {
   FaRoad,
   FaRegClock,
 } from "react-icons/fa";
-import MapSinglePoint from "../mapbox/MapSinglePoint";
-import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
 import MapSingleTrail from "../mapbox/MapSingleTrail";
 import ReviewPanel from "../components/ReviewPanel";
-import { Button, Form } from "react-bootstrap";
 import AddReview from "../components/AddReview";
 import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
 
 export default function TrailDetails() {
   let navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated,loginWithRedirect } = useAuth0();
   const { trailId } = useParams();
   const [trails, setTrails] = useState([]);
   const [userLists, setUserLists] = useState([]);
   const [instruction, setInstruction] = useState([]);
-  const [Lng, setLng ] = useState(0);
+  const [Lng, setLng] = useState(0);
   const [Lat, setLat] = useState(0);
   const [nearBy, setNearBy] = useState([]);
   const [like, setLike] = useState(0);
-
-
 
   useEffect(() => {
     async function fetchTrails() {
@@ -72,7 +67,7 @@ export default function TrailDetails() {
 
   async function addToList() {
     if (!isAuthenticated) {
-      alert("Please Login");
+      loginWithRedirect({ appState: { returnTo: window.location.pathname } })
       return;
     }
 
@@ -117,7 +112,9 @@ export default function TrailDetails() {
   useEffect(() => {
     async function fetchNearByTrail() {
       try {
-        const response = await fetch(`/api/search/trails?lng=${Lng}&lat=${Lat}`);
+        const response = await fetch(
+          `/api/search/trails?lng=${Lng}&lat=${Lat}`
+        );
         if (!response.ok) {
           throw Error("Fetch failed");
         }
@@ -129,7 +126,6 @@ export default function TrailDetails() {
     }
     fetchNearByTrail();
   }, [Lng]);
-
 
   async function removeFromList() {
     const deletedId = trailId;
@@ -170,8 +166,7 @@ export default function TrailDetails() {
 
   return (
     <div className="detail-wrapper">
-      <div id="detail-landing">
-      </div>
+      <div id="detail-landing"></div>
 
       {/* <div className="detail-img">
         <img
@@ -188,7 +183,6 @@ export default function TrailDetails() {
           <a href="#reviews">REVIEWS</a>
           <a href="#detail-nearby">WHAT'S NEARBY</a>
         </div>
-        
 
         <div className="detail-type" id="detail-type">
           <h1>TRAIL DETAIL</h1>
@@ -217,27 +211,28 @@ export default function TrailDetails() {
         <div className="detail-instruction" id="detail-instruction">
           <h1>INSTRUCTION</h1>
           <div className="detail-instruction-place">
-          <p>
-            <strong>Starting Point: {trails.start?.["text_en"]}</strong>
-          </p>
-          <p>{trails.start?.["place_name_en"]}</p>
+            <p>
+              <strong>Starting Point: {trails.start?.["text_en"]}</strong>
+            </p>
+            <p>{trails.start?.["place_name_en"]}</p>
           </div>
 
           <div className="detail-instruction-place">
-          <p>
-            <strong>Destination: {trails.destination?.["text_en"]}</strong>
-          </p>
-          <p>{trails.destination?.["place_name_en"]}</p>
+            <p>
+              <strong>Destination: {trails.destination?.["text_en"]}</strong>
+            </p>
+            <p>{trails.destination?.["place_name_en"]}</p>
           </div>
 
-
           <p>
-            {instruction.map((item, index) => (
-              <li key={index}>
-                <FaDirections className="direction-icon" />
-                {item}
-              </li>
-            ))}
+            <ul>
+              {instruction.map((item, index) => (
+                <li key={index}>
+                  <FaDirections className="direction-icon" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </p>
 
           <div className="addlist">
@@ -284,9 +279,7 @@ export default function TrailDetails() {
 
         <div className="detail-nearby" id="detail-nearby">
           <h1>What's Nearby</h1>
-          {nearBy && <ResponsiveSlider
-            list={[...nearBy]}
-          ></ResponsiveSlider>}
+          {nearBy && <ResponsiveSlider list={[...nearBy]}></ResponsiveSlider>}
           <br />
         </div>
       </main>

@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { FaEdit, FaEnvelope, FaUser, FaVoicemail } from "react-icons/fa";
+import { FaEnvelope, FaUser } from "react-icons/fa";
 import "./css/Profile.css";
-import Avatar from "react-avatar";
 import { Row, Col, Form, Button } from "react-bootstrap";
 
 function UserProfile() {
   const { user } = useAuth0();
   const [description, setDescription] = useState("");
   const [userName, setUserName] = useState("");
-
-  // shwoForm state, show/hide components in this page
-  const [showForm, setShowForm] = useState(false);
-
-  const toggleShowForm = () => {
-    setShowForm(!showForm);
-  };
 
   // GET user description data from db.
   useEffect(() => {
@@ -49,7 +41,7 @@ function UserProfile() {
       if (!response.ok) {
         throw Error("Request failed");
       }
-      // toggleShowForm();
+      refreshPage();
     } catch (err) {
       console.log(err);
     }
@@ -72,90 +64,49 @@ function UserProfile() {
     fetchUserName();
   }, [user]);
 
-
   const refreshPage = () => {
     window.location.reload(false);
   };
 
   return (
     <div className="profile-wrapper" id="UserProfile-Page">
-    <Row className="justify-content-md-center">
-      <Col className="profile-Img " xs="12" md="4" lg="3">
-          <img
-            src={user?.picture}
-            alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
-          <Row><Col><FaUser />
-            UserName:{user?.nickname}</Col></Row>
-          <Row><Col> <FaEnvelope />
-            Email:{user?.email}</Col></Row>
-
-      </Col>
-
-      {/* <div className="row align-items-center profile-header">
-        
-        <div className="profile-avatar col-md-2 mb-3">
-        <Avatar 
-        className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-        name={user?.nickname}></Avatar>
-          <h1>{user?.nickname}</h1>
-        </div>
-
-        <div className="profile-avatar col-md-2 mb-3">
-          <img
-            src={user?.picture}
-            alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
-          <h1>{user?.nickname}</h1>
-        </div>
-        
-        <div className="userProfileDetail col-md text-center text-md-left">
-          <h2>Email</h2>
-          <p className="lead text-muted">{user?.email}</p>
-          <hr/>
-          <h2>Location</h2>
-          <p className="lead text-muted">
-            {user?.["https://localhost:5000/country"]}
-          </p>
-          <hr/>
-          <h2>Time Zone</h2>
-          <p className="lead text-muted">
-            {user?.["https://localhost:5000/timezone"]}
-          </p>
-          <hr/>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <h2>About Me</h2>
-            {!showForm && <FaEdit onClick={toggleShowForm} /> }
-          </div>
-
-          {!showForm && <p className="lead text-muted">{description}</p>}
-
-          {showForm && (
-            <form onSubmit={handleSubmit}>
-              <div className="form-control d-flex flex-column justify-content-center">
-                <textarea
-                  required
-                  rows="5"
-                  className="lead text-muted"
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-                <input  className="btn-secondary" type="submit" value="Save" />
+      <Row className="justify-content-md-center">
+        <Col className="profile-Img " xs="12" md="4" lg="3">
+          <Row>
+            <img
+              src={user?.picture}
+              alt="Profile"
+              className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
+            />
+          </Row>
+          <Row>
+            <Row>
+              <div className="profile-header-icon">
+                <FaUser />
+                Username
               </div>
-            </form>            
-          )}
-        </div>
-      </div> */}
-      <Col className="profile-form"  xs={12} md={8} lg={9}>
+            </Row>
+            <Row>{user?.nickname}</Row>
+          </Row>
+
+          <Row>
+            <Row>
+              <div className="profile-header-icon">
+                <FaEnvelope />
+                Email
+              </div>
+            </Row>
+            <Row>{user?.email}</Row>
+          </Row>
+        </Col>
+
+        <Col className="profile-form" xs={12} md={8} lg={9}>
           <Form onSubmit={handleSubmit}>
             <Row>
               <Col md={{ span: 5 }}>
                 <Form.Group>
                   <medium>
-                    <Form.Label>UserName</Form.Label>
+                    <Form.Label>Nickname</Form.Label>
                   </medium>
                   <Form.Control
                     type="username"
@@ -164,7 +115,7 @@ function UserProfile() {
                     onChange={(e) => setUserName(e.target.value)}
                   ></Form.Control>
                   <Form.Text className="text-muted">
-                    Edit your username here
+                    Edit your nickname here
                   </Form.Text>
                 </Form.Group>
               </Col>
@@ -178,7 +129,7 @@ function UserProfile() {
             <Row>
               <Col md={{ span: 5 }}>
                 <medium>
-                  <Form.Label>TimeZone</Form.Label>
+                  <Form.Label>Time Zone</Form.Label>
                 </medium>
                 <Form.Control
                   placeholder={user?.["https://localhost:5000/timezone"]}
@@ -228,7 +179,7 @@ function UserProfile() {
               </Col>
             </Row>
           </Form>
-      </Col>
+        </Col>
       </Row>
     </div>
   );

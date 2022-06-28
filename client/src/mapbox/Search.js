@@ -22,7 +22,6 @@ function Search() {
   }, []);
 
   const onResult = useCallback((e) => {
-    console.log("on result")
     const { result } = e;
     const location =
       result &&

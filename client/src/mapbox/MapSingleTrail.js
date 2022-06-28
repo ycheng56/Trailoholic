@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
-// import "./pages/css/Map.css";
+import React, { useEffect, useState } from "react";
 import MapGL, {
   Marker,
   NavigationControl,

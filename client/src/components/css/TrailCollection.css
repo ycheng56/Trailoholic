@@ -1,7 +1,3 @@
-body{
-    margin: 2rem;
-}
-
 .card{
     overflow: hidden;
     box-shadow: 0 2px 5px grey;
@@ -43,7 +39,7 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    color: gray;
+    color: rgb(83, 83, 83);
 }
 
 .card-description span {
@@ -80,24 +76,32 @@ body{
 .slider-wrapper {
     margin: 1rem auto;
 }
+
 .slick-slide {
     padding: 5px 10px;
 }
 
-.slick-slide > button {
-    border: 1px red solid;
-}
+
 .slick-list {
     margin-top: 1rem;
 }
 
 .slick-prev:before, .slick-next:before {
-    opacity: 0.5 !important;
+    /* opacity: 0.5 !important; */
     color: black !important;
+}
+
+@media (max-width: 1300px){
+    .card-description {
+        font: 0.9em sans-serif;
+    }
 }
 
 @media (max-width: 1024px){
     .card {
+        font: 0.9em sans-serif;
+    }
+    .card-description {
         font: 0.9em sans-serif;
     }
 }

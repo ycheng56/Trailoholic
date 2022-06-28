@@ -1,12 +1,8 @@
-import Card from "react-bootstrap/Card";
 import "./css/TrailCards.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaTimes, FaBiking, FaWalking } from "react-icons/fa";
-import { Row, Col } from "react-bootstrap";
-import { FaBicycle } from "react-icons/fa";
-import { FaHiking } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
+import { FaTimes,FaBicycle,FaHiking,FaStar} from "react-icons/fa";
+
 export default function TrailCardOfUser({ trail, onDelete }) {
   const num = trail?.image;
   const picNum = num % 5;
@@ -14,36 +10,9 @@ export default function TrailCardOfUser({ trail, onDelete }) {
   const cyclePicUri = "cycling_" + picNum + ".jpg";
   return (
     <div className="userList-wrapper">
-      {/* <Card border="success" style={{ width: "80%" }}>
-        <Card.Header className="headerDeleteIcon">
-          <FaTimes onClick={() => onDelete(trail._id)} />
-        </Card.Header>
-        <Row>
-          <Col>
-            {trail?.mode==="cycling"?
-             <FaBiking style={{ fontSize: "8rem" }}></FaBiking>
-             :
-             <FaWalking style={{ fontSize: "8rem" }}></FaWalking>
-            }
-          </Col>
-          <Col>
-            <Card.Body>
-              <Card.Title>{trail?.start["text_en"]}</Card.Title>
-              <Card.Text>
-                <Link to={`/trails/${trail?._id}`}>View Trail Details</Link>
-              </Card.Text>
-              <div>
-                <p>mode:{trail?.mode}</p>
-                <p>duration:{trail?.duration} minutes</p>
-              </div>
-            </Card.Body>
-          </Col>
-        </Row>
-      </Card> */}
       <div className="userList-card">
           <div className="userList-card-body">
             <div className="userList-deleteBtn">
-            Remove
               <FaTimes onClick={() => onDelete(trail._id)} />
             </div>
             <Link

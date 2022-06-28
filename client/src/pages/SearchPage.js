@@ -1,24 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import TrailCard from "../components/TrailCard";
-import SearchResultCard from "../components/SearchResultCard";
-import { Pagination } from "@mui/material";
-import TrailCardOfUser from "../components/TrailCardOfUser";
 import SearchResult from "../components/TrailCollectionComponents/SearchResult";
 
 export default function SearchPage() {
   const { searchCriteria } = useParams();
   const [trails, setTrails] = useState([]);
-  console.log(searchCriteria);
   const [location, setLocation] = useState("");
 
   useEffect(() => {
     async function fetchTrails() {
       try {
         const response = await fetch(`/api/search/trails?${searchCriteria}`);
-        //   console.log(searchCriteria);
-        //   console.log(response)
         if (!response.ok) {
           throw Error("Fetch failed");
         }
@@ -40,6 +33,7 @@ export default function SearchPage() {
         <SearchResult key={item._id} trail={item} />
       ))}
       {/* <Pagination count={2} /> */}
+      {trails.length === 0 && <p>No result.</p>}
     </div>
   );
 }
