@@ -18,7 +18,7 @@ import ResponsiveSlider from "../components/TrailCollectionComponents/Responsive
 
 export default function TrailDetails() {
   let navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated,loginWithRedirect } = useAuth0();
   const { trailId } = useParams();
   const [trails, setTrails] = useState([]);
   const [userLists, setUserLists] = useState([]);
@@ -67,7 +67,7 @@ export default function TrailDetails() {
 
   async function addToList() {
     if (!isAuthenticated) {
-      alert("Please Login");
+      loginWithRedirect({ appState: { returnTo: window.location.pathname } })
       return;
     }
 
