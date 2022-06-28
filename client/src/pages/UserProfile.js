@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { FaEdit, FaEnvelope, FaUser, FaVoicemail } from "react-icons/fa";
+import { FaEnvelope, FaUser } from "react-icons/fa";
 import "./css/Profile.css";
-import Avatar from "react-avatar";
 import { Row, Col, Form, Button } from "react-bootstrap";
 
 function UserProfile() {
   const { user } = useAuth0();
   const [description, setDescription] = useState("");
   const [userName, setUserName] = useState("");
-
-  // shwoForm state, show/hide components in this page
-  const [showForm, setShowForm] = useState(false);
-
-  const toggleShowForm = () => {
-    setShowForm(!showForm);
-  };
 
   // GET user description data from db.
   useEffect(() => {
@@ -81,11 +73,11 @@ function UserProfile() {
       <Row className="justify-content-md-center">
         <Col className="profile-Img " xs="12" md="4" lg="3">
           <Row>
-          <img
-            src={user?.picture}
-            alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
+            <img
+              src={user?.picture}
+              alt="Profile"
+              className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
+            />
           </Row>
           <Row>
             <Row>

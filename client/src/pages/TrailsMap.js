@@ -4,15 +4,7 @@ import TrailCards from "../components/TrailCards";
 import Filter from "../components/Filter";
 import "./css/TrailMap.css";
 import SearchFilter from "../mapbox/SearchFilter";
-import {
-  Row,
-  Col,
-  Form,
-  Button,
-  FloatingLabel,
-  FormText,
-  Collapse,
-} from "react-bootstrap";
+import {Row,Col} from "react-bootstrap";
 import { FaThList, FaMapMarkedAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
