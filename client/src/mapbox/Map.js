@@ -51,7 +51,7 @@ function Map({ trails }) {
             color="red"
             aria-label="Map marker"
           >
-            1
+            
           </Marker>
 
           {showPopup[entry._id] ? (
