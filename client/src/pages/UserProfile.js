@@ -108,62 +108,6 @@ function UserProfile() {
           </Row>
         </Col>
 
-        {/* <div className="row align-items-center profile-header">
-        
-        <div className="profile-avatar col-md-2 mb-3">
-        <Avatar 
-        className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-        name={user?.nickname}></Avatar>
-          <h1>{user?.nickname}</h1>
-        </div>
-
-        <div className="profile-avatar col-md-2 mb-3">
-          <img
-            src={user?.picture}
-            alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
-          <h1>{user?.nickname}</h1>
-        </div>
-        
-        <div className="userProfileDetail col-md text-center text-md-left">
-          <h2>Email</h2>
-          <p className="lead text-muted">{user?.email}</p>
-          <hr/>
-          <h2>Location</h2>
-          <p className="lead text-muted">
-            {user?.["https://localhost:5000/country"]}
-          </p>
-          <hr/>
-          <h2>Time Zone</h2>
-          <p className="lead text-muted">
-            {user?.["https://localhost:5000/timezone"]}
-          </p>
-          <hr/>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <h2>About Me</h2>
-            {!showForm && <FaEdit onClick={toggleShowForm} /> }
-          </div>
-
-          {!showForm && <p className="lead text-muted">{description}</p>}
-
-          {showForm && (
-            <form onSubmit={handleSubmit}>
-              <div className="form-control d-flex flex-column justify-content-center">
-                <textarea
-                  required
-                  rows="5"
-                  className="lead text-muted"
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-                <input  className="btn-secondary" type="submit" value="Save" />
-              </div>
-            </form>            
-          )}
-        </div>
-      </div> */}
         <Col className="profile-form" xs={12} md={8} lg={9}>
           <Form onSubmit={handleSubmit}>
             <Row>

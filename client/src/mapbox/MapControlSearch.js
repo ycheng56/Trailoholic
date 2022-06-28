@@ -408,8 +408,6 @@ function MapControlSearch() {
               />
             )}
 
-            {/* <Marker longitude={marker[0]} latitude={marker[1]} /> */}
-
             {startMarker && (
               <Marker
                 color="red"

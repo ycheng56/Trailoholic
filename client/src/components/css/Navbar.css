@@ -6,9 +6,6 @@
     font-size:large;
 }
 
-
-
-
 button{
     font-family: 'Roboto', sans-serif;
 }
@@ -17,20 +14,8 @@ button{
     width: 8%;
 }
 
-/* footer .footer-row {
-    height: 100%;
-    margin: auto;
-}
-
-footer .logo-column {
-    object-fit: contain;
-    max-width:100%;
-    max-height:100%;  
-} */
-
-
 footer{
-    height: 10rem;
+    /* height: 10rem; */
     position: absolute;
     bottom:0;
     font-family: 'Roboto', sans-serif;

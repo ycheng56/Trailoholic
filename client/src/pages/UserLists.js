@@ -88,7 +88,7 @@ function UserLists() {
 
   return (
     <div id="UserList-Page">
-      <div className="row align-items-center profile-header">
+      <div className="align-items-center profile-header">
         <h1>❤ My Favorite Trails</h1>
         <div className="list-cards col-md text-center text-md-left">
           <div className="cards">

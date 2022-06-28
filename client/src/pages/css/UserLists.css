@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
 
+
+.UserList-Page .row {
+    margin: 0;
+}
 .profile-header{
     margin: auto;
 

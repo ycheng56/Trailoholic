@@ -1,6 +1,6 @@
-body{
+/* body{
     margin: 2rem;
-}
+} */
 
 .card{
     overflow: hidden;
@@ -80,13 +80,12 @@ body{
 .slider-wrapper {
     margin: 1rem auto;
 }
+
 .slick-slide {
     padding: 5px 10px;
 }
 
-.slick-slide > button {
-    border: 1px red solid;
-}
+
 .slick-list {
     margin-top: 1rem;
 }
