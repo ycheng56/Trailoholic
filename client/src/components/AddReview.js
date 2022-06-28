@@ -60,7 +60,7 @@ export default function AddReview({trail_id}) {
             <Rating
               name="size-large"
               size="large"
-              defaultValue={0}
+              defaultValue={5}
               onChange={(event, newValue) => {
                 setStar(newValue);
               }}

@@ -54,7 +54,7 @@ export default function SearchResult({ trail }) {
                   <span>{trail?.difficulty}</span>
                   <span> • </span>
                   <FaStar color="#f5d24c" className="star"></FaStar>
-                  <span> 523 </span>
+                  <span> {trail?.like} </span>
                 </div>
 
                 <div className="search-card-description">

@@ -18,7 +18,7 @@ import AddTrail2 from "./pages/AddTrail2";
 import GeoSearch from "./mapbox/GeoSearch"
 
 function App() {
-  const { isLoading } = useAuth0();
+  const {user, isAuthenticated, isLoading } = useAuth0();
   const location=useLocation();
   const hideFooter = location.pathname.includes("/map") || location.pathname === "/addtrail"
   // const hideFooter =  location.pathname === "/addtrail"

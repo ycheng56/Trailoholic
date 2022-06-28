@@ -81,7 +81,7 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Local Favorites near Vancouver</h1>
-              <a className="section-header-link" href="/trails">
+              <a className="section-header-link" href="/trails/map">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
               </a>

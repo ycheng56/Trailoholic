@@ -40,6 +40,7 @@ export default function SearchPage() {
         <SearchResult key={item._id} trail={item} />
       ))}
       {/* <Pagination count={2} /> */}
+      {trails.length === 0 && <p>No result.</p>}
     </div>
   );
 }

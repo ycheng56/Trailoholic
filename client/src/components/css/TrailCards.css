@@ -60,7 +60,7 @@
 
 .userList-deleteBtn{
     float: right;
-    padding: 2% 4% 0 0;
+    padding: 2% 4% 0 1%;
     color:rgb(2, 51, 2)
 }
 
@@ -73,6 +73,13 @@
     line-height: 2rem;
 }
 
+@media (max-width: 1300px){
+    .cards-collection .card-description {
+        font-size: 0.8rem;
+    }
+
+}
+
 @media (max-width: 1024px){
     .userList-wrapper {
         font: 0.9em sans-serif;
@@ -83,9 +90,10 @@
 
     .userList-wrapper {
         font: 0.6em sans-serif;
+        margin: auto 10% 2% 10%;
     }
 
     .cards-collection .card {
-        margin: 2em 5em;
+        margin: 2em 4em;
     }
 }

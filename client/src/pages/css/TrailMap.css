@@ -46,4 +46,24 @@
     flex-direction: column;
 }
 
+
+/* @media (max-width: 1920px){
+    .trailWrapper .card-description {
+        font: 0.9em sans-serif;
+    }
+} */
+
+
+/* @media (max-width: 1024px){
+    .trailWrapper .card-description {
+        font: 0.8em sans-serif;
+    }
+}
+
+@media (max-width: 768px){
+
+    .trailWrapper .card-description {
+        font: 0.6em sans-serif;
+    }
+} */
   

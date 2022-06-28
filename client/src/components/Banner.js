@@ -13,8 +13,8 @@ export default function Banner() {
     <div>
       <Navbar className="navbar" bg="light" expand="lg" sticky="top">
         <Container>
-          <Navbar.Brand href="/">Trailoholic</Navbar.Brand>
-          <img to="/" src={process.env.PUBLIC_URL + "/images/logo_1.png"} alt="logo" className="banner-logo"></img>
+          <Navbar.Brand aria-label="home page" href="/">Trailoholic</Navbar.Brand>
+          <img to="/" aria-label="home page" src={process.env.PUBLIC_URL + "/images/logo_1.png"} alt="logo" className="banner-logo"></img>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -24,13 +24,13 @@ export default function Banner() {
               <Nav.Link as={Link} to="/search">Search</Nav.Link>
             </Nav>
 
-            <LinkContainer to="/">
+            {/* <LinkContainer to="/">
               <Navbar.Brand></Navbar.Brand>
-            </LinkContainer>
+            </LinkContainer> */}
                         
             <Nav>
               {isAuthenticated && (
-                <NavDropdown title="My Account" id="basic-nav-dropdown">
+                <NavDropdown aria-label="User Account" title="My Account" id="basic-nav-dropdown">
                   <NavDropdown.Item as={Link} to="/user/profile">
                     Profile
                   </NavDropdown.Item>

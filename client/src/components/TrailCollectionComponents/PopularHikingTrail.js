@@ -13,7 +13,7 @@ export default function PopularHikingTrail({ trail }) {
   const cyclePicUri = "cycling_"+picNum+".jpg";
   return (
     <div className="card landingpage-card">
-      <Link style={{textDecoration:"none", color:"inherit"}} to={`/trails/${trail?._id}`}>
+      <a style={{textDecoration:"none", color:"inherit"}} href={`/trails/${trail?._id}`}>
       <div className="card-body">
       {(trail?.mode === "cycling")?<img src={process.env.PUBLIC_URL + "/images/"+cyclePicUri}
           alt="pic"
@@ -46,7 +46,7 @@ export default function PopularHikingTrail({ trail }) {
           <span>Time: {trail?.duration} m</span>
         </div>
       </div>
-      </Link>
+      </a>
     </div>
   );
 }

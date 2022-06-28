@@ -49,7 +49,7 @@ function UserProfile() {
       if (!response.ok) {
         throw Error("Request failed");
       }
-      // toggleShowForm();
+      refreshPage();
     } catch (err) {
       console.log(err);
     }
@@ -72,28 +72,43 @@ function UserProfile() {
     fetchUserName();
   }, [user]);
 
-
   const refreshPage = () => {
     window.location.reload(false);
   };
 
   return (
     <div className="profile-wrapper" id="UserProfile-Page">
-    <Row className="justify-content-md-center">
-      <Col className="profile-Img " xs="12" md="4" lg="3">
+      <Row className="justify-content-md-center">
+        <Col className="profile-Img " xs="12" md="4" lg="3">
+          <Row>
           <img
             src={user?.picture}
             alt="Profile"
             className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
           />
-          <Row><Col><FaUser />
-            UserName:{user?.nickname}</Col></Row>
-          <Row><Col> <FaEnvelope />
-            Email:{user?.email}</Col></Row>
+          </Row>
+          <Row>
+            <Row>
+              <div className="profile-header-icon">
+                <FaUser />
+                Username
+              </div>
+            </Row>
+            <Row>{user?.nickname}</Row>
+          </Row>
 
-      </Col>
+          <Row>
+            <Row>
+              <div className="profile-header-icon">
+                <FaEnvelope />
+                Email
+              </div>
+            </Row>
+            <Row>{user?.email}</Row>
+          </Row>
+        </Col>
 
-      {/* <div className="row align-items-center profile-header">
+        {/* <div className="row align-items-center profile-header">
         
         <div className="profile-avatar col-md-2 mb-3">
         <Avatar 
@@ -149,13 +164,13 @@ function UserProfile() {
           )}
         </div>
       </div> */}
-      <Col className="profile-form"  xs={12} md={8} lg={9}>
+        <Col className="profile-form" xs={12} md={8} lg={9}>
           <Form onSubmit={handleSubmit}>
             <Row>
               <Col md={{ span: 5 }}>
                 <Form.Group>
                   <medium>
-                    <Form.Label>UserName</Form.Label>
+                    <Form.Label>Nickname</Form.Label>
                   </medium>
                   <Form.Control
                     type="username"
@@ -164,7 +179,7 @@ function UserProfile() {
                     onChange={(e) => setUserName(e.target.value)}
                   ></Form.Control>
                   <Form.Text className="text-muted">
-                    Edit your username here
+                    Edit your nickname here
                   </Form.Text>
                 </Form.Group>
               </Col>
@@ -178,7 +193,7 @@ function UserProfile() {
             <Row>
               <Col md={{ span: 5 }}>
                 <medium>
-                  <Form.Label>TimeZone</Form.Label>
+                  <Form.Label>Time Zone</Form.Label>
                 </medium>
                 <Form.Control
                   placeholder={user?.["https://localhost:5000/timezone"]}
@@ -228,7 +243,7 @@ function UserProfile() {
               </Col>
             </Row>
           </Form>
-      </Col>
+        </Col>
       </Row>
     </div>
   );

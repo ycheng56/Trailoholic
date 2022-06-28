@@ -95,6 +95,7 @@ function UserLists() {
             {trails.map((trail) => (
               <TrailCardOfUser key={trail?._id} trail={trail} onDelete={deleteClicked} />
             ))}
+            {trails.length === 0 && <p>You haven't add any trail to your list.</p>}
           </div>
         </div>
       </div>
