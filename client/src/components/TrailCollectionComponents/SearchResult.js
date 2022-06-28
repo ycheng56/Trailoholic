@@ -7,7 +7,6 @@ import "../css/Search.css";
 
 export default function SearchResult({ trail }) {
   const num = trail?.image;
-  console.log(num);
   const picNum = num % 5;
   const hikePicUri = "trail_" + picNum + ".jpg";
   const cyclePicUri = "cycling_" + picNum + ".jpg";

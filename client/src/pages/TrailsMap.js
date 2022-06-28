@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import "../mapbox/Map.css";
 import Map from "../mapbox/Map";
 import TrailCards from "../components/TrailCards";
 import Filter from "../components/Filter";
-// import SearchTrails from "../components/SearchTrails";
-// import { Collapse } from "react-bootstrap";
-// import { ExpandMore } from "@mui/icons-material";
 import "./css/TrailMap.css";
 import SearchFilter from "../mapbox/SearchFilter";
 import {

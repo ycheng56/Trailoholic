@@ -11,11 +11,8 @@ import {
   FaRoad,
   FaRegClock,
 } from "react-icons/fa";
-import MapSinglePoint from "../mapbox/MapSinglePoint";
-import PopularHikingTrail from "../components/TrailCollectionComponents/PopularHikingTrail";
 import MapSingleTrail from "../mapbox/MapSingleTrail";
 import ReviewPanel from "../components/ReviewPanel";
-import { Button, Form } from "react-bootstrap";
 import AddReview from "../components/AddReview";
 import ResponsiveSlider from "../components/TrailCollectionComponents/ResponsiveSlider";
 

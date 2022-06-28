@@ -37,7 +37,7 @@ footer .logo-column {
 
 
 footer img{
-    max-width: min(100%,10rem); /* or any custom size */
+    max-width: min(100%,10rem);
     max-height: min(100%,10rem); 
     object-fit: contain;
 }

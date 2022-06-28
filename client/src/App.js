@@ -14,15 +14,11 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import TrialsMap from "./pages/TrailsMap"
 import SearchPage from "./pages/SearchPage";
 import AddTrail from "./pages/AddTrail";
-import AddTrail2 from "./pages/AddTrail2";
-import GeoSearch from "./mapbox/GeoSearch"
-import Test from "./pages/Test"
 
 function App() {
   const {isLoading } = useAuth0();
   const location=useLocation();
-  const hideFooter = location.pathname.includes("/map") || location.pathname === "/addtrail"
-  // const hideFooter =  location.pathname === "/addtrail"
+  const hideFooter = location.pathname.includes("/map") || location.pathname === "/addtrail";
 
   if (isLoading) {
     return <Loading />;
@@ -51,7 +47,6 @@ function AppRouter() {
       <Route path="/user/lists" element={<ProtectedRoute Component={UserLists} />} />
       <Route path="/trails/search" element={<SearchPage/>}/>
       <Route path="/trails/search/:searchCriteria" element={<SearchPage/>}/>
-      <Route path="/test" element={<Test/>} />
       <Route path="*" element={<p>This page isn't available. Sorry about that. </p>} />
     </Routes>
   );

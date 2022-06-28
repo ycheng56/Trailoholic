@@ -21,12 +21,7 @@ export default function Banner() {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/trails/map">Explore</Nav.Link>
               <Nav.Link as={Link} to="/addtrail">Add Trail</Nav.Link>
-              <Nav.Link as={Link} to="/search">Search</Nav.Link>
             </Nav>
-
-            {/* <LinkContainer to="/">
-              <Navbar.Brand></Navbar.Brand>
-            </LinkContainer> */}
                         
             <Nav>
               {isAuthenticated && (
@@ -37,8 +32,6 @@ export default function Banner() {
                   <NavDropdown.Item as={Link} to="/user/lists">
                     My List
                   </NavDropdown.Item>
-                  {/* <NavDropdown.Divider /> */}
-                  {/* <NavDropdown.Item  onClick={logout}>Log Out</NavDropdown.Item> */}
                 </NavDropdown>
               )}
 

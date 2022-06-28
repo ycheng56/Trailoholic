@@ -1,12 +1,8 @@
-import Card from "react-bootstrap/Card";
 import "./css/TrailCards.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaTimes, FaBiking, FaWalking } from "react-icons/fa";
-import { Row, Col } from "react-bootstrap";
-import { FaBicycle } from "react-icons/fa";
-import { FaHiking } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
+import { FaTimes,FaBicycle,FaHiking,FaStar} from "react-icons/fa";
+
 export default function TrailCardOfUser({ trail, onDelete }) {
   const num = trail?.image;
   const picNum = num % 5;

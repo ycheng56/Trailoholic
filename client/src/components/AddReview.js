@@ -30,7 +30,6 @@ export default function AddReview({trail_id}) {
         comment: comment,
         date: date,
       };
-      console.log(newreview);
       const response = await fetch("/api/reviews/add", {
         method: "POST",
         headers: { "Content-type": "application/json" },
