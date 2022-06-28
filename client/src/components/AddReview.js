@@ -6,7 +6,7 @@ import { Rating } from "@mui/material";
 export default function AddReview({trail_id}) {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const [show, setShow] = useState(false);
-  const [star, setStar] = useState(0);
+  const [star, setStar] = useState(5);
   const [comment, setComment] = useState("");
   const handleClose = () => setShow(false);
   var date = new Date().toLocaleDateString();
@@ -17,7 +17,7 @@ export default function AddReview({trail_id}) {
       loginWithRedirect({ appState: { returnTo: window.location.pathname } });
       return;
     }
-    setShow(true)
+    setShow(true);
     }
 
   const handleSubmit = async (e) => {
@@ -39,6 +39,7 @@ export default function AddReview({trail_id}) {
         throw Error("Request failed");
       }
       handleClose();
+      window.location.reload(false);
     } catch (err) {
       console.log(err);
     }
