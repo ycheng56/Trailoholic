@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500");
+
+.cards-collection {
+  padding-left: 2%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.cards-collection .card {
+  margin: 2em 1em;
+}
+
+/* userList-TrailCardOfUser-new */
+.userList-wrapper {
+  overflow: hidden;
+  box-shadow: 0 2px 5px grey;
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+  margin: auto 20% 2% 20%;
+}
+.userList-detail {
+  display: grid;
+  grid-template-columns: 36% 65%;
+}
+.userList-wrapper .card-img {
+  height: 80%;
+  width: 100%;
+  object-fit: cover;
+}
+.userList-Img {
+  margin: auto;
+  padding: 1rem;
+}
+.userList-card-title {
+  padding-bottom: 10%;
+  font-size: 120%;
+}
+
+.userList-deleteBtn {
+  float: right;
+  padding: 2% 4% 0 1%;
+  color: rgb(2, 51, 2);
+}
+
+.userList-detailInfo {
+  margin: auto auto auto 5%;
+  text-align: left;
+}
+.userList-card-description {
+  color: rgb(76, 73, 73);
+  line-height: 2rem;
+}
+
+@media (max-width: 1300px) {
+  .cards-collection .card-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .userList-wrapper {
+    font: 0.9em sans-serif;
+  }
+}
+
+@media (max-width: 768px) {
+  .userList-wrapper {
+    font: 0.6em sans-serif;
+    margin: auto 10% 2% 10%;
+  }
+
+  .cards-collection .card {
+    margin: 2em 4em;
+  }
+}

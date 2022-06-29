@@ -1,0 +1,16 @@
+.App {
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+  }
+
+#Home-Page,#UserList-Page,#UserProfile-Page,#TrailDetrails-Page,#Search-Page {
+  padding-bottom: 10rem;
+}
+
+.row {
+  margin: 0 ! important;
+}
+
+
+  

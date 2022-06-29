@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Work+Sans&display=swap");
+
+/* ------------new CSS------------- */
+
+#detail-landing {
+  background: url("../images/home_bg6.jpeg") no-repeat center center fixed;
+  display: table;
+  height: 50vh;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+}
+
+.detail-wrapper h1 {
+  font-family: "Merriweather", sans-serif;
+  color: #4a4a4a;
+  line-height: 1.33;
+  font-weight: bold;
+}
+
+.detail-wrapper hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+  margin: 3rem 0;
+}
+
+.detail-wrapper {
+  text-align: justify;
+  /* padding: 2rem 3rem; */
+}
+.detail-wrapper h1 {
+  size: 120%;
+}
+
+.detail-navbar {
+  padding: 2rem 0;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border-bottom: 3px #4a4a4a solid;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.detail-navbar a {
+  color: #1c1c1c;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.075rem;
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: center;
+}
+.detail-navbar a:hover {
+  color: rgb(4, 79, 6);
+  font-weight: bold;
+}
+
+.detail-type-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.detail-type-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(4, 79, 6);
+}
+
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.detail-type-item p {
+  color: rgb(63, 75, 68);
+  text-transform: uppercase;
+}
+
+.detail-instruction p {
+  line-height: 2.5rem;
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 1px;
+}
+
+.detail-instruction-place {
+    padding: 1rem 0;
+}
+.detail-instruction-place p {
+  line-height: 1rem;
+}
+
+.detail-instruction li {
+  list-style: none;
+}
+
+.detail-instruction li {
+  list-style: none;
+}
+
+.detail-instruction .direction-icon {
+  margin-right: 1rem;
+}
+
+
+/* Add to my list button */
+.addlist {
+  text-align: center;
+  padding: 2rem 0;
+}
+.addlist button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.addlist button:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+.addlist button:hover {
+  font-weight: 800;
+}
+
+.review-add {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#detail-map .detail-map-container {
+  height: 50vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .main-container {
+    width: calc(100% - 80px);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    width: calc(100% - 80px);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    width: calc(100% - 60px);
+  }
+  .detail-instruction {
+    font-size: 0.8rem;
+  }
+}

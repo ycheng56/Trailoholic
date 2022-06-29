@@ -1,0 +1,21 @@
+.filter-container button{
+    margin-right: 1rem;
+    min-width: 5rem;
+    border:none;
+    background: white;
+    color:rgb(33, 118, 77);
+    border:2px solid rgb(65, 36, 53);
+    border-radius: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter-container  button:hover{
+    background:rgb(33, 118, 77);
+    color:white;
+}
+
+.filter-container button:focus{
+    background:rgb(33, 118, 77);
+    color:white;
+}

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
+
+
+.UserList-Page .row {
+    margin: 0;
+}
+.profile-header{
+    margin: auto;
+
+}
+.profile-header h1{
+    padding: 2rem 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+}
+
+@media (max-width: 768px){
+
+    .profile-header h1{
+        font-size: 1.5rem;
+    }
+}

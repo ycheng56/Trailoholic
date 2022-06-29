@@ -1,0 +1,60 @@
+
+/* Search Result card */
+.search-wrapper{
+    overflow: hidden;
+    box-shadow: 0 2px 5px grey;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    margin: auto 20% 2% 20%;
+}
+
+.search-detail{
+    display: grid;
+    grid-template-columns: 36% 65%;
+}
+.search-wrapper .card-img{
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+}
+.search-Img{
+    margin: auto;
+    padding: 1rem;
+}
+.search-card-title{
+    padding-bottom: 10%;
+    font-size: 120%;
+}
+
+.search-deleteBtn{
+    float: right;
+    padding: 2% 4% 0 0;
+    color:rgb(2, 51, 2)
+}
+
+.search-detailInfo{
+    margin: auto auto auto 5%;
+    text-align: left;
+}
+.search-card-description{
+    color:rgb(76, 73, 73);
+    line-height: 2rem;
+}
+
+@media (max-width: 1024px){
+    .search-wrapper {
+        font: 0.9em sans-serif;
+    }
+}
+
+@media (max-width: 768px){
+
+    .search-wrapper {
+        font: 0.6em sans-serif;
+        margin: auto 10% 2% 10%;
+    }
+}

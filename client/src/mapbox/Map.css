@@ -1,0 +1,78 @@
+.map-block {
+  height: min(85vh,100%);
+  max-height: 85vh;
+}
+
+.trailsCardSideBar{
+    background-color: #fff;
+    z-index:0;
+    overflow: auto;
+    max-height: 100%;
+    margin: 3px;
+    overflow:auto;
+}
+
+.collapse-content{
+  padding-top: 2%;
+  margin: 0;
+}
+
+.trailsCardSideBar .inner-button {
+  margin: 5%;
+}
+
+.instruction {
+  border: 1px gainsboro dotted;
+  padding: 2%;
+  max-height: 35vh;
+  overflow-y: auto;
+}
+
+.instruction-panel li  {
+  text-align: left;
+}
+
+.instruction-panel p  {
+  text-align: left;
+}
+
+.map {
+  height:90vh;
+}
+
+.collapse-control-panel {
+  margin: 0;
+  padding: 0;
+}
+
+.collapse-control {
+    position: relative;
+    bottom: 0px;
+}
+
+.search-component-wrapper {
+  display: block;
+}
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#search .mapboxgl-ctrl-geocoder {
+  width: 50vw;
+}
+
+
+.mapboxgl-popup-content {
+  padding: 0;
+}
+
+
+@media (max-width: 768px){
+
+  .instruction{
+    max-height: 6rem;
+  }
+}

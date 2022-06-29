@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
+
+.navbar{
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem 0 1rem 0 !important;
+    font-size:large;
+}
+
+button{
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar .banner-logo{
+    width: 8%;
+}
+
+footer{
+    /* height: 10rem; */
+    position: absolute;
+    bottom:0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    
+}
+footer .row {
+    width: 100%;
+    height: 100%;
+}
+
+footer .logo-column {
+    margin: auto;
+}
+
+
+footer img{
+    max-width: min(100%,10rem);
+    max-height: min(100%,10rem); 
+    object-fit: contain;
+}
+
+.footer-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #f8f9fa;
+    font-size: small;
+}

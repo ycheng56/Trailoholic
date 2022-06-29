@@ -1,0 +1,119 @@
+.card{
+    overflow: hidden;
+    box-shadow: 0 2px 5px grey;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+}
+
+.card .card-img{
+    height: 10rem;
+    width: 100%;
+    object-fit: cover;
+}
+.cards-collection .card-title{
+    margin: 2% auto;
+    line-height: 1em;
+    word-wrap:break-word;
+}
+.landingpage-card .card-title {
+    height: 4em;
+    margin: 2% auto;
+    line-height: 1em;
+    word-wrap:break-word;
+    padding-top: 10%;
+}
+
+
+/* .card-title strong {
+    word-wrap:break-word;
+    white-space: nowrap;
+    overflow:auto;
+} */
+
+.card-description{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: rgb(83, 83, 83);
+}
+
+.card-description span {
+    margin-right: 2px;
+    display: inline-block;
+    vertical-align:top;
+}
+
+.card-description .star {
+    padding: 0;
+}
+
+.card-btn{
+    padding: 0.5rem;
+    font-family: inherit;
+    font-weight: bold;
+    font-size:1rem;
+    margin: 1rem;
+    border: 2px solid grey;
+    background: transparent;
+    color:cadetblue;
+    border-radius: 0.5rem;
+    transition:200ms ease-in, color 200ms ease-in;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+
+.card:hover .card-btn{
+    background-color: burlywood;
+    color:white;
+}
+
+.slider-wrapper {
+    margin: 1rem auto;
+}
+
+.slick-slide {
+    padding: 5px 10px;
+}
+
+
+.slick-list {
+    margin-top: 1rem;
+}
+
+.slick-prev:before, .slick-next:before {
+    /* opacity: 0.5 !important; */
+    color: black !important;
+}
+
+@media (max-width: 1300px){
+    .card-description {
+        font: 0.9em sans-serif;
+    }
+}
+
+@media (max-width: 1024px){
+    .card {
+        font: 0.9em sans-serif;
+    }
+    .card-description {
+        font: 0.9em sans-serif;
+    }
+}
+
+@media (max-width: 768px){
+
+    .card {
+        font: 0.8em sans-serif;
+    }
+}
+
+@media (max-width: 480px){
+
+}
+

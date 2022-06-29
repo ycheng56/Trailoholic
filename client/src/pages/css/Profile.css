@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Raleway&family=Roboto&family=Montserrat:wght@500');
+
+#UserProfile-Page .row {
+  margin: 0 !important;
+}
+
+.profile-btn{
+    padding: 5% 0 15%;
+}
+.profile-Img p{
+    text-align: left;
+    padding-left: 15%;
+}
+
+.profile-header-icon {
+    display: block;
+}
+
+.profile-Img img {
+    width: 10rem;
+}
+.profile-Img .row {
+    display: block;
+}
+
+
+
+.profile-wrapper .row{
+    padding-top: 2%;
+    padding-left: 10%;
+}
+
+@media (max-width: 1024px) {
+    .profile-wrapper {
+      width: calc(100% - 80px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-wrapper {
+      width: calc(100% - 80px);
+    }
+  }
