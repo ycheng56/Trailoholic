@@ -6,6 +6,10 @@
     gap: 1rem;
 }
 
+.review-item:last-of-type {
+    border-bottom: none;
+}
+
 .reviewer-profile {
     display: inline-flex;
     align-items: center;
