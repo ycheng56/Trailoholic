@@ -6,6 +6,7 @@ import ResponsiveSlider from "../components/TrailCollectionComponents/Responsive
 import Search from "../mapbox/Search";
 import { fetchAllTrails, fetchTrailsByMode } from "../api/API";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { user,isAuthenticated } = useAuth0();
@@ -81,10 +82,10 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Local Favorites near Vancouver</h1>
-              <a className="section-header-link" href="/trails/map">
+              <Link className="section-header-link" to="/trails/map">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -95,10 +96,10 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Best Hiking Trails</h1>
-              <a className="section-header-link"  href="/trails/map/walking">
+              <Link className="section-header-link"  to="/trails/map/walking">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -109,10 +110,10 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>Best Cycling Trails</h1>
-              <a className="section-header-link" href="/trails/map/cycling">
+              <Link className="section-header-link" to="/trails/map/cycling">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -123,10 +124,10 @@ export default function Home() {
           <div className="section-header-container">
             <div className="section-header-content">
               <h1>My Favorites Trails</h1>
-              <a className="section-header-link" href="/user/lists">
+              <Link className="section-header-link" to="/user/lists">
                 <strong>view all</strong>
                 <FaArrowCircleRight className="section-header-icon"></FaArrowCircleRight>
-              </a>
+              </Link>
             </div>
           </div>
 

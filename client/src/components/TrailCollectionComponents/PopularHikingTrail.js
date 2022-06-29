@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/TrailCollection.css";
 import { FaStar, FaBicycle, FaHiking } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function PopularHikingTrail({ trail }) {
   const num = trail?.image;
@@ -9,9 +10,9 @@ export default function PopularHikingTrail({ trail }) {
   const cyclePicUri = "cycling_" + picNum + ".jpg";
   return (
     <div className="card landingpage-card">
-      <a
+      <Link
         style={{ textDecoration: "none", color: "inherit" }}
-        href={`/trails/${trail?._id}`}
+        to={`/trails/${trail?._id}`}
       >
         <div className="card-body">
           {trail?.mode === "cycling" ? (
@@ -55,7 +56,7 @@ export default function PopularHikingTrail({ trail }) {
             <span>Time: {trail?.duration} m</span>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }

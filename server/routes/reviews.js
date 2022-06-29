@@ -77,6 +77,7 @@ reviewRoutes.route("/reviews/review").get(function (req, res) {
     db_connect
       .collection(collectionName)
       .find(query)
+      .sort({_id: -1})
       .toArray(function (err, result) {
         if (err) throw err;
         res.json(result);

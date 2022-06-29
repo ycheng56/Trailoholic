@@ -24,6 +24,8 @@
 .instruction {
   border: 1px gainsboro dotted;
   padding: 2%;
+  max-height: 35vh;
+  overflow-y: auto;
 }
 
 .instruction-panel li  {
@@ -68,3 +70,9 @@
 }
 
 
+@media (max-width: 768px){
+
+  .instruction{
+    max-height: 6rem;
+  }
+}
