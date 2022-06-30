@@ -263,7 +263,7 @@ function MapControlSearch() {
               <div className="collapse-content" id="example-collapse-text">
                 <Form onSubmit={handleSubmit}>
                   <FloatingLabel
-                    controlId="floatingSelect"
+                    controlId="selectTrailType"
                     label="Select trail type"
                   >
                     <Form.Select
@@ -276,7 +276,7 @@ function MapControlSearch() {
                   </FloatingLabel>
 
                   <FloatingLabel
-                    controlId="floatingSelect"
+                    controlId="selectTrailDifficulty"
                     label="Select trail difficulty"
                   >
                     <Form.Select
