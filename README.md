@@ -7,6 +7,9 @@
 ## Navigate Trailoholic
 please visit [https://trailoholic-app.herokuapp.com/](https://trailoholic-app.herokuapp.com/)
 
+## Demo
+
+[Youtube: Trailoholic Demo](https://www.youtube.com/watch?v=k0raPb8tlRQ)
 
 ### Home
 - Browse trail collections
